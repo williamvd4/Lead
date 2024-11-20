@@ -1,13 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadFarmer Cannabis</title>
+  <link rel="stylesheet" href="/dist/assets/index-DMndHnQK.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self' https://logs.browser-intake-us5.datadoghq.com;"></head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/dist/assets/index-Buh0tE1P.js"></script>
+  <script>
+    fetch('https://logs.browser-intake-us5.datadoghq.com', {
+      method: 'GET'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Datadog endpoint response:', data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  </script>
+</body> 
 </html>

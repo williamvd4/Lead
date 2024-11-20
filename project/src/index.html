@@ -9,22 +9,5 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/dist/assets/index-Buh0tE1P.js"></script>
-  <script>
-    fetch('https://logs.browser-intake-us5.datadoghq.com', {
-      method: 'GET'
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Datadog endpoint response:', data);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-  </script>
 </body> 
 </html>
