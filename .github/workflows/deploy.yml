@@ -26,8 +26,11 @@ jobs:
         run: npm run build
         working-directory: project
 
+      - name: Move build output to root
+        run: mv project/dist/* .
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./project/dist
+          publish_dir: .
