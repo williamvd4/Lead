@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Cannabis } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <Cannabis className="h-8 w-8 text-emerald-600" />
+              {/* Replace with a valid icon or remove it */}
               <span className="ml-2 text-xl font-bold text-gray-900">LEADFARMER</span>
             </Link>
           </div>

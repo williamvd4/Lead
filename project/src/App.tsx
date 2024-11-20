@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Cultivation from './pages/Cultivation';
 import Products from './pages/Products';
-import Retailers from './pages/Retailers';
+import Retailers from './pages/Retailers'; // Ensure this import is correct
 import LabResults from './pages/LabResults';
 import Contact from './pages/Contact';
 
@@ -36,7 +36,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/cultivation" element={<Cultivation />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/retailers" element={<Retailers />} />
+            <Route path="/retailers" element={<Retailers />} /> {/* Ensure this route is correct */}
             <Route path="/lab-results" element={<LabResults />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Navigate to="/" replace />} />

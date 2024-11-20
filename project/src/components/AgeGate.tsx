@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cannabis } from 'lucide-react';
+import { Flower } from 'lucide-react';
 
 interface AgeGateProps {
   onVerify: () => void;
@@ -9,7 +9,7 @@ const AgeGate: React.FC<AgeGateProps> = ({ onVerify }) => {
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-lg p-8 text-center">
-        <Cannabis className="w-16 h-16 mx-auto mb-6 text-emerald-600" />
+        <Flower className="w-16 h-16 mx-auto mb-6 text-emerald-600" />
         <h1 className="text-2xl font-bold mb-4">Welcome to LEADFARMER</h1>
         <p className="mb-6 text-gray-600">
           Please verify that you are 21 years of age or older to enter this site.

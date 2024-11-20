@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Cannabis, Instagram, Facebook, Twitter } from 'lucide-react';
+import {  Instagram, Facebook, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <Cannabis className="h-8 w-8 text-emerald-400" />
+             
               <span className="ml-2 text-xl font-bold">LEADFARMER</span>
             </div>
             <p className="text-gray-400">
