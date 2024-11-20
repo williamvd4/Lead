@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages 2
 
 on:
   push:
     branches:
-      - main
+      - main  # Change this to your default branch if different
 
 jobs:
   build:
@@ -20,14 +20,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: project
+        working-directory: project  # Adjust if your project directory is different
 
       - name: Build project
         run: npm run build
-        working-directory: project
+        working-directory: project  # Adjust if your project directory is different
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages 2
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./project/dist
+          publish_dir: ./project/dist  # Adjust if your build output directory is different
