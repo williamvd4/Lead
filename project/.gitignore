@@ -25,7 +25,7 @@ dist-ssr
 *.sw?
 
 # Ignore virtual environments
-.venv/
+/.venv
 
 # Ignore .gitignore files (optional; remove if unnecessary)
-*.gitignore
+
