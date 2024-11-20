@@ -25,9 +25,12 @@ const About = () => {
       {/* Hero Section */}
       <div className="relative h-[400px]">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-black bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1589579234096-47d082e8a8c9?auto=format&fit=crop&q=80)'
+            backgroundImage: 'url(/images/logo.png)',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
@@ -46,7 +49,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&q=80"
+                src="/images/trees.jpg"
                 alt="Founder in cannabis field"
                 className="rounded-lg shadow-xl"
               />
@@ -59,9 +62,6 @@ const About = () => {
               <p className="text-gray-600 mb-6">
                 Today, we're proud to be at the forefront of New York's legal cannabis industry, setting new standards for quality, sustainability, and responsibility in everything we do.
               </p>
-              <a href="#values" className="inline-flex items-center text-emerald-600 hover:text-emerald-700">
-                Learn about our values <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ const About = () => {
             </div>
             <div className="order-1 md:order-2">
               <img
-                src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&q=80"
+                src="/images/pups.png"
                 alt="Sustainable farming practices"
                 className="rounded-lg shadow-xl"
               />

@@ -18,7 +18,7 @@ const Home = () => {
 
   const carouselItems = [
     {
-      image: 'https://images.unsplash.com/photo-1536819114556-1c5f87e58044?auto=format&fit=crop&q=80',
+      image: '/images/logo.png',
       title: 'Premium Cannabis',
       description: 'Cultivated with care in New York State',
     },
@@ -42,9 +42,12 @@ const Home = () => {
           {carouselItems.map((item, index) => (
             <div key={index} className="relative h-[600px]">
               <div
-                className="absolute inset-0 bg-cover bg-center"
+                className="absolute inset-0 bg-black bg-center"
                 style={{
                   backgroundImage: `url(${item.image})`,
+                  backgroundSize: 'contain',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
                 }}
               >
                 <div className="absolute inset-0 bg-black bg-opacity-50" />
@@ -74,7 +77,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?auto=format&fit=crop&q=80"
+                src="/images/trees.jpg"
                 alt="Cannabis cultivation"
                 className="rounded-lg shadow-xl"
               />

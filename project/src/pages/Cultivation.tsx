@@ -32,7 +32,8 @@ const Cultivation = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?auto=format&fit=crop&q=80)'
+            backgroundImage: 'url(/images/NY.jpg)'
+
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
@@ -66,7 +67,7 @@ const Cultivation = () => {
             </div>
             <div>
               <img
-                src="https://images.unsplash.com/photo-1585660629939-404353c19d32?auto=format&fit=crop&q=80"
+                src="/images/starting.png"
                 alt="Indoor cultivation facility"
                 className="rounded-lg shadow-xl"
               />

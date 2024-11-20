@@ -26,7 +26,7 @@ const Products = () => {
       type: "Sativa",
       thc: 22,
       cbd: 0.1,
-      image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80",
+      image: "/images/purple.jpg",
       description: "A classic sativa-dominant strain known for its euphoric and creative effects.",
       effects: ["Creative", "Energetic", "Euphoric"],
       terpenes: [
@@ -42,7 +42,7 @@ const Products = () => {
       type: "Hybrid",
       thc: 18,
       cbd: 0.2,
-      image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80",
+      image: "/images/dream.webp",
       description: "A balanced hybrid offering full-body relaxation with gentle cerebral invigoration.",
       effects: ["Relaxed", "Happy", "Creative"],
       terpenes: [
@@ -58,7 +58,7 @@ const Products = () => {
       type: "Hybrid",
       thc: 80,
       cbd: 0.1,
-      image: "https://images.unsplash.com/photo-1597354984706-fac992d9306f?auto=format&fit=crop&q=80",
+      image: "/images/kush.jpg",
       description: "High-potency concentrate with complex flavor profile.",
       effects: ["Relaxed", "Euphoric", "Happy"],
       terpenes: [
@@ -74,7 +74,7 @@ const Products = () => {
       type: "Indica",
       thc: 10,
       cbd: 10,
-      image: "https://images.unsplash.com/photo-1621466550398-ac8062907657?auto=format&fit=crop&q=80",
+      image: "/images/gummies.jpg",
       description: "1:1 THC:CBD ratio gummies for balanced effects.",
       effects: ["Relaxed", "Calm", "Peaceful"],
       terpenes: [
