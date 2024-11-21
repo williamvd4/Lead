@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import history from 'connect-history-api-fallback';
 
 export default defineConfig({
   plugins: [react()],
@@ -7,12 +8,13 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   server: {
-    proxy: {
-      '/': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/$/, '/index.html'),
-      },
+    configureServer: (server: any) => {
+      server.middlewares.use(
+        history({
+          disableDotRule: true,
+          verbose: true,
+        })
+      );
     },
-  }
+  },
 });

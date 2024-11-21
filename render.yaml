@@ -1,8 +1,8 @@
-services:
-  - type: web
-    name: your-service-name
-    staticPublishPath: /path/to/your/build
-    routes:
-      - type: rewrite
-        source: /.*
-        destination: /index.html
+ services:
+   - type: web
+     name: Lead
+     staticPublishPath: project/dist
+     routes:
+       - type: rewrite
+         source: /.*
+         destination: /index.html
