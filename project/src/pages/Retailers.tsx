@@ -40,6 +40,8 @@ const handleRedirect = (url: string) => {
           style={{
             backgroundImage: `url(${logoImage})`,
             backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
 
           }}
         >
