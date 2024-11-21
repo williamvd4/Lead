@@ -144,49 +144,55 @@ const Home = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Premium Flower',
-                image: kushImage,
-                description: 'Hand-trimmed, carefully cured premium cannabis flower.',
-              },
-              {
-                name: 'Concentrates',
-                image: contrateImage,
-                description: 'Pure and potent extracts for the discerning consumer.',
-              },
-              {
-                name: 'Edibles',
-                image: gummiesImage,
-                description: 'Precisely dosed edibles made with premium ingredients.',
-              },
-            ].map((product, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
-                  <Link
-                    to="/products"
-                    className="text-emerald-600 hover:text-emerald-700 inline-flex items-center"
-                  >
-                    View details
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
+      // Home.tsx (Featured Products Section)
+<section className="py-20 px-4 bg-gray-50">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
+    <div className="grid md:grid-cols-3 gap-8">
+      {[
+        {
+          name: 'Premium Flower',
+          image: kushImage,
+          description: 'Hand-trimmed, carefully cured premium cannabis flower.',
+          link: '/products#flower', // Added #flower
+        },
+        {
+          name: 'Concentrates',
+          image: contrateImage,
+          description: 'Pure and potent extracts for the discerning consumer.',
+          link: '/products#concentrates', // Added #concentrates
+        },
+        {
+          name: 'Edibles',
+          image: gummiesImage,
+          description: 'Precisely dosed edibles made with premium ingredients.',
+          link: '/products#edibles', // Added #edibles
+        },
+      ].map((product, index) => (
+        <Link
+          key={index}
+          to={product.link}
+          className="bg-white rounded-lg shadow-md overflow-hidden"
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-6">
+            <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+            <p className="text-gray-600 mb-4">{product.description}</p>
+            <span className="text-emerald-600 hover:text-emerald-700 inline-flex items-center">
+              Learn More
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </span>
           </div>
-        </div>
-      </section>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Instagram Feed */}
       <section className="py-20 px-4">

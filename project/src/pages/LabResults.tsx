@@ -35,7 +35,7 @@ const LabResults = () => {
     },
   ];
 
-  const handlePdfOpen = (pdfUrl) => {
+  const handlePdfOpen = (pdfUrl: string) => {
     window.open(pdfUrl, '_blank');
   };
 

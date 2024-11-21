@@ -1,6 +1,8 @@
 import { Leaf, Droplets, Sun, Wind } from 'lucide-react';
 import nyImage from '/images/NY.jpg';
 import startingImage from '/images/starting.png';
+import controlImage from '/images/control.png';
+import modernfacilityImage from '/images/modernfacility.png';
 
 const Cultivation = () => {
   const methods = [
@@ -82,27 +84,28 @@ const Cultivation = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Quality Control Process</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                title: "Testing & Analysis",
-                description: "Regular testing throughout the growing cycle ensures optimal plant health and product safety.",
-                image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=80"
-              },
+
               {
                 title: "Climate Monitoring",
                 description: "24/7 environmental monitoring maintains perfect growing conditions.",
-                image: "https://images.unsplash.com/photo-1587334207407-deb137a955ba?auto=format&fit=crop&q=80"
+                image: controlImage 
               },
               {
                 title: "Harvest Care",
                 description: "Careful handling and precise timing ensure peak potency and flavor.",
                 image: "https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&q=80"
+              },
+              {
+                title: "Testing & Analysis",
+                description: "Regular testing throughout the growing cycle ensures optimal plant health and product safety.",
+                image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=80"
               }
             ].map((item, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full aspect-w-1 aspect-h-1 h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
@@ -120,7 +123,7 @@ const Cultivation = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Our Facility</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <img
-              src="https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?auto=format&fit=crop&q=80"
+              src={modernfacilityImage}
               alt="Cultivation facility exterior"
               className="rounded-lg shadow-xl"
             />
