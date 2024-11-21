@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Search, Filter } from 'lucide-react';
+import purpleImage from '/images/purple.jpg';
+import dreamImage from '/images/dream.webp';
+import kushImage from '/images/kush.jpg';
+import gummiesImage from '/images/gummies.jpg';
 
 interface Product {
   id: number;
@@ -26,7 +30,7 @@ const Products = () => {
       type: "Sativa",
       thc: 22,
       cbd: 0.1,
-      image: "/images/purple.jpg",
+      image: purpleImage,
       description: "A classic sativa-dominant strain known for its euphoric and creative effects.",
       effects: ["Creative", "Energetic", "Euphoric"],
       terpenes: [
@@ -42,7 +46,7 @@ const Products = () => {
       type: "Hybrid",
       thc: 18,
       cbd: 0.2,
-      image: "/images/dream.webp",
+      image: dreamImage,
       description: "A balanced hybrid offering full-body relaxation with gentle cerebral invigoration.",
       effects: ["Relaxed", "Happy", "Creative"],
       terpenes: [
@@ -58,7 +62,7 @@ const Products = () => {
       type: "Hybrid",
       thc: 80,
       cbd: 0.1,
-      image: "/images/kush.jpg",
+      image: kushImage,
       description: "High-potency concentrate with complex flavor profile.",
       effects: ["Relaxed", "Euphoric", "Happy"],
       terpenes: [
@@ -74,7 +78,7 @@ const Products = () => {
       type: "Indica",
       thc: 10,
       cbd: 10,
-      image: "/images/gummies.jpg",
+      image: gummiesImage,
       description: "1:1 THC:CBD ratio gummies for balanced effects.",
       effects: ["Relaxed", "Calm", "Peaceful"],
       terpenes: [

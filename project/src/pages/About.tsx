@@ -1,5 +1,8 @@
 import React from 'react';
 import { ArrowRight, Leaf, Shield, Sprout } from 'lucide-react';
+import logoImage from '/images/logo.png';
+import treesImage from '/images/trees.jpg';
+import pupsImage from '/images/pups.png';
 
 const About = () => {
   const values = [
@@ -27,7 +30,7 @@ const About = () => {
         <div
           className="absolute inset-0 bg-black bg-center"
           style={{
-            backgroundImage: 'url(/images/logo.png)',
+            backgroundImage: `url(${logoImage})`,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -49,7 +52,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/images/trees.jpg"
+                src={treesImage}
                 alt="Founder in cannabis field"
                 className="rounded-lg shadow-xl"
               />
@@ -109,7 +112,7 @@ const About = () => {
             </div>
             <div className="order-1 md:order-2">
               <img
-                src="/images/pups.png"
+                src={pupsImage}
                 alt="Sustainable farming practices"
                 className="rounded-lg shadow-xl"
               />

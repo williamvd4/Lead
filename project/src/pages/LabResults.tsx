@@ -1,4 +1,7 @@
 import React from 'react';
+import kingKongPdf from '/pdfs/King Kong - Eighth - HC-F-K0524.pdf';
+import mangoOgPdf from '/pdfs/Mango OG - Eighth - HC-F-I1424.pdf';
+import thaiStarPdf from '/pdfs/Thai Star - Eighth - HC-F-I0324.pdf';
 
 const LabResults = () => {
   const labResults = [
@@ -9,7 +12,7 @@ const LabResults = () => {
       cbd: '0.2%',
       date: '2023-09-01',
       lab: 'Green Labs',
-      pdf: '/pdfs/King Kong - Eighth - HC-F-K0524.pdf',
+      pdf: kingKongPdf,
     },
     {
       batchNumber: '67890',
@@ -18,7 +21,7 @@ const LabResults = () => {
       cbd: '0.1%',
       date: '2023-08-15',
       lab: 'Pure Analytics',
-      pdf: '/pdfs/Mango OG - Eighth - HC-F-I1424.pdf',
+      pdf: mangoOgPdf,
     },
     {
       batchNumber: '11223',
@@ -27,7 +30,7 @@ const LabResults = () => {
       cbd: '0.3%',
       date: '2023-07-20',
       lab: 'Cannalysis',
-      pdf: '/pdfs/Thai Star - Eighth - HC-F-I0324.pdf',
+      pdf: thaiStarPdf,
     },
   ];
 

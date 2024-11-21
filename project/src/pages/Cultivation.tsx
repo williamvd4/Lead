@@ -1,5 +1,7 @@
 import React from 'react';
 import { Leaf, Droplets, Sun, Wind } from 'lucide-react';
+import nyImage from '/images/NY.jpg';
+import startingImage from '/images/starting.png';
 
 const Cultivation = () => {
   const methods = [
@@ -32,8 +34,7 @@ const Cultivation = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/images/NY.jpg)'
-
+            backgroundImage: `url(${nyImage})`
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
@@ -67,7 +68,7 @@ const Cultivation = () => {
             </div>
             <div>
               <img
-                src="/images/starting.png"
+                src={startingImage}
                 alt="Indoor cultivation facility"
                 className="rounded-lg shadow-xl"
               />

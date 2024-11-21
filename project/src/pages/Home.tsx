@@ -4,6 +4,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ArrowRight } from 'lucide-react';
+import logoImage from '/images/logo.png';
+import treesImage from '/images/trees.jpg';
 
 const Home = () => {
   const sliderSettings = {
@@ -18,7 +20,7 @@ const Home = () => {
 
   const carouselItems = [
     {
-      image: '/images/logo.png',
+      image: logoImage,
       title: 'Premium Cannabis',
       description: 'Cultivated with care in New York State',
     },
@@ -77,7 +79,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/images/trees.jpg"
+                src={treesImage}
                 alt="Cannabis cultivation"
                 className="rounded-lg shadow-xl"
               />
