@@ -54,21 +54,21 @@ const Home = () => {
 
   const carouselItems = [
     {
-      image: {src:logoImage, alt: 'Logo'},
+      image: logoImage,
       title: 'Premium Cannabis',
       description: 'Cultivated with care in New York State',
       link: '/Products',
       buttonText: 'Our Products',
     },
     {
-      image: {src:livingsoilImage, alt: 'Living Soil'},
+      image: livingsoilImage,
       title: 'Sustainable Farming',
       description: 'Committed to environmental stewardship',
       link: '/Cultivation',
       buttonText: 'View Our Operation',
     },
     {
-      image: {src:labtestImage, alt: 'Lab Test'} ,
+      image: labtestImage,
       title: 'Quality Assured',
       description: 'Lab tested for your safety',
       link: '/LabResults',
