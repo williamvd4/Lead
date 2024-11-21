@@ -28,7 +28,7 @@ const Contact = () => {
         <div
           className="absolute inset-0 bg-black  bg-center"
           style={{
-            backgroundImage: logoImage,
+            backgroundImage: `url(${logoImage})`,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
