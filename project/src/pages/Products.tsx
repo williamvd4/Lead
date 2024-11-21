@@ -4,6 +4,8 @@ import purpleImage from '/images/purple.jpg';
 import dreamImage from '/images/dream.webp';
 import kushImage from '/images/kush.jpg';
 import gummiesImage from '/images/gummies.jpg';
+import logoImage from '/images/logo.png';
+
 
 interface Product {
   id: number;
@@ -103,7 +105,7 @@ const Products = () => {
         <div
           className="absolute inset-0 bg-black bg-center"
           style={{
-            backgroundImage: 'url(/images/logo.png)',
+            backgroundImage: `url(${logoImage})`,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

@@ -1,6 +1,8 @@
 import kingKongPdf from '/pdfs/King Kong - Eighth - HC-F-K0524.pdf';
 import mangoOgPdf from '/pdfs/Mango OG - Eighth - HC-F-I1424.pdf';
 import thaiStarPdf from '/pdfs/Thai Star - Eighth - HC-F-I0324.pdf';
+import logoImage from '/images/logo.png';
+
 
 const LabResults = () => {
   const labResults = [
@@ -43,7 +45,7 @@ const LabResults = () => {
         <div
           className="absolute inset-0 bg-cover bg-black bg-center"
           style={{
-            backgroundImage: 'url(/images/logo.png)',
+            backgroundImage: `url(${logoImage})`,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
