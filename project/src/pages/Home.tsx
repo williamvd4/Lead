@@ -6,6 +6,9 @@ import logoImage from '/images/logo.png';
 import treesImage from '/images/trees.jpg';
 import livingsoilImage from '/images/livingsoil.webp';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import gummiesImage from '/images/gummies.jpg';
+import contrateImage from '/images/contrate.jpg';
+import kushImage from '/images/kush.jpg';
 
 const NextArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
@@ -148,17 +151,17 @@ const Home = () => {
             {[
               {
                 name: 'Premium Flower',
-                image: 'https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80',
+                image: kushImage,
                 description: 'Hand-trimmed, carefully cured premium cannabis flower.',
               },
               {
                 name: 'Concentrates',
-                image: 'https://images.unsplash.com/photo-1597354984706-fac992d9306f?auto=format&fit=crop&q=80',
+                image: contrateImage,
                 description: 'Pure and potent extracts for the discerning consumer.',
               },
               {
                 name: 'Edibles',
-                image: 'https://images.unsplash.com/photo-1621466550398-ac8062907657?auto=format&fit=crop&q=80',
+                image: gummiesImage,
                 description: 'Precisely dosed edibles made with premium ingredients.',
               },
             ].map((product, index) => (
