@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages 2
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Change this to your default branch if different
+      - main  # Change if your default branch is not "main"
 
 jobs:
   build:
@@ -11,23 +11,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
 
       - name: Install dependencies
         run: npm install
-        working-directory: project  # Adjust if your project directory is different
+        working-directory: project  # Adjust if "project" isn't your folder
 
       - name: Build project
         run: npm run build
-        working-directory: project  # Adjust if your project directory is different
+        working-directory: project  # Adjust if "project" isn't your folder
 
-      - name: Deploy to GitHub Pages 2
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist  # Adjust if your build output directory is different
+          publish_dir: project/dist  # Adjust if "dist" is not your build output folder
