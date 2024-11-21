@@ -2,6 +2,7 @@ import React from 'react';
 import realmLogo from '/images/realm.png';
 import frassLogo from '/images/frass.webp';
 import owlLogo from '/images/owl.webp';
+import logoImage from '/images/logo.png';
 
 const Retailers = () => {
   const retailers = [
@@ -35,9 +36,9 @@ const handleRedirect = (url: string) => {
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-[500px]">
         <div
-          className="absolute inset-0 bg-cover bg-black bg-center"
+          className="absolute inset-0 bg-black bg-black bg-center"
           style={{
-            backgroundImage: 'url(/images/logo.png)',
+            backgroundImage: 'url(${logoImage})',
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

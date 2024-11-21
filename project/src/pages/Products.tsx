@@ -101,9 +101,9 @@ const Products = () => {
       {/* Hero Section */}
       <div className="relative h-[300px]">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-black bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&q=80)'
+            backgroundImage: 'url(/images/logo.png)'
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
