@@ -12,7 +12,7 @@ const Navbar = () => {
     { name: 'Cultivation', href: '/cultivation' },
     { name: 'Products', href: '/products' },
     { name: 'Retailers', href: '/retailers' },
-    { name: 'Lab Results', href: '/lab-results' },
+    { name: 'Lab Results', href: '/LabResults' },
     { name: 'Contact', href: '/contact' },
   ];
 

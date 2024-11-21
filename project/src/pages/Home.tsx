@@ -53,7 +53,7 @@ const Home = () => {
       image: logoImage,
       title: 'Premium Cannabis',
       description: 'Cultivated with care in New York State',
-      link: '/premium-cannabis',
+      link: '/Products',
       buttonText: 'Our Products',
     },
     {
