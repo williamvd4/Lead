@@ -1,8 +1,7 @@
-
  services:
    - type: web
      name: Lead
-     staticPublishPath: project\dist
+     staticPublishPath: project/dist
      routes:
        - type: rewrite
          source: /.*
