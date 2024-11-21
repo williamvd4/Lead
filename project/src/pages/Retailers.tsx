@@ -38,7 +38,9 @@ const handleRedirect = (url: string) => {
         <div
           className="absolute inset-0 bg-black bg-black bg-center"
           style={{
-            backgroundImage: `url(${logoImage})`
+            backgroundImage: `url(${logoImage})`,
+            backgroundSize: 'contain',
+
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
