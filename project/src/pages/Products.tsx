@@ -4,8 +4,9 @@ import purpleImage from '/images/purple.jpg';
 import dreamImage from '/images/dream.webp';
 import kushImage from '/images/kush.jpg';
 import gummiesImage from '/images/gummies.jpg';
+import vapesImage from '/images/vapes.webp'; // Add vape image
 import logoImage from '/images/logo.png';
-
+import contrateImage from '/images/contrate.jpg'; // Add concentrate image
 
 interface Product {
   id: number;
@@ -60,7 +61,7 @@ const Products = () => {
     {
       id: 3,
       name: "OG Kush",
-      category: "concentrates",
+      category: "flower",
       type: "Hybrid",
       thc: 80,
       cbd: 0.1,
@@ -87,10 +88,41 @@ const Products = () => {
         { name: "Myrcene", percentage: 0.3 },
         { name: "Linalool", percentage: 0.2 }
       ]
-    }
-  ];
+    },
+    {
+      id: 5,
+      name: "Vape Pen",
+      category: "vapes",
+      type: "vapes",
+      thc: 70,
+      cbd: 0.2,
+      image: vapesImage,
+      description: "Portable vape pen with high THC concentrates.",
+      effects: ["Quick Relief", "Euphoric", "Relaxed"],
+      terpenes: [
+        { name: "Pinene", percentage: 0.4 },
+        { name: "Caryophyllene", percentage: 0.3 }
+      ]
+    },
+  {
+    id: 6,
+    name: "Live Rosin",
+    category: "concentrates",
+    type: "concentrates",
+    thc: 70,
+    cbd: 0.2,
+    image: contrateImage,
+    description: "Portable vape pen with high THC concentrates.",
+    effects: ["Quick Relief", "Euphoric", "Relaxed"],
+    terpenes: [
+      { name: "Pinene", percentage: 0.4 },
+      { name: "Caryophyllene", percentage: 0.3 }
+    ]
+  }
+];
 
-  const categories = ['all', 'flower', 'concentrates', 'edibles'];
+
+  const categories = ['all', 'flower',  'edibles', 'vapes', 'concentrates',];
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -109,7 +141,6 @@ const Products = () => {
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
@@ -151,69 +182,78 @@ const Products = () => {
           </div>
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map(product => (
-            <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-semibold">{product.name}</h3>
-                  <span className="bg-emerald-100 text-emerald-800 text-sm px-2 py-1 rounded">
-                    {product.type}
-                  </span>
-                </div>
-                <p className="text-gray-600 mb-4">{product.description}</p>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Potency</h4>
-                    <div className="flex gap-4">
-                      <div className="bg-gray-100 px-3 py-1 rounded">
-                        THC: {product.thc}%
-                      </div>
-                      <div className="bg-gray-100 px-3 py-1 rounded">
-                        CBD: {product.cbd}%
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Effects</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {product.effects.map(effect => (
-                        <span
-                          key={effect}
-                          className="bg-gray-100 text-sm px-3 py-1 rounded"
-                        >
-                          {effect}
+        {/* Category Sections */}
+        {categories.filter(cat => cat !== 'all').map(category => {
+          const categoryProducts = filteredProducts.filter(product => product.category === category);
+          if (categoryProducts.length === 0) return null;
+          return (
+            <section key={category} className="mb-12">
+              <h2 className="text-3xl font-bold mb-6 capitalize">{category}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {categoryProducts.map(product => (
+                  <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full aspect-w-1 aspect-h-1 object-cover"
+                    />
+                    <div className="p-6">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-xl font-semibold">{product.name}</h3>
+                        <span className="bg-emerald-100 text-emerald-800 text-sm px-2 py-1 rounded">
+                          {product.type}
                         </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Terpenes</h4>
-                    <div className="space-y-2">
-                      {product.terpenes.map(terpene => (
-                        <div
-                          key={terpene.name}
-                          className="flex justify-between items-center"
-                        >
-                          <span>{terpene.name}</span>
-                          <span className="text-sm text-gray-600">
-                            {terpene.percentage}%
-                          </span>
+                      </div>
+                      <p className="text-gray-600 mb-4">{product.description}</p>
+                      <div className="space-y-4">
+                        <div>
+                          <h4 className="font-semibold mb-2">Potency</h4>
+                          <div className="flex gap-4">
+                            <div className="bg-gray-100 px-3 py-1 rounded">
+                              THC: {product.thc}%
+                            </div>
+                            <div className="bg-gray-100 px-3 py-1 rounded">
+                              CBD: {product.cbd}%
+                            </div>
+                          </div>
                         </div>
-                      ))}
+                        <div>
+                          <h4 className="font-semibold mb-2">Effects</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {product.effects.map(effect => (
+                              <span
+                                key={effect}
+                                className="bg-gray-100 text-sm px-3 py-1 rounded"
+                              >
+                                {effect}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-2">Terpenes</h4>
+                          <div className="space-y-2">
+                            {product.terpenes.map(terpene => (
+                              <div
+                                key={terpene.name}
+                                className="flex justify-between items-center"
+                              >
+                                <span>{terpene.name}</span>
+                                <span className="text-sm text-gray-600">
+                                  {terpene.percentage}%
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
-            </div>
-          ))}
-        </div>
+            </section>
+          );
+        })}
       </div>
     </div>
   );
