@@ -1,11 +1,37 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { ArrowRight } from 'lucide-react';
 import logoImage from '/images/logo.png';
 import treesImage from '/images/trees.jpg';
+import livingsoilImage from '/images/livingsoil.webp';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+const NextArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', right: '25px', zIndex: 1 }}
+      onClick={onClick}
+    >
+      <ArrowRight className="text-white h-8 w-8" />
+    </div>
+  );
+};
+
+const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: 'block', left: '25px', zIndex: 1 }}
+      onClick={onClick}
+    >
+      <ArrowLeft className="text-white h-8 w-8" />
+    </div>
+  );
+};
 
 const Home = () => {
   const sliderSettings = {
@@ -15,7 +41,11 @@ const Home = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    arrows: true,
+    autoplaySpeed: 7000,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+ 
   };
 
   const carouselItems = [
@@ -23,18 +53,25 @@ const Home = () => {
       image: logoImage,
       title: 'Premium Cannabis',
       description: 'Cultivated with care in New York State',
+      link: '/premium-cannabis',
+      buttonText: 'Our Products',
     },
     {
-      image: 'https://images.unsplash.com/photo-1587304947504-569c0e3c4b67?auto=format&fit=crop&q=80',
+      image: livingsoilImage,
       title: 'Sustainable Farming',
       description: 'Committed to environmental stewardship',
+      link: '/Cultivation',
+      buttonText: 'View Our Operation',
     },
     {
       image: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&q=80',
       title: 'Quality Assured',
       description: 'Lab tested for your safety',
+      link: '/LabResults',
+      buttonText: 'Lab Results',
     },
   ];
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -42,7 +79,7 @@ const Home = () => {
       <div className="relative">
         <Slider {...sliderSettings}>
           {carouselItems.map((item, index) => (
-            <div key={index} className="relative h-[600px]">
+            <div key={index} className="relative h-[500px]">
               <div
                 className="absolute inset-0 bg-black bg-center"
                 style={{
@@ -58,10 +95,10 @@ const Home = () => {
                     <h1 className="text-5xl font-bold mb-4">{item.title}</h1>
                     <p className="text-xl mb-8">{item.description}</p>
                     <Link
-                      to="/products"
+                      to={item.link}
                       className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
                     >
-                      Explore Products
+                    {item.buttonText}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import kingKongPdf from '/pdfs/King Kong - Eighth - HC-F-K0524.pdf';
 import mangoOgPdf from '/pdfs/Mango OG - Eighth - HC-F-I1424.pdf';
 import thaiStarPdf from '/pdfs/Thai Star - Eighth - HC-F-I0324.pdf';

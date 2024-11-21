@@ -1,4 +1,3 @@
-import React from 'react';
 import { Leaf, Droplets, Sun, Wind } from 'lucide-react';
 import nyImage from '/images/NY.jpg';
 import startingImage from '/images/starting.png';

@@ -37,7 +37,7 @@ function App() {
             <Route path="/cultivation" element={<Cultivation />} />
             <Route path="/products" element={<Products />} />
             <Route path="/retailers" element={<Retailers />} /> {/* Ensure this route is correct */}
-            <Route path="/lab-results" element={<LabResults />} />
+            <Route path="/LabResults" element={<LabResults />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

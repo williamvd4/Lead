@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Search, Filter } from 'lucide-react';
 import purpleImage from '/images/purple.jpg';
 import dreamImage from '/images/dream.webp';
@@ -99,7 +99,7 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="relative h-[300px]">
+      <div className="relative h-[500px]">
         <div
           className="absolute inset-0 bg-black bg-center"
           style={{

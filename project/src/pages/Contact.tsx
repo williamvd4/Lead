@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,11 +23,14 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="relative h-[300px]">
+      <div className="relative h-[500px]">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-black  bg-center"
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?auto=format&fit=crop&q=80)',
+            backgroundImage: 'url(/images/logo.png)',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />

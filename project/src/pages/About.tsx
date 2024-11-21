@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight, Leaf, Shield, Sprout } from 'lucide-react';
 import logoImage from '/images/logo.png';
 import treesImage from '/images/trees.jpg';
@@ -26,7 +25,7 @@ const About = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative h-[400px]">
+      <div className="relative h-[500px]">
         <div
           className="absolute inset-0 bg-black bg-center"
           style={{

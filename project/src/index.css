@@ -19,3 +19,8 @@
 .slick-dots li.slick-active button:before {
   @apply text-white opacity-100;
 }
+
+.slick-prev:before,
+.slick-next:before {
+  display: none;
+}
