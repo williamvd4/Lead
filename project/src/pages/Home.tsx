@@ -9,6 +9,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import gummiesImage from '/images/gummies.jpg';
 import contrateImage from '/images/contrate.jpg';
 import kushImage from '/images/kush.jpg';
+import labtestImage from '/images/labtest.jpg';
 
 const NextArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
@@ -53,21 +54,21 @@ const Home = () => {
 
   const carouselItems = [
     {
-      image: logoImage,
+      image: {src:logoImage, alt: 'Logo'},
       title: 'Premium Cannabis',
       description: 'Cultivated with care in New York State',
       link: '/Products',
       buttonText: 'Our Products',
     },
     {
-      image: livingsoilImage,
+      image: {src:livingsoilImage, alt: 'Living Soil'},
       title: 'Sustainable Farming',
       description: 'Committed to environmental stewardship',
       link: '/Cultivation',
       buttonText: 'View Our Operation',
     },
     {
-      image: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&q=80',
+      image: {src:labtestImage, alt: 'Lab Test'} ,
       title: 'Quality Assured',
       description: 'Lab tested for your safety',
       link: '/LabResults',

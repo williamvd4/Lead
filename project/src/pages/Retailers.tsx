@@ -1,4 +1,3 @@
-import React from 'react';
 import realmLogo from '/images/realm.png';
 import frassLogo from '/images/frass.webp';
 import owlLogo from '/images/owl.webp';
@@ -9,6 +8,7 @@ const Retailers = () => {
     {
       name: 'Cannabis Realm',
       logo: realmLogo,
+      logoAlt: 'Cannabis Realm logo',
       address: '123 Main St, Hartsdale, NY',
       url: 'https://cannabisrealmny.com/',
       products: ['Mango OG', 'Kush Mints', 'Edibles'],
@@ -16,6 +16,7 @@ const Retailers = () => {
     {
       name: 'FrassBox',
       logo: frassLogo,
+      logoAlt: 'FrassBox logo',
       address: '456 Elm St, Bronx, NY',
       url: 'https://frassboxcannabis.com/',
       products: ['Blue Dream', 'Purple Haze', 'Pre-rolls'],
@@ -23,6 +24,7 @@ const Retailers = () => {
     {
       name: 'Purple Owl',
       logo: owlLogo,
+      logoAlt: 'Purple Owl logo',
       address: '789 Oak St, White Plains, NY',
       url: 'https://thepurpleowldispensary.com/',
       products: ['OG Kush', 'Sour Diesel', 'Tinctures'],

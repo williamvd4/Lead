@@ -15,7 +15,7 @@ interface Product {
   type: string;
   thc: number;
   cbd: number;
-  image: string;
+  image: { src: string; alt: string };
   description: string;
   effects: string[];
   terpenes: { name: string; percentage: number }[];
@@ -33,7 +33,8 @@ const Products = () => {
       type: "Sativa",
       thc: 22,
       cbd: 0.1,
-      image: purpleImage,
+      image: {src: purpleImage, alt: "Purple Haze"},
+
       description: "A classic sativa-dominant strain known for its euphoric and creative effects.",
       effects: ["Creative", "Energetic", "Euphoric"],
       terpenes: [
@@ -49,7 +50,7 @@ const Products = () => {
       type: "Hybrid",
       thc: 18,
       cbd: 0.2,
-      image: dreamImage,
+      image: { src: dreamImage, alt: "Blue Dream" },
       description: "A balanced hybrid offering full-body relaxation with gentle cerebral invigoration.",
       effects: ["Relaxed", "Happy", "Creative"],
       terpenes: [
@@ -65,7 +66,7 @@ const Products = () => {
       type: "Hybrid",
       thc: 80,
       cbd: 0.1,
-      image: kushImage,
+      image: { src: kushImage, alt: "OG Kush" },
       description: "High-potency concentrate with complex flavor profile.",
       effects: ["Relaxed", "Euphoric", "Happy"],
       terpenes: [
@@ -81,7 +82,7 @@ const Products = () => {
       type: "Indica",
       thc: 10,
       cbd: 10,
-      image: gummiesImage,
+      image: { src: gummiesImage, alt: "Calm Gummies" },
       description: "1:1 THC:CBD ratio gummies for balanced effects.",
       effects: ["Relaxed", "Calm", "Peaceful"],
       terpenes: [
@@ -96,7 +97,7 @@ const Products = () => {
       type: "vapes",
       thc: 70,
       cbd: 0.2,
-      image: vapesImage,
+      image: { src: vapesImage, alt: "Vape Pen" },
       description: "Portable vape pen with high THC concentrates.",
       effects: ["Quick Relief", "Euphoric", "Relaxed"],
       terpenes: [
@@ -111,7 +112,7 @@ const Products = () => {
     type: "concentrates",
     thc: 70,
     cbd: 0.2,
-    image: contrateImage,
+    image: { src: contrateImage, alt: "Live Rosin" },
     description: "Portable vape pen with high THC concentrates.",
     effects: ["Quick Relief", "Euphoric", "Relaxed"],
     terpenes: [
@@ -193,7 +194,7 @@ const Products = () => {
                 {categoryProducts.map(product => (
                   <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                     <img
-                      src={product.image}
+                      src={product.image.src}
                       alt={product.name}
                       className="w-full aspect-w-1 aspect-h-1 object-cover"
                     />
