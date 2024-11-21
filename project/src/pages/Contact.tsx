@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import logoImage from '/images/logo.png';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ const Contact = () => {
         <div
           className="absolute inset-0 bg-black  bg-center"
           style={{
-            backgroundImage: 'url(/images/logo.png)',
+            backgroundImage: logoImage,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
