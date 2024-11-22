@@ -142,6 +142,7 @@ const Products = () => {
             backgroundRepeat: 'no-repeat',
           }}
           aria-label="Lead Farmer"
+          aria-hidden='false'
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">
@@ -165,6 +166,8 @@ const Products = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               aria-label="Search products"
+              aria-hidden='false'
+
             />
           </div>
           <div className="flex items-center gap-2">
@@ -174,6 +177,8 @@ const Products = () => {
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
               aria-label="Filter by category"
+              aria-hidden='false'
+
             >
               {categories.map(category => (
                 <option key={category} value={category}>
