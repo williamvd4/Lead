@@ -60,7 +60,7 @@ const Cultivation = () => {
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {methods.map((method, index) => (
-                  <div key={index} className="bg-gray-50 p-4 rounded-lg">
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg" tabIndex={0}>
                     <div className="mb-2">{method.icon}</div>
                     <h3 className="font-semibold mb-1">{method.title}</h3>
                     <p className="text-sm text-gray-600">{method.description}</p>
@@ -102,7 +102,7 @@ const Cultivation = () => {
                 image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=80"
               }
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden" tabIndex={0}>
                 <img
                   src={item.image}
                   alt={item.title}
@@ -134,19 +134,19 @@ const Cultivation = () => {
                 Our 50,000 square foot facility features the latest in cultivation technology, including:
               </p>
               <ul className="space-y-4">
-                <li className="flex items-start">
+                <li className="flex items-start" tabIndex={0}>
                   <Sun className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>Advanced LED lighting systems</span>
                 </li>
-                <li className="flex items-start">
+                <li className="flex items-start" tabIndex={0}>
                   <Droplets className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>Automated irrigation and fertigation</span>
                 </li>
-                <li className="flex items-start">
+                <li className="flex items-start" tabIndex={0}>
                   <Wind className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>HVAC and environmental controls</span>
                 </li>
-                <li className="flex items-start">
+                <li className="flex items-start" tabIndex={0}>
                   <Leaf className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>Integrated pest management systems</span>
                 </li>

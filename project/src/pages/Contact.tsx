@@ -60,6 +60,7 @@ const Contact = () => {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
               required
               aria-label="Name"
+              tabIndex={0}
             />
           </div>
           <div className="mb-4">
@@ -75,6 +76,7 @@ const Contact = () => {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
               required
               aria-label="Email"
+              tabIndex={0}
             />
           </div>
           <div className="mb-4">
@@ -90,12 +92,14 @@ const Contact = () => {
               rows={5}
               required
               aria-label="Message"
+              tabIndex={0}
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-emerald-600 text-white py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors"
+            className="w-full bg-emerald-600 text-white py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
             aria-label="Send Message"
+            tabIndex={0}
           >
             Send Message
           </button>

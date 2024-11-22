@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -20,7 +19,6 @@ const NextArrow = (props: { className?: string; style?: React.CSSProperties; onC
       style={{ ...style, display: 'block', right: '25px', zIndex: 1 }}
       onClick={onClick}
       aria-label="Next Slide"
-      aria-hidden="false"
     >
       <ArrowRight className="text-white h-8 w-8" />
     </button>
@@ -35,7 +33,6 @@ const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onC
       style={{ ...style, display: 'block', left: '25px', zIndex: 1 }}
       onClick={onClick}
       aria-label="Previous Slide"
-      aria-hidden="false"
     >
       <ArrowLeft className="text-white h-8 w-8" />
     </button>
@@ -43,8 +40,6 @@ const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onC
 };
 
 const Home = () => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);  // State to track the active slide
-
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -56,7 +51,6 @@ const Home = () => {
     autoplaySpeed: 7000,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    afterChange: (index: number) => setCurrentSlideIndex(index), // Update state with active slide index
   };
 
   const carouselItems = [
@@ -89,11 +83,7 @@ const Home = () => {
       <div className="relative">
         <Slider {...sliderSettings}>
           {carouselItems.map((item, index) => (
-            <div
-              key={index}
-              className="relative h-[500px]"
-              aria-hidden={index !== currentSlideIndex ? 'true' : 'false'} // Set aria-hidden for inactive slides
-            >
+            <div key={index} className="relative h-[500px]">
               <div
                 className="absolute inset-0 bg-black bg-center"
                 style={{
@@ -110,7 +100,8 @@ const Home = () => {
                     <p className="text-xl mb-8">{item.description}</p>
                     <Link
                       to={item.link}
-                      className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+                      className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      tabIndex={0}
                     >
                       {item.buttonText}
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -144,7 +135,8 @@ const Home = () => {
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center text-emerald-600 hover:text-emerald-700"
+                className="inline-flex items-center text-emerald-600 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                tabIndex={0}
               >
                 Learn more about our story
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -159,7 +151,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[ 
+            {[
               {
                 name: 'Premium Flower',
                 image: kushImage,
@@ -182,11 +174,12 @@ const Home = () => {
               <Link
                 key={index}
                 to={product.link}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                className="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                tabIndex={0}
               >
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={product.image.src}
+                  alt={product.image.alt}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">

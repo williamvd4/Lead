@@ -76,7 +76,7 @@ const About = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Our Core Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-md">
+              <div key={index} className="bg-white p-8 rounded-lg shadow-md" tabIndex={0}>
                 <div className="mb-4">{value.icon}</div>
                 <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
                 <p className="text-gray-600">{value.description}</p>
@@ -96,15 +96,15 @@ const About = () => {
                 At LEADFARMER, sustainability isn't just a buzzword—it's a core principle that guides every decision we make. From our energy-efficient facilities to our water conservation practices, we're committed to minimizing our environmental impact while maximizing the quality of our products.
               </p>
               <ul className="space-y-4 mb-6">
-                <li className="flex items-start">
+                <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>100% renewable energy powered facilities</span>
                 </li>
-                <li className="flex items-start">
+                <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>Advanced water recycling systems</span>
                 </li>
-                <li className="flex items-start">
+                <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>Organic pest management practices</span>
                 </li>

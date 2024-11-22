@@ -17,13 +17,15 @@ const AgeGate: React.FC<AgeGateProps> = ({ onVerify }) => {
         <div className="space-y-4">
           <button
             onClick={onVerify}
-            className="w-full bg-emerald-600 text-white py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors"
+            className="w-full bg-emerald-600 text-white py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            tabIndex={0}
           >
             I am 21 or older
           </button>
           <a
             href="https://www.google.com"
-            className="block w-full bg-gray-200 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors"
+            className="block w-full bg-gray-200 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            tabIndex={0}
           >
             I am under 21
           </a>

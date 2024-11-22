@@ -63,7 +63,7 @@ const Retailers = () => {
           {retailers.map((retailer, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-md p-6 cursor-pointer"
+              className="bg-white rounded-lg shadow-md p-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500"
               onClick={() => handleRedirect(retailer.url)}
               role="button"
               tabIndex={0}
