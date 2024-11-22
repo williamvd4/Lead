@@ -2,6 +2,9 @@ import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Cultivation from '../pages/Cultivation';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('Cultivation Page', () => {
   it('renders the main heading', () => {
@@ -29,5 +32,11 @@ describe('Cultivation Page', () => {
     render(<Cultivation />);
     expect(screen.getByText('Our Facility')).toBeInTheDocument();
     expect(screen.getByText('State-of-the-Art Growing Facility')).toBeInTheDocument();
+  });
+
+  it('should have no accessibility violations', async () => {
+    const { container } = render(<Cultivation />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

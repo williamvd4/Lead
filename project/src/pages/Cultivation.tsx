@@ -37,7 +37,7 @@ const Cultivation = () => {
           style={{
             backgroundImage: `url(${nyImage})`
           }}
-          aria-label="NEw York City Skyline and Cannabis"
+          aria-label="New York City Skyline and Cannabis"
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">

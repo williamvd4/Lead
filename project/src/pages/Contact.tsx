@@ -26,12 +26,12 @@ const Contact = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-[500px]">
         <div
-          className="absolute inset-0 bg-black  bg-center"
+          className="absolute inset-0 bg-black bg-center"
           style={{
             backgroundImage: `url(${logoImage})`,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
           }}
           aria-label="Lead Farmer"
         >
@@ -59,6 +59,7 @@ const Contact = () => {
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
               required
+              aria-label="Name"
             />
           </div>
           <div className="mb-4">
@@ -73,6 +74,7 @@ const Contact = () => {
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
               required
+              aria-label="Email"
             />
           </div>
           <div className="mb-4">
@@ -87,11 +89,13 @@ const Contact = () => {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
               rows={5}
               required
+              aria-label="Message"
             />
           </div>
           <button
             type="submit"
             className="w-full bg-emerald-600 text-white py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors"
+            aria-label="Send Message"
           >
             Send Message
           </button>

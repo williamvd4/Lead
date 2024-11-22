@@ -2,6 +2,9 @@ import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Products from '../pages/Products';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('Products Page', () => {
   it('renders the main heading', () => {
@@ -30,5 +33,11 @@ describe('Products Page', () => {
     expect(screen.getByText('THC: 22%')).toBeInTheDocument();
     expect(screen.getByText('CBD: 0.1%')).toBeInTheDocument();
     expect(screen.getByText('Creative')).toBeInTheDocument();
+  });
+
+  it('should have no accessibility violations', async () => {
+    const { container } = render(<Products />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

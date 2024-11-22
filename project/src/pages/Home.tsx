@@ -14,26 +14,28 @@ import labtestImage from '/images/labtest.jpg';
 const NextArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
   return (
-    <div
+    <button
       className={className}
       style={{ ...style, display: 'block', right: '25px', zIndex: 1 }}
       onClick={onClick}
+      aria-label="Next Slide"
     >
       <ArrowRight className="text-white h-8 w-8" />
-    </div>
+    </button>
   );
 };
 
 const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
   return (
-    <div
+    <button
       className={className}
       style={{ ...style, display: 'block', left: '25px', zIndex: 1 }}
       onClick={onClick}
+      aria-label="Previous Slide"
     >
       <ArrowLeft className="text-white h-8 w-8" />
-    </div>
+    </button>
   );
 };
 
@@ -173,8 +175,8 @@ const Home = () => {
                 className="bg-white rounded-lg shadow-md overflow-hidden"
               >
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={product.image.src}
+                  alt={product.image.alt}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">

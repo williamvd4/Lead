@@ -3,7 +3,6 @@ import mangoOgPdf from '/pdfs/Mango OG - Eighth - HC-F-I1424.pdf';
 import thaiStarPdf from '/pdfs/Thai Star - Eighth - HC-F-I0324.pdf';
 import logoImage from '/images/logo.png';
 
-
 const LabResults = () => {
   const labResults = [
     {
@@ -69,6 +68,13 @@ const LabResults = () => {
               key={index}
               className="bg-white rounded-lg shadow-md p-6 cursor-pointer"
               onClick={() => handlePdfOpen(result.pdf)}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handlePdfOpen(result.pdf);
+                }
+              }}
             >
               <h3 className="text-xl font-semibold mb-2">Batch Number: {result.batchNumber}</h3>
               <p className="text-gray-600 mb-2">Strain: {result.strain}</p>

@@ -33,8 +33,7 @@ const Products = () => {
       type: "Sativa",
       thc: 22,
       cbd: 0.1,
-      image: {src: purpleImage, alt: "Purple Haze"},
-
+      image: { src: purpleImage, alt: "Purple Haze" },
       description: "A classic sativa-dominant strain known for its euphoric and creative effects.",
       effects: ["Creative", "Energetic", "Euphoric"],
       terpenes: [
@@ -105,25 +104,24 @@ const Products = () => {
         { name: "Caryophyllene", percentage: 0.3 }
       ]
     },
-  {
-    id: 6,
-    name: "Live Rosin",
-    category: "concentrates",
-    type: "concentrates",
-    thc: 70,
-    cbd: 0.2,
-    image: { src: contrateImage, alt: "Live Rosin" },
-    description: "Portable vape pen with high THC concentrates.",
-    effects: ["Quick Relief", "Euphoric", "Relaxed"],
-    terpenes: [
-      { name: "Pinene", percentage: 0.4 },
-      { name: "Caryophyllene", percentage: 0.3 }
-    ]
-  }
-];
+    {
+      id: 6,
+      name: "Live Rosin",
+      category: "concentrates",
+      type: "concentrates",
+      thc: 70,
+      cbd: 0.2,
+      image: { src: contrateImage, alt: "Live Rosin" },
+      description: "Portable vape pen with high THC concentrates.",
+      effects: ["Quick Relief", "Euphoric", "Relaxed"],
+      terpenes: [
+        { name: "Pinene", percentage: 0.4 },
+        { name: "Caryophyllene", percentage: 0.3 }
+      ]
+    }
+  ];
 
-
-  const categories = ['all', 'flower',  'edibles', 'vapes', 'concentrates',];
+  const categories = ['all', 'flower', 'edibles', 'vapes', 'concentrates'];
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -166,6 +164,7 @@ const Products = () => {
               className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              aria-label="Search products"
             />
           </div>
           <div className="flex items-center gap-2">
@@ -174,6 +173,7 @@ const Products = () => {
               className="py-2 px-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
+              aria-label="Filter by category"
             >
               {categories.map(category => (
                 <option key={category} value={category}>
@@ -196,7 +196,7 @@ const Products = () => {
                   <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                     <img
                       src={product.image.src}
-                      alt={product.name}
+                      alt={product.image.alt}
                       className="w-full aspect-w-1 aspect-h-1 object-cover"
                     />
                     <div className="p-6">

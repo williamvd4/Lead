@@ -100,7 +100,7 @@ const About = () => {
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>100% renewable energy powered facilities</span>
                 </li>
-                <li className="flex items-start">
+                <li class                ="flex items-start">
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
                   <span>Advanced water recycling systems</span>
                 </li>
