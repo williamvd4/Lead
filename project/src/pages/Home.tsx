@@ -14,26 +14,28 @@ import labtestImage from '/images/labtest.jpg';
 const NextArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
   return (
-    <div
+    <button
       className={className}
       style={{ ...style, display: 'block', right: '25px', zIndex: 1 }}
       onClick={onClick}
+      aria-label="Next Slide"
     >
       <ArrowRight className="text-white h-8 w-8" />
-    </div>
+    </button>
   );
 };
 
 const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
   return (
-    <div
+    <button
       className={className}
       style={{ ...style, display: 'block', left: '25px', zIndex: 1 }}
       onClick={onClick}
+      aria-label="Previous Slide"
     >
       <ArrowLeft className="text-white h-8 w-8" />
-    </div>
+    </button>
   );
 };
 
@@ -98,7 +100,8 @@ const Home = () => {
                     <p className="text-xl mb-8">{item.description}</p>
                     <Link
                       to={item.link}
-                      className="inline-flex tabindex=1 items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+                      className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      tabIndex={0}
                     >
                       {item.buttonText}
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -112,9 +115,9 @@ const Home = () => {
       </div>
 
       {/* Brand Story Overview */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-gray-200">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Story</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Our Story</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
@@ -124,15 +127,16 @@ const Home = () => {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-4">Rooted in Excellence</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Rooted in Excellence</h3>
+              <p className="text-gray-700 mb-6">
                 LEADFARMER was founded with a simple mission: to produce the highest quality cannabis
                 products while maintaining sustainable farming practices. Our journey began in the heart
                 of New York, where we combined traditional farming methods with modern technology.
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center text-emerald-600 hover:text-emerald-700"
+                className="inline-flex items-center text-emerald-600 hover:text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                tabIndex={0}
               >
                 Learn more about our story
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -143,9 +147,9 @@ const Home = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-gray-100">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Featured Products</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -170,16 +174,17 @@ const Home = () => {
               <Link
                 key={index}
                 to={product.link}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                className="bg-white rounded-lg shadow-md overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                tabIndex={0}
               >
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={product.image}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{product.name}</h3>
+                  <p className="text-gray-700 mb-4">{product.description}</p>
                   <span className="text-emerald-600 hover:text-emerald-700 inline-flex items-center">
                     Learn More
                     <ArrowRight className="ml-2 h-5 w-5" />

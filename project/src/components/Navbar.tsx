@@ -37,7 +37,8 @@ const Navbar = () => {
                   location.pathname === item.href
                     ? 'text-emerald-600'
                     : 'text-gray-600 hover:text-emerald-600'
-                } transition-colors duration-200`}
+                } transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                tabIndex={0}
               >
                 {item.name}
               </Link>
@@ -48,9 +49,10 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-emerald-600"
+              className="text-gray-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              tabIndex={0}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-6 w-6" alt="Close menu icon" /> : <Menu className="h-6 w-6" alt="Open menu icon" />}
             </button>
           </div>
         </div>
@@ -68,8 +70,9 @@ const Navbar = () => {
                   location.pathname === item.href
                     ? 'bg-emerald-50 text-emerald-600'
                     : 'text-gray-600 hover:bg-emerald-50 hover:text-emerald-600'
-                } block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
+                } block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500`}
                 onClick={() => setIsOpen(false)}
+                tabIndex={0}
               >
                 {item.name}
               </Link>

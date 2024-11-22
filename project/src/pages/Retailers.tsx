@@ -30,21 +30,21 @@ const Retailers = () => {
       products: ['OG Kush', 'Sour Diesel', 'Tinctures'],
     },
   ];
-const handleRedirect = (url: string) => {
-  window.open(url, '_blank');
-};
+
+  const handleRedirect = (url: string) => {
+    window.open(url, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-[500px]">
         <div
-          className="absolute inset-0 bg-black bg-black bg-center"
+          className="absolute inset-0 bg-black bg-center"
           style={{
             backgroundImage: `url(${logoImage})`,
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-
           }}
           aria-label="Lead Farmer"
         >
@@ -63,12 +63,19 @@ const handleRedirect = (url: string) => {
           {retailers.map((retailer, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-md p-6 cursor-pointer"
+              className="bg-white rounded-lg shadow-md p-6 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500"
               onClick={() => handleRedirect(retailer.url)}
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleRedirect(retailer.url);
+                }
+              }}
             >
               <img
                 src={retailer.logo}
-                alt={`${retailer.name} logo`}
+                alt={retailer.logoAlt}
                 className="w-full h-40 object-contain mb-4"
               />
               <h3 className="text-xl font-semibold mb-2">{retailer.name}</h3>
