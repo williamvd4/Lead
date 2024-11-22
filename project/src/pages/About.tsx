@@ -92,21 +92,21 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Commitment to Sustainability</h2>
-              <p className="text-gray-800 mb-4">
+              <p className="text-gray-700 mb-4">
                 At LEADFARMER, sustainability isn't just a buzzword—it's a core principle that guides every decision we make. From our energy-efficient facilities to our water conservation practices, we're committed to minimizing our environmental impact while maximizing the quality of our products.
               </p>
               <ul className="space-y-4 mb-6">
                 <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span className="text-gray-800">100% renewable energy powered facilities</span>
+                  <span className="text-gray-700">100% renewable energy powered facilities</span>
                 </li>
                 <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span className="text-gray-800">Advanced water recycling systems</span>
+                  <span className="text-gray-700">Advanced water recycling systems</span>
                 </li>
                 <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span className="text-gray-800">Organic pest management practices</span>
+                  <span className="text-gray-700">Organic pest management practices</span>
                 </li>
               </ul>
             </div>

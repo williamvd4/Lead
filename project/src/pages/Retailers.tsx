@@ -36,7 +36,7 @@ const Retailers = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <div className="relative h-[500px]">
         <div
           className="absolute inset-0 bg-black bg-center"
@@ -78,10 +78,10 @@ const Retailers = () => {
                 alt={retailer.logoAlt}
                 className="w-full h-40 object-contain mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2">{retailer.name}</h3>
-              <p className="text-gray-600 mb-2">{retailer.address}</p>
-              <p className="text-gray-600 mb-2">Products:</p>
-              <ul className="list-disc list-inside text-gray-600">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">{retailer.name}</h3>
+              <p className="text-gray-700 mb-2">{retailer.address}</p>
+              <p className="text-gray-700 mb-2">Products:</p>
+              <ul className="list-disc list-inside text-gray-700">
                 {retailer.products.map((product, idx) => (
                   <li key={idx}>{product}</li>
                 ))}

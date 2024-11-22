@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Twitter } from 'lucide-react';
 
@@ -12,10 +13,7 @@ const Footer = () => {
               <span className="ml-2 text-xl font-bold">LEADFARMER</span>
             </div>
             <p className="text-gray-400">
-            New York State licensed cannabis producer committed to quality and sustainability.
-            <br />
-            <br />
-            OCM Adult Use Microbusiness License #123456
+              New York State licensed cannabis producer committed to quality and sustainability.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white transition-colors">
