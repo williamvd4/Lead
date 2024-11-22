@@ -18,6 +18,12 @@ const NextArrow = (props: { className?: string; style?: React.CSSProperties; onC
       className={className}
       style={{ ...style, display: 'block', right: '25px', zIndex: 1 }}
       onClick={onClick}
+      aria-label="Next Slide"
+      role="button"
+      tabIndex={0}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') onClick?.();
+      }}
     >
       <ArrowRight className="text-white h-8 w-8" />
     </div>
@@ -31,6 +37,12 @@ const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onC
       className={className}
       style={{ ...style, display: 'block', left: '25px', zIndex: 1 }}
       onClick={onClick}
+      aria-label="Previous Slide"
+      role="button"
+      tabIndex={0}
+      onKeyPress={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') onClick?.();
+      }}
     >
       <ArrowLeft className="text-white h-8 w-8" />
     </div>
@@ -49,6 +61,8 @@ const Home = () => {
     autoplaySpeed: 7000,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
+    accessibility: true,
+    adaptiveHeight: true,
   };
 
   const carouselItems = [
@@ -86,7 +100,7 @@ const Home = () => {
                 className="absolute inset-0 bg-black bg-center"
                 style={{
                   backgroundImage: `url(${item.image})`,
-                  backgroundSize: 'contain',
+                  backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',
                 }}
@@ -98,10 +112,12 @@ const Home = () => {
                     <p className="text-xl mb-8">{item.description}</p>
                     <Link
                       to={item.link}
-                      className="inline-flex tabindex=1 items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+                      className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+                      tabIndex={0}
+                      aria-label={item.buttonText}
                     >
                       {item.buttonText}
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
                     </Link>
                   </div>
                 </div>
@@ -133,9 +149,11 @@ const Home = () => {
               <Link
                 to="/about"
                 className="inline-flex items-center text-emerald-600 hover:text-emerald-700"
+                tabIndex={0}
+                aria-label="Learn more about our story"
               >
                 Learn more about our story
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -152,25 +170,27 @@ const Home = () => {
                 name: 'Premium Flower',
                 image: kushImage,
                 description: 'Hand-trimmed, carefully cured premium cannabis flower.',
-                link: '/products#flower', // Added #flower
+                link: '/products#flower',
               },
               {
                 name: 'Concentrates',
                 image: contrateImage,
                 description: 'Pure and potent extracts for the discerning consumer.',
-                link: '/products#concentrates', // Added #concentrates
+                link: '/products#concentrates',
               },
               {
                 name: 'Edibles',
                 image: gummiesImage,
                 description: 'Precisely dosed edibles made with premium ingredients.',
-                link: '/products#edibles', // Added #edibles
+                link: '/products#edibles',
               },
             ].map((product, index) => (
               <Link
                 key={index}
                 to={product.link}
                 className="bg-white rounded-lg shadow-md overflow-hidden"
+                tabIndex={0}
+                aria-label={`Learn more about ${product.name}`}
               >
                 <img
                   src={product.image}
@@ -182,7 +202,7 @@ const Home = () => {
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <span className="text-emerald-600 hover:text-emerald-700 inline-flex items-center">
                     Learn More
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
                   </span>
                 </div>
               </Link>
