@@ -50,7 +50,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-600 hover:text-emerald-600"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-6 w-6" alt="Close menu icon" /> : <Menu className="h-6 w-6" alt="Open menu icon" />}
             </button>
           </div>
         </div>

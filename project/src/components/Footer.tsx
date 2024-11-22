@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {  Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -17,13 +17,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram className="h-6 w-6" />
+                <Instagram className="h-6 w-6" alt="Instagram logo" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="h-6 w-6" />
+                <Facebook className="h-6 w-6" alt="Facebook logo" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-6 w-6" />
+                <Twitter className="h-6 w-6" alt="Twitter logo" />
               </a>
             </div>
           </div>
