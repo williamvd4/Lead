@@ -63,7 +63,12 @@ const Home = () => {
     nextArrow: <NextArrow />,
     accessibility: true,
     adaptiveHeight: true,
+    beforeChange: (current: number, next: number) => {
+      setActiveSlide(next);
+    },
   };
+
+  const [activeSlide, setActiveSlide] = React.useState(0);
 
   const carouselItems = [
     {
@@ -94,36 +99,39 @@ const Home = () => {
       {/* Hero Carousel */}
       <div className="relative">
         <Slider {...sliderSettings}>
-          {carouselItems.map((item, index) => (
-            <div key={index} className="relative h-[500px]">
-              <div
-                className="absolute inset-0 bg-black bg-center"
-                style={{
-                  backgroundImage: `url(${item.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              >
-                <div className="absolute inset-0 bg-black bg-opacity-50" />
-                <div className="absolute inset-0 flex items-center justify-center text-center text-white">
-                  <div className="max-w-3xl px-4">
-                    <h1 className="text-5xl font-bold mb-4">{item.title}</h1>
-                    <p className="text-xl mb-8">{item.description}</p>
-                    <Link
-                      to={item.link}
-                      className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
-                      tabIndex={0}
-                      aria-label={item.buttonText}
-                    >
-                      {item.buttonText}
-                      <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-                    </Link>
+          {carouselItems.map((item, index) => {
+            const isActive = index === activeSlide;
+            return (
+              <div key={index} className="relative h-[500px]" aria-hidden={!isActive}>
+                <div
+                  className="absolute inset-0 bg-black bg-center"
+                  style={{
+                    backgroundImage: `url(${item.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black bg-opacity-50" />
+                  <div className="absolute inset-0 flex items-center justify-center text-center text-white">
+                    <div className="max-w-3xl px-4">
+                      <h1 className="text-5xl font-bold mb-4">{item.title}</h1>
+                      <p className="text-xl mb-8">{item.description}</p>
+                      <Link
+                        to={item.link}
+                        className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+                        tabIndex={isActive ? 0 : -1}
+                        aria-label={item.buttonText}
+                      >
+                        {item.buttonText}
+                        <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </Slider>
       </div>
 
