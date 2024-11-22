@@ -49,7 +49,6 @@ const Home = () => {
     autoplaySpeed: 7000,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
- 
   };
 
   const carouselItems = [
@@ -76,7 +75,6 @@ const Home = () => {
     },
   ];
 
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Carousel */}
@@ -102,7 +100,7 @@ const Home = () => {
                       to={item.link}
                       className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
                     >
-                    {item.buttonText}
+                      {item.buttonText}
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </div>
@@ -145,92 +143,50 @@ const Home = () => {
       </section>
 
       {/* Featured Products */}
-      // Home.tsx (Featured Products Section)
-<section className="py-20 px-4 bg-gray-50">
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
-    <div className="grid md:grid-cols-3 gap-8">
-      {[
-        {
-          name: 'Premium Flower',
-          image: kushImage,
-          description: 'Hand-trimmed, carefully cured premium cannabis flower.',
-          link: '/products#flower', // Added #flower
-        },
-        {
-          name: 'Concentrates',
-          image: contrateImage,
-          description: 'Pure and potent extracts for the discerning consumer.',
-          link: '/products#concentrates', // Added #concentrates
-        },
-        {
-          name: 'Edibles',
-          image: gummiesImage,
-          description: 'Precisely dosed edibles made with premium ingredients.',
-          link: '/products#edibles', // Added #edibles
-        },
-      ].map((product, index) => (
-        <Link
-          key={index}
-          to={product.link}
-          className="bg-white rounded-lg shadow-md overflow-hidden"
-        >
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-48 object-cover"
-          />
-          <div className="p-6">
-            <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-            <p className="text-gray-600 mb-4">{product.description}</p>
-            <span className="text-emerald-600 hover:text-emerald-700 inline-flex items-center">
-              Learn More
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </span>
-          </div>
-        </Link>
-      ))}
-    </div>
-  </div>
-</section>
-
-
-      {/* Instagram Feed */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Follow Us on Instagram</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[...Array(8)].map((_, index) => (
-              <div key={index} className="aspect-square">
+          <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Premium Flower',
+                image: kushImage,
+                description: 'Hand-trimmed, carefully cured premium cannabis flower.',
+                link: '/products#flower', // Added #flower
+              },
+              {
+                name: 'Concentrates',
+                image: contrateImage,
+                description: 'Pure and potent extracts for the discerning consumer.',
+                link: '/products#concentrates', // Added #concentrates
+              },
+              {
+                name: 'Edibles',
+                image: gummiesImage,
+                description: 'Precisely dosed edibles made with premium ingredients.',
+                link: '/products#edibles', // Added #edibles
+              },
+            ].map((product, index) => (
+              <Link
+                key={index}
+                to={product.link}
+                className="bg-white rounded-lg shadow-md overflow-hidden"
+              >
                 <img
-                  src={`https://images.unsplash.com/photo-${
-                    [
-                      '1603386329225-868f9b1ee6c9',
-                      '1597354984706-fac992d9306f',
-                      '1620321023374-d1a68fbc720d',
-                      '1603909223429-69bb7101f420',
-                      '1587304947504-569c0e3c4b67',
-                      '1621466550398-ac8062907657',
-                      '1536819114556-1c5f87e58044',
-                      '1620321023374-d1a68fbc720d',
-                    ][index]
-                  }?auto=format&fit=crop&q=80`}
-                  alt={`Instagram post ${index + 1}`}
-                  className="w-full h-full object-cover rounded-lg hover:opacity-75 transition-opacity cursor-pointer"
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-48 object-cover"
                 />
-              </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <span className="text-emerald-600 hover:text-emerald-700 inline-flex items-center">
+                    Learn More
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </span>
+                </div>
+              </Link>
             ))}
-          </div>
-          <div className="text-center mt-8">
-            <a
-              href="#"
-              className="inline-flex items-center text-emerald-600 hover:text-emerald-700"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Follow us on Instagram
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
           </div>
         </div>
       </section>

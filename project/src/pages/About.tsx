@@ -34,6 +34,7 @@ const About = () => {
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
           }}
+          aria-label="Lead Farmer"
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">
