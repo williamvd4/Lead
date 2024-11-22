@@ -175,8 +175,8 @@ const Home = () => {
                 className="bg-white rounded-lg shadow-md overflow-hidden"
               >
                 <img
-                  src={product.image.src}
-                  alt={product.image.alt}
+                  src={product.image}
+                  alt={product.name}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
