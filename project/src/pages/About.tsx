@@ -47,7 +47,7 @@ const About = () => {
       </div>
 
       {/* Founder's Story */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -58,11 +58,11 @@ const About = () => {
               />
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-6">The LEADFARMER Story</h2>
-              <p className="text-gray-600 mb-4">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">The LEADFARMER Story</h2>
+              <p className="text-gray-700 mb-4">
                 Founded in 2021, LEADFARMER emerged from a passion for sustainable agriculture and a vision for the future of cannabis cultivation. Our journey began when our founder, drawing from generations of farming expertise, recognized the opportunity to combine traditional agricultural wisdom with modern innovation.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-700 mb-6">
                 Today, we're proud to be at the forefront of New York's legal cannabis industry, setting new standards for quality, sustainability, and responsibility in everything we do.
               </p>
             </div>
@@ -73,13 +73,13 @@ const About = () => {
       {/* Company Values */}
       <section id="values" className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Core Values</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Our Core Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <div key={index} className="bg-white p-8 rounded-lg shadow-md" tabIndex={0}>
                 <div className="mb-4">{value.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{value.title}</h3>
+                <p className="text-gray-700">{value.description}</p>
               </div>
             ))}
           </div>
@@ -87,26 +87,26 @@ const About = () => {
       </section>
 
       {/* Sustainability Commitment */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-3xl font-bold mb-6">Our Commitment to Sustainability</h2>
-              <p className="text-gray-600 mb-4">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">Our Commitment to Sustainability</h2>
+              <p className="text-gray-700 mb-4">
                 At LEADFARMER, sustainability isn't just a buzzword—it's a core principle that guides every decision we make. From our energy-efficient facilities to our water conservation practices, we're committed to minimizing our environmental impact while maximizing the quality of our products.
               </p>
               <ul className="space-y-4 mb-6">
                 <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span>100% renewable energy powered facilities</span>
+                  <span className="text-gray-700">100% renewable energy powered facilities</span>
                 </li>
                 <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span>Advanced water recycling systems</span>
+                  <span className="text-gray-700">Advanced water recycling systems</span>
                 </li>
                 <li className="flex items-start" tabIndex={0}>
                   <ArrowRight className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span>Organic pest management practices</span>
+                  <span className="text-gray-700">Organic pest management practices</span>
                 </li>
               </ul>
             </div>

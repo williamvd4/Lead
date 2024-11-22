@@ -132,7 +132,7 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="relative h-[500px]">
+      <div className="relative h-[500px] bg-gray-900">
         <div
           className="absolute inset-0 bg-black bg-center"
           style={{
@@ -146,8 +146,8 @@ const Products = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">
             <div className="max-w-3xl text-center px-4">
-              <h1 className="text-5xl font-bold mb-4">Our Products</h1>
-              <p className="text-xl">Premium Cannabis Products</p>
+              <h1 className="text-5xl font-bold mb-4 text-white">Our Products</h1>
+              <p className="text-xl text-white">Premium Cannabis Products</p>
             </div>
           </div>
         </div>
@@ -192,7 +192,7 @@ const Products = () => {
           if (categoryProducts.length === 0) return null;
           return (
             <section key={category} className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 capitalize">{category}</h2>
+              <h2 className="text-3xl font-bold mb-6 capitalize text-gray-900">{category}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {categoryProducts.map(product => (
                   <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -203,7 +203,7 @@ const Products = () => {
                     />
                     <div className="p-6">
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-xl font-semibold">{product.name}</h3>
+                        <h3 className="text-xl font-semibold text-gray-900">{product.name}</h3>
                         <span className="bg-emerald-100 text-emerald-800 text-sm px-2 py-1 rounded">
                           {product.type}
                         </span>
@@ -211,7 +211,7 @@ const Products = () => {
                       <p className="text-gray-600 mb-4">{product.description}</p>
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold mb-2">Potency</h4>
+                          <h4 className="font-semibold mb-2 text-gray-900">Potency</h4>
                           <div className="flex gap-4">
                             <div className="bg-gray-100 px-3 py-1 rounded">
                               THC: {product.thc}%
@@ -222,7 +222,7 @@ const Products = () => {
                           </div>
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-2">Effects</h4>
+                          <h4 className="font-semibold mb-2 text-gray-900">Effects</h4>
                           <div className="flex flex-wrap gap-2">
                             {product.effects.map(effect => (
                               <span
@@ -235,7 +235,7 @@ const Products = () => {
                           </div>
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-2">Terpenes</h4>
+                          <h4 className="font-semibold mb-2 text-gray-900">Terpenes</h4>
                           <div className="space-y-2">
                             {product.terpenes.map(terpene => (
                               <div

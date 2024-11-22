@@ -115,9 +115,9 @@ const Home = () => {
       </div>
 
       {/* Brand Story Overview */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-gray-200">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Story</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Our Story</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
@@ -127,8 +127,8 @@ const Home = () => {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-4">Rooted in Excellence</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-900">Rooted in Excellence</h3>
+              <p className="text-gray-700 mb-6">
                 LEADFARMER was founded with a simple mission: to produce the highest quality cannabis
                 products while maintaining sustainable farming practices. Our journey began in the heart
                 of New York, where we combined traditional farming methods with modern technology.
@@ -147,9 +147,9 @@ const Home = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-gray-100">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Featured Products</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -178,13 +178,13 @@ const Home = () => {
                 tabIndex={0}
               >
                 <img
-                  src={product.image.src}
-                  alt={product.image.alt}
+                  src={product.image}
+                  alt={product.image}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{product.name}</h3>
+                  <p className="text-gray-700 mb-4">{product.description}</p>
                   <span className="text-emerald-600 hover:text-emerald-700 inline-flex items-center">
                     Learn More
                     <ArrowRight className="ml-2 h-5 w-5" />

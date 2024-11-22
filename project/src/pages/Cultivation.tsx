@@ -42,28 +42,28 @@ const Cultivation = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">
             <div className="max-w-3xl text-center px-4">
-              <h1 className="text-5xl font-bold mb-4">Our Cultivation Process</h1>
-              <p className="text-xl">Where Science Meets Nature</p>
+              <h1 className="text-5xl font-bold mb-4 text-white">Our Cultivation Process</h1>
+              <p className="text-xl text-white">Where Science Meets Nature</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Growing Methodology */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Growing Methodology</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">Growing Methodology</h2>
+              <p className="text-gray-700 mb-6">
                 At LEADFARMER, we combine traditional farming wisdom with cutting-edge technology to produce exceptional cannabis. Our cultivation methods are rooted in sustainable practices and driven by data-backed decisions.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {methods.map((method, index) => (
-                  <div key={index} className="bg-gray-50 p-4 rounded-lg" tabIndex={0}>
+                  <div key={index} className="bg-white p-4 rounded-lg shadow-md" tabIndex={0}>
                     <div className="mb-2">{method.icon}</div>
-                    <h3 className="font-semibold mb-1">{method.title}</h3>
-                    <p className="text-sm text-gray-600">{method.description}</p>
+                    <h3 className="font-semibold mb-1 text-gray-900">{method.title}</h3>
+                    <p className="text-sm text-gray-700">{method.description}</p>
                   </div>
                 ))}
               </div>
@@ -80,9 +80,9 @@ const Cultivation = () => {
       </section>
 
       {/* Quality Control */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Quality Control Process</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Quality Control Process</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
 
@@ -102,15 +102,15 @@ const Cultivation = () => {
                 image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=80"
               }
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden" tabIndex={0}>
+              <div key={index} className="bg-gray-50 rounded-lg shadow-md overflow-hidden" tabIndex={0}>
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full aspect-w-1 aspect-h-1 h-48 object-cover"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{item.title}</h3>
+                  <p className="text-gray-700">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -119,9 +119,9 @@ const Cultivation = () => {
       </section>
 
       {/* Facility Highlights */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-gray-100">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Facility</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Our Facility</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <img
               src={modernfacilityImage}
@@ -129,26 +129,26 @@ const Cultivation = () => {
               className="rounded-lg shadow-xl"
             />
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold">State-of-the-Art Growing Facility</h3>
-              <p className="text-gray-600">
+              <h3 className="text-2xl font-semibold text-gray-900">State-of-the-Art Growing Facility</h3>
+              <p className="text-gray-700">
                 Our 50,000 square foot facility features the latest in cultivation technology, including:
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start" tabIndex={0}>
                   <Sun className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span>Advanced LED lighting systems</span>
+                  <span className="text-gray-700">Advanced LED lighting systems</span>
                 </li>
                 <li className="flex items-start" tabIndex={0}>
                   <Droplets className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span>Automated irrigation and fertigation</span>
+                  <span className="text-gray-700">Automated irrigation and fertigation</span>
                 </li>
                 <li className="flex items-start" tabIndex={0}>
                   <Wind className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span>HVAC and environmental controls</span>
+                  <span className="text-gray-700">HVAC and environmental controls</span>
                 </li>
                 <li className="flex items-start" tabIndex={0}>
                   <Leaf className="h-5 w-5 text-emerald-600 mt-1 mr-2" />
-                  <span>Integrated pest management systems</span>
+                  <span className="text-gray-700">Integrated pest management systems</span>
                 </li>
               </ul>
             </div>
