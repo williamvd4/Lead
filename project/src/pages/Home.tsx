@@ -98,7 +98,7 @@ const Home = () => {
                     <p className="text-xl mb-8">{item.description}</p>
                     <Link
                       to={item.link}
-                      className="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+                      className="inline-flex tabindex=1 items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
                     >
                       {item.buttonText}
                       <ArrowRight className="ml-2 h-5 w-5" />
