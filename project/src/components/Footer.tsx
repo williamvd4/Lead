@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import {  Instagram, Facebook, Twitter } from 'lucide-react';
+import {  Instagram} from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -15,15 +14,10 @@ const Footer = () => {
             <p className="text-gray-400">
               New York State licensed cannabis producer committed to quality and sustainability.
             </p>
+            <p className="text-gray-400">For use by persons 21 or older only.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-6 w-6" />
               </a>
             </div>
           </div>

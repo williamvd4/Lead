@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import logoImage from '/images/logo.png';
 
 const Contact = () => {
@@ -28,10 +27,10 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-md p-6">
           <iframe
+            title="Contact Form"
             src="https://docs.google.com/forms/d/e/1FAIpQLSfI3teUVxaeKIFfG0n8nHnoCydNOZ6hmVGYdhcmseGWMh4gzw/viewform?embedded=true"
             width="100%"
-            height="687"
-            frameBorder="0"
+            height="1020px"
           >
             Loading…
           </iframe>
