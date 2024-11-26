@@ -10,6 +10,7 @@ import Products from './pages/Products';
 import Retailers from './pages/Retailers'; // Ensure this import is correct
 import LabResults from './pages/LabResults';
 import Contact from './pages/Contact';
+import AdminDashboard from './pages/AdminDashboard'; // Import AdminDashboard component
 
 function App() {
   const [isVerified, setIsVerified] = useState(() => {
@@ -39,6 +40,7 @@ function App() {
             <Route path="/retailers" element={<Retailers />} /> {/* Ensure this route is correct */}
             <Route path="/lab-results" element={<LabResults />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminDashboard />} /> {/* Add new route for AdminDashboard */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
