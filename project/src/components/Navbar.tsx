@@ -45,13 +45,13 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-emerald-700"
               aria-label="Open navigation menu"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-6 w-6 inline-block" /> : <Menu className="h-6 w-6 inline-block" />}
             </button>
           </div>
         </div>

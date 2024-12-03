@@ -56,7 +56,6 @@ const LabResults = () => {
           <div className="absolute inset-0 flex items-center justify-center text-white">
             <div className="max-w-3xl text-center px-4">
               <h1 className="text-5xl font-bold mb-4">Lab Results</h1>
-              <p className="text-xl">View our latest lab results</p>
             </div>
           </div>
         </div>
