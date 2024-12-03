@@ -45,7 +45,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div className="flex items-center justify-center">
+          <div className="flex">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-emerald-700"
