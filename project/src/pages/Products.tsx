@@ -148,7 +148,7 @@ const Products = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">
             <div className="max-w-3xl text-center px-4">
-              <h1 className="text-8xl font-bold mb-4">Our Products</h1>
+              <h1 className="text-8xl font-bold mb-4">Products</h1>
             </div>
           </div>
         </div>
