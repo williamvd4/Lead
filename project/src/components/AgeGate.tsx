@@ -1,5 +1,4 @@
 import React from 'react';
-import { Flower } from 'lucide-react';
 
 interface AgeGateProps {
   onVerify: () => void;

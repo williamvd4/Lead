@@ -34,13 +34,13 @@ const About = () => {
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
           }}
-          aria-label="Lead Farmer"
+          aria-label="Lead Farmer background image"
         >
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
-          <div className="absolute inset-0 flex items-center justify-center text-white">
+          <div className="absolute inset-0 bg-black bg-opacity-80" />
+          <div className="absolute inset-0 flex items-center justify-center">
             <div className="max-w-3xl text-center px-4">
-              <h1 className="text-5xl font-bold mb-4">Our Story</h1>
-              <p className="text-xl">Cultivating Excellence in New York State</p>
+              <h1 className="text-5xl font-extrabold text-white shadow-lg mb-4">Our Story</h1>
+              <p className="text-xl font-bold text-white">Cultivating Excellence in New York State</p>
             </div>
           </div>
         </div>

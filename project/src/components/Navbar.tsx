@@ -23,20 +23,20 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               {/* Replace with a valid icon or remove it */}
-              <span className="ml-2 text-xl font-bold text-gray-900">LEADFARMER</span>
+              <span className="ml-2 text-xl font-bold text-emerald-800">LEADFARMER</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 className={`${
                   location.pathname === item.href
-                    ? 'text-emerald-600'
-                    : 'text-gray-600 hover:text-emerald-600'
+                    ? 'font-bold text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
+                    : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
                 } transition-colors duration-200`}
               >
                 {item.name}
@@ -45,10 +45,11 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div className="md:hidden flex items-center">
+          <div className="flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-emerald-600"
+              className="text-gray-700 hover:text-emerald-700"
+              aria-label="Open navigation menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -58,7 +59,6 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navigation.map((item) => (
               <Link
@@ -75,7 +75,6 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-        </div>
       )}
     </nav>
   );

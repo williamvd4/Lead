@@ -14,10 +14,10 @@ const Footer = () => {
             <p className="text-gray-400">
               New York State licensed cannabis producer committed to quality and sustainability.
             </p>
-            <p className="text-gray-400">For use by persons 21 or older only.</p>
+            <p className="text-gray-400" >For use by persons 21 or older only.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Instagram className="h-6 w-6" />
+                <Instagram className="h-6 w-6" aria-label="Instagram"/>
               </a>
             </div>
           </div>
@@ -26,22 +26,24 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/about" className="text-gray-400 hover:text-white transition-colors" aria-label="About Us">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/products" className="text-gray-400 hover:text-white transition-colors" aria-label="Products">
                   Products
+
                 </Link>
+
               </li>
               <li>
-                <Link to="/retailers" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/retailers" className="text-gray-400 hover:text-white transition-colors" aria-label="Find a Retailer">
                   Find a Retailer
                 </Link>
               </li>
               <li>
-                <Link to="/lab-results" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/lab-results" className="text-gray-400 hover:text-white transition-colors" aria-label="Lab Results">
                   Lab Results
                 </Link>
               </li>
