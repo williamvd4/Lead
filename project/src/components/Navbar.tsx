@@ -27,22 +27,22 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`${
-                  location.pathname === item.href
-                    ? 'font-bold text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
-                    : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
-                } transition-colors duration-200`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`${
+                    location.pathname === item.href
+                      ? 'font-bold text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
+                      : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
+                  } transition-colors duration-200`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
 
           {/* Mobile Navigation Button */}
           <div className="flex">
