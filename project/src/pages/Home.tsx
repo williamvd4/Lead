@@ -57,7 +57,7 @@ const Home = () => {
       title: 'Premium Cannabis',
       description: 'Cultivated with care in New York State',
       link: '/Products',
-      buttonText: 'Our Products',
+      buttonText: 'Products',
     },
     {
       image: livingsoilImage,
@@ -98,7 +98,8 @@ const Home = () => {
                     <p className="text-xl mb-8">{item.description}</p>
                     <Link
                       to={item.link}
-                      className="inline-flex tabindex=1 items-center bg-emerald-600 text-white px-8 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+                      tabIndex = {-1}
+                      className="inline-flex items-center bg-emerald-800 text-white px-8 py-3 rounded-lg hover:bg-emerald-800 transition-colors"
                     >
                       {item.buttonText}
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -114,7 +115,6 @@ const Home = () => {
       {/* Brand Story Overview */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Story</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
@@ -132,7 +132,7 @@ const Home = () => {
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center text-emerald-600 hover:text-emerald-700"
+                className="inline-flex items-center text-emerald-800 hover:text-emerald-800"
               >
                 Learn more about our story
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -180,7 +180,7 @@ const Home = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                   <p className="text-gray-600 mb-4">{product.description}</p>
-                  <span className="text-emerald-600 hover:text-emerald-700 inline-flex items-center">
+                  <span className="text-emerald-800 hover:text-emerald-800 inline-flex items-center">
                     Learn More
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </span>

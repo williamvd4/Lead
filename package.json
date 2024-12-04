@@ -1,0 +1,14 @@
+{
+  "name": "lead",
+  "version": "1.0.0",
+  "description": "LeadFarmer Cannabis\r LeadFarmer Cannabis is a web application showcasing premium cannabis products, cultivation processes, and company information. The project is built using React, TypeScript, and Tailwind CSS, and is configured with Vite for fast development and Vitest for testing.",
+  "main": "cypress.config.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.1"
+  }
+}

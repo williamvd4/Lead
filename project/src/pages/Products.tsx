@@ -148,8 +148,7 @@ const Products = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">
             <div className="max-w-3xl text-center px-4">
-              <h1 className="text-5xl font-bold mb-4">Our Products</h1>
-              <p className="text-xl">Premium Cannabis Products</p>
+              <h1 className="text-8xl font-bold mb-4">Products</h1>
             </div>
           </div>
         </div>
@@ -157,8 +156,8 @@ const Products = () => {
 
       {/* Filters and Search */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="relative flex-grow">
+        <div className="flex flex-col md :flex-row gap-4 mb-8">
+          <div className="relative flex-grow items-center justify-center">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
               type="text"
@@ -202,7 +201,7 @@ const Products = () => {
                     <div className="p-6">
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-xl font-semibold">{product.name}</h3>
-                        <span className="bg-emerald-100 text-emerald-800 text-sm px-2 py-1 rounded">
+                        <span className="bg-emerald-100 text-emerald-900 text-sm font-medium px-2 py-1 rounded">
                           {product.type}
                         </span>
                       </div>
