@@ -35,8 +35,8 @@ const Navbar = () => {
                   to={item.href}
                   className={`${
                     location.pathname === item.href
-                      ? 'font-bold text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
-                      : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-500'
+                      ? 'font-bold text-emerald-800'
+                      : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-800'
                   } transition-colors duration-200`}
                 >
                   {item.name}
@@ -48,7 +48,7 @@ const Navbar = () => {
           <div className="flex">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-emerald-700"
+              className="text-gray-700 hover:text-emerald-800"
               aria-label="Open navigation menu"
             >
               {isOpen ? <X className="h-6 w-6 inline-block" /> : <Menu className="h-6 w-6 inline-block" />}
