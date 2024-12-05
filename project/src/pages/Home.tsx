@@ -115,7 +115,6 @@ const Home = () => {
       {/* Brand Story Overview */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-50 text-center mb-12">Our Story</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img
