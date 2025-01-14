@@ -1,7 +1,7 @@
-import realmLogo from '/images/realm.png';
-import frassLogo from '/images/frass.webp';
-import owlLogo from '/images/owl.webp';
-import logoImage from '/images/logo.png';
+import realmLogo from '../public/images/realm.png';
+import frassLogo from '../public/images/frass.webp';
+import owlLogo from '../public/images/owl.webp';
+import logoImage from '../public/images/logo.png';
 
 const Retailers = () => {
   const retailers = [

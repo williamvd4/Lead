@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import logoImage from '/images/logo.png';
-import treesImage from '/images/trees.jpg';
-import livingsoilImage from '/images/livingsoil.webp';
+import logoImage from '../public/images/logo.png';
+import treesImage from '../public/images/trees.jpg';
+import livingsoilImage from '../public/images/livingsoil.webp';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import gummiesImage from '/images/gummies.jpg';
-import contrateImage from '/images/contrate.jpg';
-import kushImage from '/images/kush.jpg';
-import labtestImage from '/images/labtest.jpg';
+import gummiesImage from '../public/images/gummies.jpg';
+import contrateImage from '../public/images/contrate.jpg';
+import kushImage from '../public/images/kush.jpg';
+import labtestImage from '../public/images/labtest.jpg';
 
 const NextArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;

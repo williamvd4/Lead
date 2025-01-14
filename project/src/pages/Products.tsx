@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Search, Filter } from 'lucide-react';
-import purpleImage from '/images/purple.jpg';
-import dreamImage from '/images/dream.webp';
-import kushImage from '/images/kush.jpg';
-import gummiesImage from '/images/gummies.jpg';
-import vapesImage from '/images/vapes.webp'; // Add vape image
-import logoImage from '/images/logo.png';
-import contrateImage from '/images/contrate.jpg'; // Add concentrate image
+import purpleImage from '../public/images/purple.jpg';
+import dreamImage from '../public/images/dream.webp';
+import kushImage from '../public/images/kush.jpg';
+import gummiesImage from '../public/images/gummies.jpg';
+import vapesImage from '../public/images/vapes.webp';
+import logoImage from '../public/images/logo.png';
+import contrateImage from '../public/images/contrate.jpg';
 
 interface Product {
   id: number;
