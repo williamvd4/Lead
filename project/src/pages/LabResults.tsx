@@ -1,41 +1,14 @@
-import kingKongPdf from '/pdfs/King Kong - Eighth - HC-F-K0524.pdf';
-import mangoOgPdf from '/pdfs/Mango OG - Eighth - HC-F-I1424.pdf';
-import thaiStarPdf from '/pdfs/Thai Star - Eighth - HC-F-I0324.pdf';
-import logoImage from '/images/logo.png';
+import { useTina, tinaField } from 'tinacms/dist/react';
+import client from '../tina/__generated__/client'; // Ensure this path is correct and the module exists
 
+const LabResults = (props) => {
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
 
-const LabResults = () => {
-  const labResults = [
-    {
-      batchNumber: '12345',
-      strain: 'Blue Dream',
-      thc: '18%',
-      cbd: '0.2%',
-      date: '2023-09-01',
-      lab: 'Green Labs',
-      pdf: kingKongPdf,
-    },
-    {
-      batchNumber: '67890',
-      strain: 'Purple Haze',
-      thc: '22%',
-      cbd: '0.1%',
-      date: '2023-08-15',
-      lab: 'Pure Analytics',
-      pdf: mangoOgPdf,
-    },
-    {
-      batchNumber: '11223',
-      strain: 'OG Kush',
-      thc: '20%',
-      cbd: '0.3%',
-      date: '2023-07-20',
-      lab: 'Cannalysis',
-      pdf: thaiStarPdf,
-    },
-  ];
-
-  const handlePdfOpen = (pdfUrl: string) => {
+  const handlePdfOpen = (pdfUrl) => {
     window.open(pdfUrl, '_blank');
   };
 
@@ -45,7 +18,7 @@ const LabResults = () => {
         <div
           className="absolute inset-0 bg-cover bg-black bg-center"
           style={{
-            backgroundImage: `url(${logoImage})`,
+            backgroundImage: `url(${data.logoImage})`, // Use Tina data
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -55,7 +28,12 @@ const LabResults = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50" />
           <div className="absolute inset-0 flex items-center justify-center text-white">
             <div className="max-w-3xl text-center px-4">
-              <h1 className="text-5xl font-bold mb-4">Lab Results</h1>
+              <h1
+                className="text-5xl font-bold mb-4"
+                data-tina-field={tinaField(data, 'title')}
+              >
+                {data.title}
+              </h1>
             </div>
           </div>
         </div>
@@ -63,18 +41,26 @@ const LabResults = () => {
 
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {labResults.map((result, index) => (
+          {data.labResults.map((result, index) => (
             <div
               key={index}
               className="bg-white rounded-lg shadow-md p-6 cursor-pointer"
               onClick={() => handlePdfOpen(result.pdf)}
+              data-tina-field={tinaField(result, `labResults.${index}`)}
             >
-              <h3 className="text-xl font-semibold mb-2">Batch Number: {result.batchNumber}</h3>
-              <p className="text-gray-600 mb-2">Strain: {result.strain}</p>
-              <p className="text-gray-600 mb-2">THC: {result.thc}</p>
-              <p className="text-gray-600 mb-2">CBD: {result.cbd}</p>
-              <p className="text-gray-600 mb-2">Date: {result.date}</p>
-              <p className="text-gray-600 mb-2">Lab: {result.lab}</p>
+              <h3
+                className="text-xl font-semibold mb-2"
+                data-tina-field={tinaField(result, 'batchNumber')}
+              >
+                Batch Number: {result.batchNumber}
+              </h3>
+              <p data-tina-field={tinaField(result, 'strain')}>
+                Strain: {result.strain}
+              </p>
+              <p data-tina-field={tinaField(result, 'thc')}>THC: {result.thc}</p>
+              <p data-tina-field={tinaField(result, 'cbd')}>CBD: {result.cbd}</p>
+              <p data-tina-field={tinaField(result, 'date')}>Date: {result.date}</p>
+              <p data-tina-field={tinaField(result, 'lab')}>Lab: {result.lab}</p>
             </div>
           ))}
         </div>
@@ -84,3 +70,17 @@ const LabResults = () => {
 };
 
 export default LabResults;
+
+export const getStaticProps = async () => {
+  const labResultsResponse = await client.queries.labResults({
+    relativePath: 'labResults.json', // Update with your file path
+  });
+
+  return {
+    props: {
+      data: labResultsResponse.data,
+      query: labResultsResponse.query,
+      variables: labResultsResponse.variables,
+    },
+  };
+};

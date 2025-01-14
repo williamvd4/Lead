@@ -29,3 +29,6 @@ dist-ssr
 
 # Ignore .gitignore files (optional; remove if unnecessary)
 
+
+node_modules
+.env
