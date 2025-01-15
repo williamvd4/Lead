@@ -14,7 +14,11 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = [ '127.0.0.1,localhost','https://jang-67cx.onrender.com',]
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'https://jang-67cx.onrender.com',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -30,7 +34,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
