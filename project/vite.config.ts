@@ -5,7 +5,8 @@ export default defineConfig({
   plugins: [react()],
   base: '/project/', // Adjust this if your app is served from a sub-path
   build: {
-    outDir: 'dist', // Ensure this matches the directory Render will use
+    outDir: 'dist',
+    assetsDir: 'assets', // Ensure this matches the directory Render will use
     rollupOptions: {
       external: ['axios'],
     },
