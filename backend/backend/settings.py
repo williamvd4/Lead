@@ -87,7 +87,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files settings
-STATIC_URL = "/staticfiles/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Update WhiteNoise configuration
