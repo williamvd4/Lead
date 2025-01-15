@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000/api/';  // Ensure this is correct
+const API_URL = 'https://api-2f70.onrender.com';  // Ensure this is correct
 
 export const getProducts = async () => {
     const response = await axios.get(`${API_URL}products/`);
