@@ -3,17 +3,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/static/', // Match the Django STATIC_URL
+  base: '/project/', // Match the sub-path where the app is served
   build: {
-    outDir: 'C:/Users/allie/Desktop/CODES/Lead/backend/staticfiles',
- // Ensure the output goes to Django's STATIC_ROOT
-    assetsDir: 'assets', // Organize assets under 'assets'
-    emptyOutDir: true, // Clean up old files
-    rollupOptions: {
-      external: ['axios'],
-    },
-  },
-  optimizeDeps: {
-    exclude: ['lucide-react'],
+    outDir: 'dist', // Build files into 'project/dist'
+    assetsDir: 'assets', // Place assets under 'assets' folder
+    emptyOutDir: true, // Clear the output directory before building
   },
 });
