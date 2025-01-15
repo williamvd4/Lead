@@ -8,5 +8,8 @@ export default defineConfig({
     outDir: 'dist', // Build files into 'project/dist'
     assetsDir: 'assets', // Place assets under 'assets' folder
     emptyOutDir: true, // Clear the output directory before building
+    rollupOptions: {
+      external: ['axios'],
+    }
   },
 });
