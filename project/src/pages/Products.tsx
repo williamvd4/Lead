@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Filter } from 'lucide-react';
 import purpleImage from '/images/purple.jpg';
 import dreamImage from '/images/dream.webp';
@@ -7,6 +7,7 @@ import gummiesImage from '/images/gummies.jpg';
 import vapesImage from '/images/vapes.webp'; // Add vape image
 import logoImage from '/images/logo.png';
 import contrateImage from '/images/contrate.jpg'; // Add concentrate image
+import { getProducts } from '../services/axios';
 
 interface Product {
   id: number;
@@ -24,104 +25,15 @@ interface Product {
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "Purple Haze",
-      category: "flower",
-      type: "Sativa",
-      thc: 22,
-      cbd: 0.1,
-      image: {src: purpleImage, alt: "Purple Haze"},
-
-      description: "A classic sativa-dominant strain known for its euphoric and creative effects.",
-      effects: ["Creative", "Energetic", "Euphoric"],
-      terpenes: [
-        { name: "Myrcene", percentage: 0.5 },
-        { name: "Limonene", percentage: 0.3 },
-        { name: "Pinene", percentage: 0.2 }
-      ]
-    },
-    {
-      id: 2,
-      name: "Blue Dream",
-      category: "flower",
-      type: "Hybrid",
-      thc: 18,
-      cbd: 0.2,
-      image: { src: dreamImage, alt: "Blue Dream" },
-      description: "A balanced hybrid offering full-body relaxation with gentle cerebral invigoration.",
-      effects: ["Relaxed", "Happy", "Creative"],
-      terpenes: [
-        { name: "Myrcene", percentage: 0.4 },
-        { name: "Caryophyllene", percentage: 0.3 },
-        { name: "Pinene", percentage: 0.1 }
-      ]
-    },
-    {
-      id: 3,
-      name: "OG Kush",
-      category: "flower",
-      type: "Hybrid",
-      thc: 80,
-      cbd: 0.1,
-      image: { src: kushImage, alt: "OG Kush" },
-      description: "High-potency concentrate with complex flavor profile.",
-      effects: ["Relaxed", "Euphoric", "Happy"],
-      terpenes: [
-        { name: "Limonene", percentage: 0.6 },
-        { name: "Myrcene", percentage: 0.4 },
-        { name: "Caryophyllene", percentage: 0.3 }
-      ]
-    },
-    {
-      id: 4,
-      name: "Calm Gummies",
-      category: "edibles",
-      type: "Indica",
-      thc: 10,
-      cbd: 10,
-      image: { src: gummiesImage, alt: "Calm Gummies" },
-      description: "1:1 THC:CBD ratio gummies for balanced effects.",
-      effects: ["Relaxed", "Calm", "Peaceful"],
-      terpenes: [
-        { name: "Myrcene", percentage: 0.3 },
-        { name: "Linalool", percentage: 0.2 }
-      ]
-    },
-    {
-      id: 5,
-      name: "Vape Pen",
-      category: "vapes",
-      type: "vapes",
-      thc: 70,
-      cbd: 0.2,
-      image: { src: vapesImage, alt: "Vape Pen" },
-      description: "Portable vape pen with high THC concentrates.",
-      effects: ["Quick Relief", "Euphoric", "Relaxed"],
-      terpenes: [
-        { name: "Pinene", percentage: 0.4 },
-        { name: "Caryophyllene", percentage: 0.3 }
-      ]
-    },
-  {
-    id: 6,
-    name: "Live Rosin",
-    category: "concentrates",
-    type: "concentrates",
-    thc: 70,
-    cbd: 0.2,
-    image: { src: contrateImage, alt: "Live Rosin" },
-    description: "Portable vape pen with high THC concentrates.",
-    effects: ["Quick Relief", "Euphoric", "Relaxed"],
-    terpenes: [
-      { name: "Pinene", percentage: 0.4 },
-      { name: "Caryophyllene", percentage: 0.3 }
-    ]
-  }
-];
-
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await getProducts();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
 
   const categories = ['all', 'flower',  'edibles', 'vapes', 'concentrates',];
 
