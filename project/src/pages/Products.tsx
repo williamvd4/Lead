@@ -1,12 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Search, Filter } from 'lucide-react';
-import purpleImage from '/images/purple.jpg';
-import dreamImage from '/images/dream.webp';
-import kushImage from '/images/kush.jpg';
-import gummiesImage from '/images/gummies.jpg';
-import vapesImage from '/images/vapes.webp'; // Add vape image
-import logoImage from '/images/logo.png';
-import contrateImage from '/images/contrate.jpg'; // Add concentrate image
 import { getProducts } from '../services/axios';
 
 interface Product {
@@ -16,10 +9,10 @@ interface Product {
   type: string;
   thc: number;
   cbd: number;
-  image: { src: string; alt: string };
+  image: string; // changed: use string instead of { src: string; alt: string }
   description: string;
-  effects: string[];
-  terpenes: { name: string; percentage: number }[];
+  effects: { id: number; description: string }[];
+  terpenes: { id: number; name: string }[];
 }
 
 const Products = () => {
@@ -50,7 +43,7 @@ const Products = () => {
         <div
           className="absolute inset-0 bg-black bg-center"
           style={{
-            backgroundImage: `url(${logoImage})`,
+            backgroundImage: `url(/images/logo.png)`, // Assuming logo.png is still in frontend's public/images
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -106,7 +99,7 @@ const Products = () => {
                 {categoryProducts.map(product => (
                   <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                     <img
-                      src={product.image.src}
+                      src={product.image}  // changed
                       alt={product.name}
                       className="w-full aspect-w-1 aspect-h-1 object-cover"
                     />
@@ -135,10 +128,10 @@ const Products = () => {
                           <div className="flex flex-wrap gap-2">
                             {product.effects.map(effect => (
                               <span
-                                key={effect}
+                                key={effect.id}
                                 className="bg-gray-100 text-sm px-3 py-1 rounded"
                               >
-                                {effect}
+                                {effect.description}
                               </span>
                             ))}
                           </div>
@@ -148,13 +141,10 @@ const Products = () => {
                           <div className="space-y-2">
                             {product.terpenes.map(terpene => (
                               <div
-                                key={terpene.name}
+                                key={terpene.id}
                                 className="flex justify-between items-center"
                               >
                                 <span>{terpene.name}</span>
-                                <span className="text-sm text-gray-600">
-                                  {terpene.percentage}%
-                                </span>
                               </div>
                             ))}
                           </div>

@@ -3,6 +3,19 @@ from django.db import models
 
 
 
+CATEGORIES = [
+    ('flower', 'Flower'),
+    ('edibles', 'Edibles'),
+    ('vapes', 'Vapes'),
+    ('concentrates', 'Concentrates'),
+]
+
+TYPES = [
+    ('indica', 'Indica'),
+    ('sativa', 'Sativa'),
+    ('hybrid', 'Hybrid'),
+]
+
 class Terpene(models.Model):
     name = models.CharField(max_length=100)
 
@@ -18,8 +31,16 @@ class Effect(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    category = models.CharField(max_length=100)
-    type = models.CharField(max_length=100)
+    category = models.CharField(
+        max_length=100,
+        choices=CATEGORIES,
+        default='flower'
+    )
+    type = models.CharField(
+        max_length=100,
+        choices=TYPES,
+        default='indica'
+    )
     thc = models.FloatField()
     cbd = models.FloatField()
     image = models.ImageField(upload_to='products/')
@@ -32,9 +53,9 @@ class Product(models.Model):
 
 class Retailer(models.Model):
     name = models.CharField(max_length=255)
-    logo = models.ImageField(upload_to='retailers/')
-    logo_alt = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='retailers/')  # Images saved to MEDIA_ROOT/retailers/
+    logo_alt = models.CharField(max_length=255, blank=True, null=True)
+    address = models.TextField()
     url = models.URLField()
     products = models.ManyToManyField(Product, related_name='retailers')
 
@@ -45,8 +66,8 @@ class LabResult(models.Model):
     """Represents a lab result for a cannabis product."""
     batch_number = models.CharField(max_length=100)
     strain = models.CharField(max_length=255)
-    thc = models.CharField(max_length=50)
-    cbd = models.CharField(max_length=50)
+    thc = models.FloatField()
+    cbd = models.FloatField()
     date = models.DateField()
     lab = models.CharField(max_length=255)
     pdf = models.FileField(upload_to='lab_results/')

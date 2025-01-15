@@ -1,4 +1,3 @@
-import logoImage from '/images/logo.png';
 import { useState, useEffect } from 'react';
 import { getRetailers } from '../services/axios';
 
@@ -21,13 +20,12 @@ const handleRedirect = (url: string) => {
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-[500px]">
         <div
-          className="absolute inset-0 bg-black bg-black bg-center"
+          className="absolute inset-0 bg-black bg-center"
           style={{
-            backgroundImage: `url(${logoImage})`,
+            backgroundImage: `url(/images/logo.png)`, // Assuming logo.png is still in frontend's public/images
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-
           }}
           aria-label="Lead Farmer"
         >
@@ -50,7 +48,7 @@ const handleRedirect = (url: string) => {
               onClick={() => handleRedirect(retailer.url)}
             >
               <img
-                src={retailer.logo}
+                src={retailer.logo}  // Using the full URL from backend
                 alt={`${retailer.name} logo`}
                 className="w-full h-40 object-contain mb-4"
               />
