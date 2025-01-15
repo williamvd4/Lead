@@ -91,17 +91,9 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Update WhiteNoise configuration
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'  # Changed from CompressedManifestStaticFilesStorage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Add MIME types configuration for WhiteNoise
-WHITENOISE_MIMETYPES = {
-    '.css': 'text/css',
-    '.js': 'application/javascript',
-}
-
-# Add additional WhiteNoise settings
-WHITENOISE_INDEX_FILE = True
-WHITENOISE_USE_FINDERS = True
 
 MEDIA_URL = '/public/'
 MEDIA_ROOT = os.path.join(BASE_DIR.parent, 'project', 'public', 'images')
