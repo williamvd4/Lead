@@ -11,7 +11,7 @@ def generate_tree(root_dir, exclude_dirs, prefix=""):
             generate_tree(full_path, exclude_dirs, prefix + extension)
 
 # Specify the root directory here
-root_directory = "C:\\Users\\allie\\Desktop\\CODES\\Lead\\"
+root_directory = "C:\\Users\\allie\\Desktop\\CODES\\Lead\\backend\\staticfiles"
 exclude_directories = {'.venv', 'node_modules'}
 print(root_directory)
 generate_tree(root_directory, exclude_directories)

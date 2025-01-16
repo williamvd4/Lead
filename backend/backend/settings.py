@@ -91,7 +91,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files settings
-STATIC_URL = "https://jang-67cx.onrender.com/"
+STATIC_URL = "https://api-2f70.onrender.com"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
