@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/project/', // Match the sub-path where the app is served
   build: {
-    outDir: '../backend/static/dist', // Build files into 'project/dist'
+    outDir: '../backend/staticfiles/dist', // Build files into 'project/dist'
     assetsDir: 'assets', // Place assets under 'assets' folder
     emptyOutDir: true, // Clear the output directory before building
     rollupOptions: {
