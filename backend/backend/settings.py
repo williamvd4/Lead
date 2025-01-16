@@ -26,7 +26,7 @@ MEDIA_ROOT = os.path.join(Path(__file__).resolve().parent.parent, 'media')
 SECRET_KEY = "django-insecure-gl%0g@o071egzz5%2hd0p__k)8f$o+-5n^a21$7)p332$_3ug*"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -63,6 +63,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://leadfront.onrender.com",
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [

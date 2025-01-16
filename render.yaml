@@ -1,8 +1,22 @@
- services:
-   - type: web
-     name: Lead
-     staticPublishPath: project/dist
-     routes:
-       - type: rewrite
-         source: /.*
-         destination: /index.html
+services:
+  - type: web
+    name: back
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn backend.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        value: g*f5)!)(r@ge8!9lipad9w^jul(d+)fvdvwc5z=z17^ngwdrzm
+      - key: DEBUG
+        value: 'False'
+      - key: DATABASE_URL
+        value: postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin
+
+  - type: web
+    name: project
+    staticPublishPath: project/dist
+    buildCommand: npm install && npm run build
+    routes:
+      - type: rewrite
+        source: /.*
+        destination: /index.html

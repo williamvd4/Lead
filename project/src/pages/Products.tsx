@@ -25,7 +25,7 @@ interface Product {
   terpenes: Terpene[];
 }
 
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://leadback.onrender.com';
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
