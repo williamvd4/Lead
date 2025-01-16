@@ -108,6 +108,7 @@ DATABASES = {
         "USER": "djangoadmin_user",
         "PASSWORD": "4DXhRMkhIUVJh89zSE8UQXfykgxgAusU",
         "HOST": "dpg-cu3vhiqj1k6c73cqhii0-a", 
+        "URL": "postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin",
         "PORT": "5432",
     }
 }
@@ -147,7 +148,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
