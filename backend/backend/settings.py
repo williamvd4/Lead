@@ -104,7 +104,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "djangoadmin",
+        "NAME": "Django-admin",
         "USER": "djangoadmin_user",
         "PASSWORD": "4DXhRMkhIUVJh89zSE8UQXfykgxgAusU",
         "HOST": "postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin", 
