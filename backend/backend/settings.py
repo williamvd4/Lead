@@ -91,9 +91,8 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files settings
-STATIC_URL = "https://api-2f70.onrender.com/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MIME_TYPES = {
     'js': 'application/javascript',
