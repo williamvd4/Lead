@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost:5173",
     "leadfront.onrender.com",
-    "https://leadback.onrender.com",
+    "leadback.onrender.com",
 ]
 
 
@@ -69,6 +69,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://leadfront.onrender.com",
+    "https://leadback.onrender.com",    
 ]
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
