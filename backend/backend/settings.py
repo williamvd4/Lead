@@ -43,6 +43,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://jang-67cx.onrender.com",
+    "https://api-2f70.onrender.com",
 ]
 
 ROOT_URLCONF = "backend.urls"
