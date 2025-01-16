@@ -37,6 +37,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://jang-67cx.onrender.com",
@@ -87,7 +90,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files settings
-STATIC_URL = "/static/"
+STATIC_URL = "https://jang-67cx.onrender.com/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
@@ -100,7 +103,6 @@ MIME_TYPES = {
 }
 
 # Update WhiteNoise configuration
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Add MIME types configuration for WhiteNoise
 
