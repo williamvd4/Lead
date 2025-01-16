@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost:5173",
     "leadfront.onrender.com",
+    "https://leadback.onrender.com",
 ]
 
 
@@ -102,8 +103,11 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "Django-admin",
+        "USER": "admin",
+        "PASSWORD": "password",
+        "HOST": "postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin",  # Use the internal URL provided by Render
     }
 }
 
