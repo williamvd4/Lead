@@ -1,39 +1,15 @@
-import kingKongPdf from '/pdfs/King Kong - Eighth - HC-F-K0524.pdf';
-import mangoOgPdf from '/pdfs/Mango OG - Eighth - HC-F-I1424.pdf';
-import thaiStarPdf from '/pdfs/Thai Star - Eighth - HC-F-I0324.pdf';
+import { useState, useEffect } from 'react';
 import logoImage from '/images/logo.png';
 
 
 const LabResults = () => {
-  const labResults = [
-    {
-      batchNumber: '12345',
-      strain: 'Blue Dream',
-      thc: '18%',
-      cbd: '0.2%',
-      date: '2023-09-01',
-      lab: 'Green Labs',
-      pdf: kingKongPdf,
-    },
-    {
-      batchNumber: '67890',
-      strain: 'Purple Haze',
-      thc: '22%',
-      cbd: '0.1%',
-      date: '2023-08-15',
-      lab: 'Pure Analytics',
-      pdf: mangoOgPdf,
-    },
-    {
-      batchNumber: '11223',
-      strain: 'OG Kush',
-      thc: '20%',
-      cbd: '0.3%',
-      date: '2023-07-20',
-      lab: 'Cannalysis',
-      pdf: thaiStarPdf,
-    },
-  ];
+  const [labResults, setLabResults] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/lab-results/')
+      .then(response => response.json())
+      .then(data => setLabResults(data));
+  }, []);
 
   const handlePdfOpen = (pdfUrl: string) => {
     window.open(pdfUrl, '_blank');

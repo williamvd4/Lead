@@ -2,15 +2,15 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import logoImage from '/images/logo.png';
 import treesImage from '/images/trees.jpg';
-import livingsoilImage from '/images/livingsoil.webp';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import gummiesImage from '/images/gummies.jpg';
 import contrateImage from '/images/contrate.jpg';
 import kushImage from '/images/kush.jpg';
 import labtestImage from '/images/labtest.jpg';
+import { useEffect, useState } from 'react';
 
+// Custom Next Arrow Component
 const NextArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
   return (
@@ -24,6 +24,7 @@ const NextArrow = (props: { className?: string; style?: React.CSSProperties; onC
   );
 };
 
+// Custom Previous Arrow Component
 const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onClick?: () => void }) => {
   const { className, style, onClick } = props;
   return (
@@ -37,79 +38,93 @@ const PrevArrow = (props: { className?: string; style?: React.CSSProperties; onC
   );
 };
 
+interface HomeFeature {
+  name: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
 const Home = () => {
+  interface CarouselItem {
+    image: string;
+    title: string;
+    description: string;
+    link: string;
+    buttonText: string;
+  }
+
+  const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
+  const [homeFeatures, setHomeFeatures] = useState<HomeFeature[]>([]);
+
+  useEffect(() => {
+    // Fetch Carousel Items
+    fetch('http://localhost:8000/api/home-carousel')
+      .then(response => response.json())
+      .then(data => setCarouselItems(data));
+
+    // Fetch Home Features
+    fetch('http://localhost:8000/api/home-features')
+      .then(response => response.json())
+      .then(data => setHomeFeatures(data));
+  }, []);
+
+  // Dynamic Slider Settings
   const sliderSettings = {
-    dots: true,
-    infinite: true,
+    dots: carouselItems.length > 1, // Show dots only if more than one item
+    infinite: carouselItems.length > 1, // Enable infinite scrolling only if more than one item
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    arrows: true,
+    autoplay: carouselItems.length > 1, // Enable autoplay only if more than one item
+    arrows: carouselItems.length > 1, // Show arrows only if more than one item
     autoplaySpeed: 7000,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
   };
 
-  const carouselItems = [
-    {
-      image: logoImage,
-      title: 'Premium Cannabis',
-      description: 'Cultivated with care in New York State',
-      link: '/Products',
-      buttonText: 'Products',
-    },
-    {
-      image: livingsoilImage,
-      title: 'Sustainable Farming',
-      description: 'Committed to environmental stewardship',
-      link: '/Cultivation',
-      buttonText: 'View Our Operation',
-    },
-    {
-      image: labtestImage,
-      title: 'Quality Assured',
-      description: 'Lab tested for your safety',
-      link: '/LabResults',
-      buttonText: 'Lab Results',
-    },
-  ];
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Carousel */}
       <div className="relative">
-        <Slider {...sliderSettings}>
-          {carouselItems.map((item, index) => (
-            <div key={index} className="relative h-[500px]">
-              <div
-                className="absolute inset-0 bg-black bg-center"
-                style={{
-                  backgroundImage: `url(${item.image})`,
-                  backgroundSize: 'contain',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              >
-                <div className="absolute inset-0 bg-black bg-opacity-50" />
-                <div className="absolute inset-0 flex items-center justify-center text-center text-white">
-                  <div className="max-w-3xl px-4">
-                    <h1 className="text-5xl font-bold mb-4">{item.title}</h1>
-                    <p className="text-xl mb-8">{item.description}</p>
-                    <Link
-                      to={item.link}
-                      tabIndex = {-1}
-                      className="inline-flex items-center bg-emerald-800 text-white px-8 py-3 rounded-lg hover:bg-emerald-800 transition-colors"
-                    >
-                      {item.buttonText}
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
+        {carouselItems.length > 0 ? (
+          <Slider {...sliderSettings}>
+            {carouselItems.map((item, index) => (
+              <div key={index} className="relative h-[500px]">
+                <div
+                  className="absolute inset-0 bg-black bg-center"
+                  style={{
+                    backgroundImage: `url(${item.image})`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black bg-opacity-50" />
+                  <div className="absolute inset-0 flex items-center justify-center text-center text-white">
+                    <div className="max-w-3xl px-4">
+                      <h1 className="text-5xl font-bold mb-4">{item.title}</h1>
+                      <p className="text-xl mb-8">{item.description}</p>
+                      <Link
+                        to={item.link}
+                        tabIndex={-1}
+                        className="inline-flex items-center bg-emerald-800 text-white px-8 py-3 rounded-lg hover:bg-emerald-800 transition-colors"
+                      >
+                        {item.buttonText}
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        ) : (
+          // Display a placeholder or alternative content if no carousel items are available
+          <div className="relative h-[500px] flex items-center justify-center bg-gray-200">
+            <p className="text-xl text-gray-700">No carousel items to display.</p>
+          </div>
+        )}
       </div>
 
       {/* Brand Story Overview */}
@@ -147,26 +162,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12">Featured Products</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Premium Flower',
-                image: kushImage,
-                description: 'Hand-trimmed, carefully cured premium cannabis flower.',
-                link: '/products#flower', // Added #flower
-              },
-              {
-                name: 'Concentrates',
-                image: contrateImage,
-                description: 'Pure and potent extracts for the discerning consumer.',
-                link: '/products#concentrates', // Added #concentrates
-              },
-              {
-                name: 'Edibles',
-                image: gummiesImage,
-                description: 'Precisely dosed edibles made with premium ingredients.',
-                link: '/products#edibles', // Added #edibles
-              },
-            ].map((product, index) => (
+            {homeFeatures.map((product, index) => (
               <Link
                 key={index}
                 to={product.link}

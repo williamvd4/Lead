@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Filter } from 'lucide-react';
-import purpleImage from '/images/purple.jpg';
-import dreamImage from '/images/dream.webp';
-import kushImage from '/images/kush.jpg';
-import gummiesImage from '/images/gummies.jpg';
-import vapesImage from '/images/vapes.webp'; // Add vape image
 import logoImage from '/images/logo.png';
-import contrateImage from '/images/contrate.jpg'; // Add concentrate image
+
+interface Effect {
+  id: number;
+  name: string;
+}
+
+interface Terpene {
+  id: number;
+  name: string;
+}
 
 interface Product {
   id: number;
@@ -15,115 +19,26 @@ interface Product {
   type: string;
   thc: number;
   cbd: number;
-  image: { src: string; alt: string };
+  image: string; // Changed to string if the API returns a URL string
   description: string;
-  effects: string[];
-  terpenes: { name: string; percentage: number }[];
+  effects: Effect[];
+  terpenes: Terpene[];
 }
+
+const API_URL = 'http://localhost:8000';
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "Purple Haze",
-      category: "flower",
-      type: "Sativa",
-      thc: 22,
-      cbd: 0.1,
-      image: {src: purpleImage, alt: "Purple Haze"},
+  useEffect(() => {
+    fetch(`${API_URL}/api/products/`)
+      .then(response => response.json())
+      .then(data => setProducts(data));
+  }, []);
 
-      description: "A classic sativa-dominant strain known for its euphoric and creative effects.",
-      effects: ["Creative", "Energetic", "Euphoric"],
-      terpenes: [
-        { name: "Myrcene", percentage: 0.5 },
-        { name: "Limonene", percentage: 0.3 },
-        { name: "Pinene", percentage: 0.2 }
-      ]
-    },
-    {
-      id: 2,
-      name: "Blue Dream",
-      category: "flower",
-      type: "Hybrid",
-      thc: 18,
-      cbd: 0.2,
-      image: { src: dreamImage, alt: "Blue Dream" },
-      description: "A balanced hybrid offering full-body relaxation with gentle cerebral invigoration.",
-      effects: ["Relaxed", "Happy", "Creative"],
-      terpenes: [
-        { name: "Myrcene", percentage: 0.4 },
-        { name: "Caryophyllene", percentage: 0.3 },
-        { name: "Pinene", percentage: 0.1 }
-      ]
-    },
-    {
-      id: 3,
-      name: "OG Kush",
-      category: "flower",
-      type: "Hybrid",
-      thc: 80,
-      cbd: 0.1,
-      image: { src: kushImage, alt: "OG Kush" },
-      description: "High-potency concentrate with complex flavor profile.",
-      effects: ["Relaxed", "Euphoric", "Happy"],
-      terpenes: [
-        { name: "Limonene", percentage: 0.6 },
-        { name: "Myrcene", percentage: 0.4 },
-        { name: "Caryophyllene", percentage: 0.3 }
-      ]
-    },
-    {
-      id: 4,
-      name: "Calm Gummies",
-      category: "edibles",
-      type: "Indica",
-      thc: 10,
-      cbd: 10,
-      image: { src: gummiesImage, alt: "Calm Gummies" },
-      description: "1:1 THC:CBD ratio gummies for balanced effects.",
-      effects: ["Relaxed", "Calm", "Peaceful"],
-      terpenes: [
-        { name: "Myrcene", percentage: 0.3 },
-        { name: "Linalool", percentage: 0.2 }
-      ]
-    },
-    {
-      id: 5,
-      name: "Vape Pen",
-      category: "vapes",
-      type: "vapes",
-      thc: 70,
-      cbd: 0.2,
-      image: { src: vapesImage, alt: "Vape Pen" },
-      description: "Portable vape pen with high THC concentrates.",
-      effects: ["Quick Relief", "Euphoric", "Relaxed"],
-      terpenes: [
-        { name: "Pinene", percentage: 0.4 },
-        { name: "Caryophyllene", percentage: 0.3 }
-      ]
-    },
-  {
-    id: 6,
-    name: "Live Rosin",
-    category: "concentrates",
-    type: "concentrates",
-    thc: 70,
-    cbd: 0.2,
-    image: { src: contrateImage, alt: "Live Rosin" },
-    description: "Portable vape pen with high THC concentrates.",
-    effects: ["Quick Relief", "Euphoric", "Relaxed"],
-    terpenes: [
-      { name: "Pinene", percentage: 0.4 },
-      { name: "Caryophyllene", percentage: 0.3 }
-    ]
-  }
-];
-
-
-  const categories = ['all', 'flower',  'edibles', 'vapes', 'concentrates',];
+  const categories = ['all', 'flower', 'edibles', 'vapes', 'concentrates'];
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -156,7 +71,7 @@ const Products = () => {
 
       {/* Filters and Search */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-col md :flex-row gap-4 mb-8">
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
           <div className="relative flex-grow items-center justify-center">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
@@ -194,9 +109,9 @@ const Products = () => {
                 {categoryProducts.map(product => (
                   <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                     <img
-                      src={product.image.src}
+                      src={product.image} // Updated to use product.image directly
                       alt={product.name}
-                      className="w-full aspect-w-1 aspect-h-1 object-cover"
+                      className="w-full h-60 object-cover" // Adjusted height for better display
                     />
                     <div className="p-6">
                       <div className="flex justify-between items-start mb-2">
@@ -223,10 +138,10 @@ const Products = () => {
                           <div className="flex flex-wrap gap-2">
                             {product.effects.map(effect => (
                               <span
-                                key={effect}
+                                key={effect.id}
                                 className="bg-gray-100 text-sm px-3 py-1 rounded"
                               >
-                                {effect}
+                                {effect.name}
                               </span>
                             ))}
                           </div>
@@ -236,13 +151,10 @@ const Products = () => {
                           <div className="space-y-2">
                             {product.terpenes.map(terpene => (
                               <div
-                                key={terpene.name}
+                                key={terpene.id}
                                 className="flex justify-between items-center"
                               >
                                 <span>{terpene.name}</span>
-                                <span className="text-sm text-gray-600">
-                                  {terpene.percentage}%
-                                </span>
                               </div>
                             ))}
                           </div>

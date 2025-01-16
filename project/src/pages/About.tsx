@@ -2,25 +2,16 @@ import { ArrowRight, Leaf, Shield, Sprout } from 'lucide-react';
 import logoImage from '/images/logo.png';
 import treesImage from '/images/trees.jpg';
 import pupsImage from '/images/pups.png';
+import { useState, useEffect } from 'react';
 
 const About = () => {
-  const values = [
-    {
-      icon: <Leaf className="w-8 h-8 text-emerald-600" />,
-      title: "Quality First",
-      description: "We maintain the highest standards in cultivation and processing, ensuring premium products in every batch."
-    },
-    {
-      icon: <Shield className="w-8 h-8 text-emerald-600" />,
-      title: "Safety & Compliance",
-      description: "Rigorous testing and strict adherence to New York State regulations guide every step of our process."
-    },
-    {
-      icon: <Sprout className="w-8 h-8 text-emerald-600" />,
-      title: "Sustainability",
-      description: "Our commitment to environmental stewardship drives our sustainable farming practices."
-    }
-  ];
+  const [values, setValues] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/core-values')
+      .then(response => response.json())
+      .then(data => setValues(data));
+  }, []);
 
   return (
     <div className="min-h-screen">

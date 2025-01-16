@@ -1,35 +1,15 @@
-import realmLogo from '/images/realm.png';
-import frassLogo from '/images/frass.webp';
-import owlLogo from '/images/owl.webp';
 import logoImage from '/images/logo.png';
+import { useState, useEffect } from 'react';
 
 const Retailers = () => {
-  const retailers = [
-    {
-      name: 'Cannabis Realm',
-      logo: realmLogo,
-      logoAlt: 'Cannabis Realm logo',
-      address: '123 Main St, Hartsdale, NY',
-      url: 'https://cannabisrealmny.com/',
-      products: ['Mango OG', 'Kush Mints', 'Edibles'],
-    },
-    {
-      name: 'FrassBox',
-      logo: frassLogo,
-      logoAlt: 'FrassBox logo',
-      address: '456 Elm St, Bronx, NY',
-      url: 'https://frassboxcannabis.com/',
-      products: ['Blue Dream', 'Purple Haze', 'Pre-rolls'],
-    },
-    {
-      name: 'Purple Owl',
-      logo: owlLogo,
-      logoAlt: 'Purple Owl logo',
-      address: '789 Oak St, White Plains, NY',
-      url: 'https://thepurpleowldispensary.com/',
-      products: ['OG Kush', 'Sour Diesel', 'Tinctures'],
-    },
-  ];
+  const [retailers, setRetailers] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/retailers')
+      .then(response => response.json())
+      .then(data => setRetailers(data));
+  }, []);
+
 const handleRedirect = (url: string) => {
   window.open(url, '_blank');
 };
@@ -67,7 +47,7 @@ const handleRedirect = (url: string) => {
               onClick={() => handleRedirect(retailer.url)}
             >
               <img
-                src={retailer.logo}
+                src={retailer.logo}  // Remove any API_URL concatenation as Django returns full URL
                 alt={`${retailer.name} logo`}
                 className="w-full h-40 object-contain mb-4"
               />
@@ -75,8 +55,8 @@ const handleRedirect = (url: string) => {
               <p className="text-gray-600 mb-2">{retailer.address}</p>
               <p className="text-gray-600 mb-2">Products:</p>
               <ul className="list-disc list-inside text-gray-600">
-                {retailer.products.map((product, idx) => (
-                  <li key={idx}>{product}</li>
+                {retailer.products.map((product: any, idx: number) => (
+                  <li key={idx}>{product.name}</li>
                 ))}
               </ul>
             </div>
