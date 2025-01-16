@@ -107,7 +107,8 @@ DATABASES = {
         "NAME": "Django-admin",
         "USER": "admin",
         "PASSWORD": "password",
-        "HOST": "postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin",  # Use the internal URL provided by Render
+        "HOST": "postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin", 
+        "PORT": "5432",
     }
 }
 
