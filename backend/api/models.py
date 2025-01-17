@@ -40,6 +40,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    # Add get_image_url method
+    def get_image_url(self):
+        if self.image:
+            return f'https://leadback.onrender.com{self.image.url}'
+        return None
 
 class LabResult(models.Model):
     batch_number = models.CharField(max_length=50)
@@ -68,6 +74,12 @@ class Retailer(models.Model):
 
     def __str__(self):
         return self.name
+    
+    # Add get_logo_url method
+    def get_logo_url(self):
+        if self.logo:
+            return f'https://leadback.onrender.com{self.logo.url}'
+        return None
 
 class CoreValue(models.Model):
     icon = models.CharField(max_length=50)
@@ -88,6 +100,11 @@ class HomeCarouselItem(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_image_url(self):
+        if self.image:
+            return f'https://leadback.onrender.com{self.image.url}'
+        return None
 
 class HomeFeature(models.Model):
     image = models.ImageField(upload_to='home-features', null=True, blank=True)
@@ -100,3 +117,8 @@ class HomeFeature(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_image_url(self):
+        if self.image:
+            return f'https://leadback.onrender.com{self.image.url}'
+        return None
