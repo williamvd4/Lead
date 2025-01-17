@@ -74,6 +74,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://leadfront.onrender.com",
     "https://leadback.onrender.com",    
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://leadfront.onrender.com",
+    'https://leadback.onrender.com'
+]
+
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny' # Or appropriate permissions
