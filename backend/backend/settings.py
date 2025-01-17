@@ -118,11 +118,11 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "djangoadmin",
-        "USER": "djangoadmin_user",
-        "PASSWORD": "4DXhRMkhIUVJh89zSE8UQXfykgxgAusU",
-        "HOST": "dpg-cu3vhiqj1k6c73cqhii0-a", 
-        "URL": "postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin",
+        "NAME": "django_admin",
+        "USER": "django_admin_user",
+        "PASSWORD": "qDDRnWAgJjhGz8VfYSMGxbwVbjlct3RE",
+        "HOST": "dpg-cu58o0t2ng1s73djkssg-a", 
+        "URL": "postgresql://django_admin_user:qDDRnWAgJjhGz8VfYSMGxbwVbjlct3RE@dpg-cu58o0t2ng1s73djkssg-a/django_admin",
         "PORT": "5432",
     }
 }
