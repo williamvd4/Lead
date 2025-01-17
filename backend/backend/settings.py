@@ -17,9 +17,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use the Render disk mount path for storing media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT =  'media'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT =  'staticfiles'
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     "localhost:5173",
     "leadfront.onrender.com",
     "leadback.onrender.com",
+    ".onrender.com",
 ]
 
 # Application definition
