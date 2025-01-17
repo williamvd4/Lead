@@ -6,7 +6,7 @@ const LabResults = () => {
   const [labResults, setLabResults] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('https://leadback.onrender.com/api/lab-results/')
+    fetch('https://leadback.onrender.com/media/lab-results/')
       .then(response => response.json())
       .then(data => setLabResults(data));
   }, []);

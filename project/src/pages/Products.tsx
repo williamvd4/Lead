@@ -33,7 +33,7 @@ const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/products/`)
+    fetch(`${API_URL}/media/products/`)
       .then(response => response.json())
       .then(data => setProducts(data));
   }, []);
