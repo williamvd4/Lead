@@ -6,9 +6,16 @@ from .models import (
     Retailer, CoreValue, HomeCarouselItem, HomeFeature
 )
 
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'type', 'thc', 'cbd')
+    search_fields = ('name', 'category', 'type')
+    list_filter = ('category', 'type')
+    filter_horizontal = ('effects', 'terpenes') 
+
 admin.site.register(Effect)
 admin.site.register(Terpene)
-admin.site.register(Product)
 admin.site.register(LabResult)
 admin.site.register(Retailer)
 admin.site.register(CoreValue)
