@@ -8,7 +8,7 @@ const About = () => {
   const [values, setValues] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('http://leadback.onrender.com/media/core-values')
+    fetch('http://leadback.onrender.com/api/core-values')
       .then(response => response.json())
       .then(data => setValues(data));
   }, []);

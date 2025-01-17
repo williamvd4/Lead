@@ -5,7 +5,7 @@ const Retailers = () => {
   const [retailers, setRetailers] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('https://leadback.onrender.com/media/retailers')
+    fetch('https://leadback.onrender.com/api/retailers')
       .then(response => response.json())
       .then(data => setRetailers(data));
   }, []);
