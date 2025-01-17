@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -166,3 +169,9 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+
+if os.environ.get("RUN_CREATE_SUPERUSER") == "True":
+    try:
+        from . import superuser  # Ensure this matches the script's name
+    except Exception as e:
+        print(f"Error creating superuser: {e}")
