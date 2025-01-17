@@ -10,7 +10,7 @@ services:
       - key: DEBUG
         value: 'False'
       - key: DATABASE_URL
-        value: postgresql://djangoadmin_user:4DXhRMkhIUVJh89zSE8UQXfykgxgAusU@dpg-cu3vhiqj1k6c73cqhii0-a/djangoadmin
+        value: postgresql://django_admin_user:qDDRnWAgJjhGz8VfYSMGxbwVbjlct3RE@dpg-cu58o0t2ng1s73djkssg-a/django_admin
 
   - type: web
     name: project
