@@ -16,8 +16,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use the Render disk mount path for storing media files
-MEDIA_URL = 'https://leadback.onrender.com/media/'
-MEDIA_ROOT = '/mnt/data/media'  # This is where your media files will be saved on the disk
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
