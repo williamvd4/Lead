@@ -38,6 +38,12 @@ class HomeCarouselItemViewSet(viewsets.ModelViewSet):
     queryset = HomeCarouselItem.objects.all()
     serializer_class = HomeCarouselItemSerializer
 
+    def create(self, request, *args, **kwargs):
+        print(request.data)  # Debug statement
+        response = super().create(request, *args, **kwargs)
+        print(response.data)  # Debug statement
+        return response
+
 class HomeFeatureViewSet(viewsets.ModelViewSet):
     queryset = HomeFeature.objects.all()
     serializer_class = HomeFeatureSerializer
