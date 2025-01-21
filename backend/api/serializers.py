@@ -45,7 +45,13 @@ class CoreValueSerializer(serializers.ModelSerializer):
 class HomeCarouselItemSerializer(serializers.ModelSerializer):
     title = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     description = serializers.CharField(required=False, allow_blank=True, allow_null=True)
-    link_page = serializers.CharField(required=False, allow_blank=True, allow_null=True)  # New field
+    link_page = serializers.ChoiceField(choices=[
+        ('/about', 'About'),
+        ('/products', 'Products'),
+        ('/retailers', 'Retailers'),
+        ('/lab-results', 'Lab Results'),
+        ('/cultivation', 'Cultivation')
+    ], required=False, allow_blank=True, allow_null=True)  # Updated field
 
     class Meta:
         model = HomeCarouselItem
