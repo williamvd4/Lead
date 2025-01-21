@@ -15,11 +15,10 @@ class Terpene(models.Model):
 class Product(models.Model):
     CATEGORY_CHOICES = [
         ('flower', 'Flower'),
+        ('preroll', 'Preroll'),
         ('concentrates', 'Concentrates'),
         ('edibles', 'Edibles'),
         ('vapes', 'Vapes'),
-        ('concentrates', 'Concentrates'),
-        ('seeds', 'Seeds'),
     ]
 
     TYPE_CHOICES = [
@@ -91,8 +90,8 @@ class CoreValue(models.Model):
 
 class HomeCarouselItem(models.Model):
     image = models.ImageField(upload_to='home_carousel/')
-    title = models.CharField(max_length=255)
-    description = models.TextField()
+    title = models.CharField(max_length=255, null=True, blank=True)  # Made optional
+    description = models.TextField(null=True, blank=True)  # Made optional
     order = models.PositiveIntegerField(default=0)
 
     class Meta:

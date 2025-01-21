@@ -43,6 +43,9 @@ class CoreValueSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HomeCarouselItemSerializer(serializers.ModelSerializer):
+    title = serializers.CharField(required=False, allow_blank=True)
+    description = serializers.CharField(required=False, allow_blank=True)
+
     class Meta:
         model = HomeCarouselItem
         fields = '__all__'
