@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use the Render disk mount path for storing media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/mnt/data', 'media')
+MEDIA_ROOT = os.path.join('/mnt/data', 'media')
 STATIC_URL = '/static/'
 STATIC_ROOT =  'staticfiles'
 
@@ -103,14 +103,15 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "django_admin",
-        "USER": "django_admin_user",
-        "PASSWORD": "qDDRnWAgJjhGz8VfYSMGxbwVbjlct3RE",
-        "HOST": "dpg-cu58o0t2ng1s73djkssg-a", 
-        "URL": "postgresql://django_admin_user:qDDRnWAgJjhGz8VfYSMGxbwVbjlct3RE@dpg-cu58o0t2ng1s73djkssg-a/django_admin",
+        "NAME": "jang_admin",
+        "USER": "jang_user",
+        "PASSWORD": "ckpbTS6dgp9hD4M8iSGVykd4V4svbslE",
+        "HOST": "dpg-cu7pc7bqf0us73e76oa0-a", 
+        "URL": "postgresql://jang_user:ckpbTS6dgp9hD4M8iSGVykd4V4svbslE@dpg-cu7pc7bqf0us73e76oa0-a/jang",
         "PORT": "5432",
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
