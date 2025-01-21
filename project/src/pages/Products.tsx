@@ -39,7 +39,7 @@ const Products = () => {
       .then(data => setProducts(data));
   }, []);
 
-  const categories = ['all', 'flower', 'edibles', 'vapes', 'concentrates'];
+  const categories = ['all', 'flower', 'edibles', 'vapes', 'concentrates', 'preroll'];
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
