@@ -89,6 +89,7 @@ class CoreValue(models.Model):
         return self.title
 
 class HomeCarouselItem(models.Model):
+    admin_title = models.CharField(max_length=255, null=True, blank=True)  # New field
     image = models.ImageField(upload_to='home_carousel/')
     title = models.CharField(max_length=255, null=True, blank=True)  # Made optional
     description = models.TextField(null=True, blank=True)  # Made optional
@@ -110,7 +111,7 @@ class HomeCarouselItem(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.title if self.title else "No Title"
+        return self.admin_title if self.admin_title else "No Title"
 
     def get_image_url(self):
         if self.image:

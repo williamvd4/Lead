@@ -43,6 +43,7 @@ class CoreValueSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HomeCarouselItemSerializer(serializers.ModelSerializer):
+    admin_title = serializers.CharField(required=False, allow_blank=True, allow_null=True)  # New field
     title = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     description = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     link_page = serializers.ChoiceField(choices=[
