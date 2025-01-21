@@ -6,7 +6,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use the Render disk mount path for storing media files
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://leadback.onrender.com/media/'
 MEDIA_ROOT = os.path.join('/mnt/data', 'media')
 STATIC_URL = '/static/'
 STATIC_ROOT =  'staticfiles'
@@ -57,7 +57,14 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_ROOT = MEDIA_ROOT
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
 
 
 CORS_ALLOWED_ORIGINS = [
