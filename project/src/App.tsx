@@ -39,6 +39,7 @@ function App() {
             <Route path="/retailers" element={<Retailers />} /> {/* Ensure this route is correct */}
             <Route path="/LabResults" element={<LabResults />} />
             <Route path="/contact" element={<Contact />} />
+            {/* The key change is here */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
@@ -49,4 +50,3 @@ function App() {
 }
 
 export default App;
-
