@@ -27,6 +27,7 @@ interface Product {
 
 const API_URL = 'https://leadback.onrender.com';
 
+
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
