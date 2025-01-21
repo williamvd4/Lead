@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Use the Render disk mount path for storing media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/mnt/data', 'media')
 STATIC_URL = '/static/'
 STATIC_ROOT =  'staticfiles'
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "api",
     "corsheaders",
+    "storages",
 ]
 
 MIDDLEWARE = [
