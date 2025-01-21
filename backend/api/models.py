@@ -98,8 +98,8 @@ class HomeCarouselItem(models.Model):
         ordering = ['order']
 
     def __str__(self):
-        return self.title
-    
+        return self.title if self.title else "No Title"
+
     def get_image_url(self):
         if self.image:
             return f'https://leadback.onrender.com{self.image.url}'
