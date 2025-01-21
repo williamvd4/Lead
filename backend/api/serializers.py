@@ -45,6 +45,7 @@ class CoreValueSerializer(serializers.ModelSerializer):
 class HomeCarouselItemSerializer(serializers.ModelSerializer):
     title = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     description = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+    link_page = serializers.CharField(required=False, allow_blank=True, allow_null=True)  # New field
 
     class Meta:
         model = HomeCarouselItem

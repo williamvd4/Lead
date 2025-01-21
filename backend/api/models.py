@@ -93,6 +93,7 @@ class HomeCarouselItem(models.Model):
     title = models.CharField(max_length=255, null=True, blank=True)  # Made optional
     description = models.TextField(null=True, blank=True)  # Made optional
     order = models.PositiveIntegerField(default=0)
+    link_page = models.CharField(max_length=255, null=True, blank=True)  # New field
 
     class Meta:
         ordering = ['order']

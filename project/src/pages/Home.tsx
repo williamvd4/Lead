@@ -52,6 +52,7 @@ const Home = () => {
     description: string;
     link: string;
     buttonText: string;
+    link_page?: string;
   }
 
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
@@ -105,14 +106,16 @@ const Home = () => {
                     <div className="max-w-3xl px-4">
                       <h1 className="text-5xl font-bold mb-4">{item.title}</h1>
                       <p className="text-xl mb-8">{item.description}</p>
-                      <Link
-                        to={item.link}
-                        tabIndex={-1}
-                        className="inline-flex items-center bg-emerald-800 text-white px-8 py-3 rounded-lg hover:bg-emerald-800 transition-colors"
-                      >
-                        {item.buttonText}
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </Link>
+                      {item.link_page && (
+                        <Link
+                          to={item.link_page}
+                          tabIndex={-1}
+                          className="inline-flex items-center bg-emerald-800 text-white px-8 py-3 rounded-lg hover:bg-emerald-800 transition-colors"
+                        >
+                          {item.buttonText}
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
