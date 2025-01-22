@@ -54,7 +54,8 @@ class LabResult(models.Model):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        related_name='lab_results'
+        related_name='lab_results',
+        default=None
     )
     thc = models.DecimalField(max_digits=5, decimal_places=2)
     cbd = models.DecimalField(max_digits=5, decimal_places=2)
