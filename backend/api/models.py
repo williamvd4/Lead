@@ -84,14 +84,20 @@ class LabResult(models.Model):
 
 class Retailer(models.Model):
     name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='retailers/')
     address = models.CharField(max_length=255)
     url = models.URLField()
-    logo = models.URLField()
     make_active = models.BooleanField(default=False)
     products = models.ManyToManyField(Product)
 
     def get_products_with_category(self):
         return ', '.join([f"{product.name} ({product.category})" for product in self.products.all()])
+    
+    def get_logo_url(self):
+        if self.logo:
+            return self.logo.url
+        return None
+
 
     def __str__(self):
         return self.name
