@@ -4,21 +4,28 @@ import { useState, useEffect } from 'react';
 interface Retailer {
   make_active: boolean;
   products?: any[];
-  }
-  
+  url: string;
+  logo: string;
+  name: string;
+  address: string;
+}
 
 const Retailers = () => {
-  const [retailers, setRetailers] = useState<any[]>([]);
+  const [retailers, setRetailers] = useState<Retailer[]>([]);
 
   useEffect(() => {
     fetch('https://leadback.onrender.com/api/retailers')
       .then(response => response.json())
-      .then(data => setRetailers(data.filter((item: Retailer) => item.make_active)));
+      .then(data => {
+        console.log('Fetched data:', data); // Log the fetched data
+        setRetailers(data.filter((item: Retailer) => item.make_active));
+      })
+      .catch(error => console.error('Error fetching retailers:', error)); // Log any fetch errors
   }, []);
 
-const handleRedirect = (url: string) => {
-  window.open(url, '_blank');
-};
+  const handleRedirect = (url: string) => {
+    window.open(url, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -30,7 +37,6 @@ const handleRedirect = (url: string) => {
             backgroundSize: 'contain',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-
           }}
           aria-label="Lead Farmer"
         >
@@ -61,9 +67,13 @@ const handleRedirect = (url: string) => {
               <p className="text-gray-600 mb-2">{retailer.address}</p>
               <p className="text-gray-600 mb-2">Products:</p>
               <ul className="list-disc list-inside text-gray-600">
-                {retailer.products.map((product: any, idx: number) => (
-                  <li key={idx}>{product.name}</li>
-                ))}
+                {Array.isArray(retailer.products) ? (
+                  retailer.products.map((product: any, idx: number) => (
+                    <li key={idx}>{product.name}</li>
+                  ))
+                ) : (
+                  <li>No products available</li>
+                )}
               </ul>
             </div>
           ))}
