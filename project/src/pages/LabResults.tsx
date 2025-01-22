@@ -3,12 +3,14 @@ import logoImage from '/images/logo.png';
 
 
 const LabResults = () => {
+  interface LabResults {
+    make_active: boolean;}
   const [labResults, setLabResults] = useState<any[]>([]);
 
   useEffect(() => {
     fetch('https://leadback.onrender.com/api/lab-results/')
       .then(response => response.json())
-      .then(data => setLabResults(data));
+      .then(data => setLabResults(data.filter((item: LabResults) => item.make_active)));
   }, []);
 
   const handlePdfOpen = (pdfUrl: string) => {

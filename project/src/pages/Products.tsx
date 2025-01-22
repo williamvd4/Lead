@@ -23,6 +23,7 @@ interface Product {
   description: string;
   effects: Effect[];
   terpenes: Terpene[];
+  make_active: boolean;
 }
 
 const API_URL = 'https://leadback.onrender.com';
@@ -36,7 +37,7 @@ const Products = () => {
   useEffect(() => {
     fetch(`${API_URL}/api/products/`)
       .then(response => response.json())
-      .then(data => setProducts(data));
+      .then(data => setProducts(data.filter((item: Product) => item.make_active)));
   }, []);
 
   const categories = ['all', 'flower', 'edibles', 'vapes', 'concentrates', 'preroll'];

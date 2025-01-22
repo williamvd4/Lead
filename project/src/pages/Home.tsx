@@ -53,6 +53,8 @@ const Home = () => {
     link: string;
     buttonText: string;
     link_page?: string;
+    make_active: boolean;
+
   }
 
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
@@ -62,7 +64,7 @@ const Home = () => {
     // Fetch Carousel Items
     fetch('https://leadback.onrender.com/api/home-carousel')
       .then(response => response.json())
-      .then(data => setCarouselItems(data));
+      .then(data => setCarouselItems(data.filter((item: CarouselItem) => item.make_active)));
 
     // Fetch Home Features
     fetch('https://leadback.onrender.com/api/home-features')
