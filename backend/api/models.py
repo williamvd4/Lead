@@ -81,13 +81,19 @@ class Retailer(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     # Add get_logo_url method
     def get_logo_url(self):
         if self.logo:
             return self.logo.url
         return None
 
+    # Add method to get product name and category
+    def get_products_with_category(self):
+        return ", ".join([f"{product.name} ({product.category})" for product in self.products.all()])
+    
+    
+    
 class CoreValue(models.Model):
     icon = models.CharField(max_length=50)
     title = models.CharField(max_length=255)

@@ -32,11 +32,16 @@ class HomeCarouselItemAdmin(admin.ModelAdmin):
     
 @admin.register(Retailer)
 class RetailerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'address', 'url', 'make_active')
+    list_display = ('name', 'address', 'url', 'make_active', 'get_products_with_category')
     search_fields = ('name', 'address')
     list_filter = ('products',)
     list_editable = ('make_active',)
 
+    def get_products_with_category(self, obj):
+        return obj.get_products_with_category()
+    get_products_with_category.short_description = 'Products (Category)'
+    
+    
 admin.site.register(Effect)
 admin.site.register(Terpene)
 admin.site.register(CoreValue)
