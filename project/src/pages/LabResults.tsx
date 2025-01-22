@@ -2,16 +2,43 @@ import { useState, useEffect } from 'react';
 import logoImage from '/images/logo.png';
 import { LabResult } from '../api';
 
-
 const LabResults = () => {
   interface LabResults {
-    make_active: boolean;}
+    make_active: boolean;
+    batchNumber: string;
+    product: {
+      name: string;
+      category: string;
+      type: string;
+      thc: string;
+      cbd: string;
+    };
+    thc: string;
+    cbd: string;
+    date: string;
+    lab: string;
+    pdf: string;
+  }
   const [labResults, setLabResults] = useState<LabResults[]>([]);
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/lab-results/')
       .then(response => response.json())
-      .then(data => setLabResults(data.filter((item: LabResults) => item.make_active)));
+      .then(data => {
+        console.log('Fetched data:', data); // Log fetched data
+        const activeResults = data.filter((item: any) => item.make_active).map((item: any) => ({
+          make_active: item.make_active,
+          batchNumber: item.batch_number,
+          product: item.product,
+          thc: item.thc,
+          cbd: item.cbd,
+          date: item.date,
+          lab: item.lab,
+          pdf: item.pdf,
+        }));
+        console.log('Filtered active results:', activeResults); // Log filtered data
+        setLabResults(activeResults);
+      });
   }, []);
 
   const handlePdfOpen = (pdfUrl: string) => {
@@ -49,7 +76,9 @@ const LabResults = () => {
               onClick={() => handlePdfOpen(result.pdf)}
             >
               <h3 className="text-xl font-semibold mb-2">Batch Number: {result.batchNumber}</h3>
-              <p className="text-gray-600 mb-2">Strain: {result.strain}</p>
+              <p className="text-gray-600 mb-2">Product: {result.product.name}</p>
+              <p className="text-gray-600 mb-2">Category: {result.product.category}</p>
+              <p className="text-gray-600 mb-2">Type: {result.product.type}</p>
               <p className="text-gray-600 mb-2">THC: {result.thc}</p>
               <p className="text-gray-600 mb-2">CBD: {result.cbd}</p>
               <p className="text-gray-600 mb-2">Date: {result.date}</p>

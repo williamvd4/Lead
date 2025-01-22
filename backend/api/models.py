@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 class Effect(models.Model):
     name = models.CharField(max_length=100)  # Added unique constraint
@@ -58,7 +60,7 @@ class LabResult(models.Model):
     )
     thc = models.DecimalField(max_digits=5, decimal_places=2)
     cbd = models.DecimalField(max_digits=5, decimal_places=2)
-    date = models.DateField() #Consider DateTimeField
+    date = models.DateField()  # Consider DateTimeField
     lab = models.CharField(max_length=255)
     pdf = models.FileField(upload_to='lab_results/')
     make_active = models.BooleanField(default=False)  # New field
@@ -66,6 +68,9 @@ class LabResult(models.Model):
     def __str__(self):
         return self.product.name
 
+    def get_category(self):
+        return self.product.category if self.product else None    
+        
 class Retailer(models.Model):
     name = models.CharField(max_length=255)
     logo = models.ImageField(upload_to='retailers/')
