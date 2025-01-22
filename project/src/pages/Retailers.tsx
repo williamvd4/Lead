@@ -67,13 +67,13 @@ const Retailers = () => {
               <p className="text-gray-600 mb-2">{retailer.address}</p>
               <p className="text-gray-600 mb-2">Products:</p>
               <ul className="list-disc list-inside text-gray-600">
-                {Array.isArray(retailer.products) ? (
-                  retailer.products.map((product: any, idx: number) => (
-                    <li key={idx}>{product.name}</li>
-                  ))
-                ) : (
-                  <li>No products available</li>
-                )}
+              {Array.isArray(retailer.products) && retailer.products.length > 0 ? (
+                retailer.products.map((product: any, idx: number) => (
+                  <li key={idx}>{product.name}</li>
+                ))
+              ) : (
+                <li>No products available</li>
+              )}
               </ul>
             </div>
           ))}
