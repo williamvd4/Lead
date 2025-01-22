@@ -4,10 +4,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import treesImage from '/images/trees.jpg';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import gummiesImage from '/images/gummies.jpg';
-import contrateImage from '/images/contrate.jpg';
-import kushImage from '/images/kush.jpg';
-import labtestImage from '/images/labtest.jpg';
 import { useEffect, useState } from 'react';
 
 // Custom Next Arrow Component
