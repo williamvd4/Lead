@@ -28,7 +28,6 @@ interface Product {
 
 const API_URL = 'https://leadback.onrender.com';
 
-
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -37,7 +36,12 @@ const Products = () => {
   useEffect(() => {
     fetch(`${API_URL}/api/products/`)
       .then(response => response.json())
-      .then(data => setProducts(data.filter((item: Product) => item.make_active)));
+      .then(data => {
+        console.log('Fetched products:', data); // Log fetched data
+        const activeProducts = data.filter((item: Product) => item.make_active);
+        console.log('Active products:', activeProducts); // Log active products
+        setProducts(activeProducts);
+      });
   }, []);
 
   const categories = ['all', 'flower', 'edibles', 'vapes', 'concentrates', 'preroll'];
@@ -47,6 +51,8 @@ const Products = () => {
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  console.log('Filtered products:', filteredProducts); // Log filtered products
 
   return (
     <div className="min-h-screen bg-gray-50">
