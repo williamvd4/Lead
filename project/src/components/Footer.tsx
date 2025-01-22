@@ -17,7 +17,7 @@ const Footer = () => {
             <p className="text-gray-300" >License #: OCM-MICR-24-000011</p>
             <p className="text-gray-300" >For use by persons 21 or older only.</p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
+            <a href="https://www.instagram.com/leadfarmer_actual/" className="text-gray-300 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-6 w-6" aria-label="Instagram"/>
               </a>
             </div>

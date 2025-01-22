@@ -23,9 +23,10 @@ interface Product {
   description: string;
   effects: Effect[];
   terpenes: Terpene[];
+  make_active: boolean;
 }
 
-const API_URL = 'https://leadback.onrender.com';
+const API_URL = 'http://127.0.0.1:8000';
 
 
 const Products = () => {
@@ -36,7 +37,7 @@ const Products = () => {
   useEffect(() => {
     fetch(`${API_URL}/api/products/`)
       .then(response => response.json())
-      .then(data => setProducts(data));
+      .then(data => setProducts(data.filter((item: Product) => item.make_active)));
   }, []);
 
   const categories = ['all', 'flower', 'edibles', 'vapes', 'concentrates', 'preroll'];
@@ -108,11 +109,11 @@ const Products = () => {
               <h2 className="text-3xl font-bold mb-6 capitalize">{category}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {categoryProducts.map(product => (
-                  <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div key={product.id} className="bg-white rounded-lg shadow-md overflow-auto">
                     <img
                       src={product.image} // Updated to use product.image directly
                       alt={product.name}
-                      className="w-full h-60 object-cover" // Adjusted height for better display
+                      className="aspect-square w-full object-contain" // Adjusted height for better display
                     />
                     <div className="p-6">
                       <div className="flex justify-between items-start mb-2">
