@@ -1,11 +1,22 @@
 # app/admin.py
-
+from django import forms
 from django.contrib import admin
 from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature
 )
 
+class RetailerAdminForm(forms.ModelForm):
+    class Meta:
+        model = Retailer
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['products'].queryset = Product.objects.all()
+        self.fields['products'].label_from_instance = lambda obj: f"{obj.name} ({obj.category})"
+        
+        
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'type', 'thc', 'cbd', 'make_active')
@@ -32,11 +43,17 @@ class HomeCarouselItemAdmin(admin.ModelAdmin):
     
 @admin.register(Retailer)
 class RetailerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'address', 'url', 'make_active')
+    form = RetailerAdminForm
+    list_display = ('name', 'address', 'url', 'make_active', 'get_products_with_category')
     search_fields = ('name', 'address')
     list_filter = ('products',)
     list_editable = ('make_active',)
 
+    def get_products_with_category(self, obj):
+        return obj.get_products_with_category()
+    get_products_with_category.short_description = 'Products (Category)'
+    
+    
 admin.site.register(Effect)
 admin.site.register(Terpene)
 admin.site.register(CoreValue)
