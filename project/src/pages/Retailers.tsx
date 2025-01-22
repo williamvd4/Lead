@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 interface Retailer {
   make_active: boolean;
+  products?: any[];
   }
   
 
