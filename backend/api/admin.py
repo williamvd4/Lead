@@ -24,18 +24,27 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('category', 'type')
     list_editable = ('make_active',)
     
-    
 @admin.register(LabResult)
 class LabResultAdmin(admin.ModelAdmin):
-    list_display = ('batch_number', 'product', 'get_category', 'date', 'make_active')
+    list_display = ('batch_number', 'product', 'get_category', 'get_thc', 'get_cbd', 'date', 'make_active')
     search_fields = ('batch_number', 'product__name', 'lab', 'product__category')
     list_filter = ('date', 'lab', 'product__category')
     list_editable = ('make_active',)
+    exclude = ('thc', 'cbd')
 
     def get_category(self, obj):
         return obj.get_category()
     get_category.short_description = 'Category'
-        
+
+    def get_thc(self, obj):
+        return obj.get_thc()
+    get_thc.short_description = 'THC'
+
+    def get_cbd(self, obj):
+        return obj.get_cbd()
+    get_cbd.short_description = 'CBD'
+    
+            
 @admin.register(HomeCarouselItem)
 class HomeCarouselItemAdmin(admin.ModelAdmin):
     list_display = ('admin_title', 'make_active', )
