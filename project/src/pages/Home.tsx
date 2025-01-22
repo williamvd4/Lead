@@ -60,12 +60,12 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch Carousel Items
-    fetch('https://leadback.onrender.com/api/home-carousel')
+    fetch('http://127.0.0.1:8000/api/home-carousel')
       .then(response => response.json())
       .then(data => setCarouselItems(data));
 
     // Fetch Home Features
-    fetch('https://leadback.onrender.com/api/home-features')
+    fetch('http://127.0.0.1:8000/api/home-features')
       .then(response => response.json())
       .then(data => setHomeFeatures(data));
   }, []);
