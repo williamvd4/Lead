@@ -39,7 +39,7 @@ class LabResultSerializer(serializers.ModelSerializer):
         return obj.get_cbd()
 
 class RetailerSerializer(serializers.ModelSerializer):
-    products = serializers.SerializerMethodField()
+    products = ProductSerializer(many=True)
 
     class Meta:
         model = Retailer
