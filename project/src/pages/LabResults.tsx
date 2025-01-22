@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import logoImage from '/images/logo.png';
+import { LabResult } from '../api';
 
 
 const LabResults = () => {
-  const [labResults, setLabResults] = useState<any[]>([]);
+  interface LabResults {
+    make_active: boolean;}
+  const [labResults, setLabResults] = useState<LabResults[]>([]);
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/lab-results/')
       .then(response => response.json())
-      .then(data => setLabResults(data));
+      .then(data => setLabResults(data.filter((item: LabResults) => item.make_active)));
   }, []);
 
   const handlePdfOpen = (pdfUrl: string) => {

@@ -53,6 +53,7 @@ const Home = () => {
     link: string;
     buttonText: string;
     link_page?: string;
+    make_active: boolean;
   }
 
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
@@ -60,12 +61,12 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch Carousel Items
-    fetch('http://127.0.0.1:8000/api/home-carousel')
+    fetch('http://127.0.0.1:8000/api/home-carousel/')
       .then(response => response.json())
-      .then(data => setCarouselItems(data));
+      .then(data => setCarouselItems(data.filter((item: CarouselItem) => item.make_active)));
 
     // Fetch Home Features
-    fetch('http://127.0.0.1:8000/api/home-features')
+    fetch('http://127.0.0.1:8000/api/home-features/')
       .then(response => response.json())
       .then(data => setHomeFeatures(data));
   }, []);

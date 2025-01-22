@@ -36,6 +36,7 @@ class Product(models.Model):
     description = models.TextField()
     effects = models.ManyToManyField(Effect, related_name='products', blank=True) # Added blank=True
     terpenes = models.ManyToManyField(Terpene, related_name='products', blank=True) # Added blank=True
+    make_active = models.BooleanField(default=False)  # New field
 
     def __str__(self):
         return self.name
@@ -43,7 +44,7 @@ class Product(models.Model):
     # Add get_image_url method
     def get_image_url(self):
         if self.image:
-            return f'https://leadback.onrender.com{self.image.url}'
+            return self.image.url
         return None
 
 class LabResult(models.Model):
@@ -60,6 +61,7 @@ class LabResult(models.Model):
     date = models.DateField() #Consider DateTimeField
     lab = models.CharField(max_length=255)
     pdf = models.FileField(upload_to='lab_results/')
+    make_active = models.BooleanField(default=False)  # New field
 
     def __str__(self):
         return self.product.name
@@ -70,6 +72,7 @@ class Retailer(models.Model):
     address = models.CharField(max_length=255)
     url = models.URLField()
     products = models.ManyToManyField(Product, related_name='retailers', blank=True) # Added blank=True
+    make_active = models.BooleanField(default=False)  # New field
 
     def __str__(self):
         return self.name
@@ -77,7 +80,7 @@ class Retailer(models.Model):
     # Add get_logo_url method
     def get_logo_url(self):
         if self.logo:
-            return f'https://leadback.onrender.com{self.logo.url}'
+            return self.logo.url
         return None
 
 class CoreValue(models.Model):
@@ -106,7 +109,8 @@ class HomeCarouselItem(models.Model):
             ('/cultivation', 'Cultivation')
         ]
     )  # Updated field
-
+    make_active = models.BooleanField(default=False)  # New field
+    
     class Meta:
         ordering = ['order']
 
@@ -115,7 +119,7 @@ class HomeCarouselItem(models.Model):
 
     def get_image_url(self):
         if self.image:
-            return f'https://leadback.onrender.com{self.image.url}'
+            return self.image.url
         return None
 
 class HomeFeature(models.Model):
@@ -123,6 +127,9 @@ class HomeFeature(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     order = models.PositiveIntegerField(default=0)
+    
+    make_active = models.BooleanField(default=False)  # New field
+
 
     class Meta:
         ordering = ['order']
@@ -132,5 +139,5 @@ class HomeFeature(models.Model):
     
     def get_image_url(self):
         if self.image:
-            return f'https://leadback.onrender.com{self.image.url}'
+            return self.image.url
         return None

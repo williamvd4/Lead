@@ -1,13 +1,18 @@
 import logoImage from '/images/logo.png';
 import { useState, useEffect } from 'react';
 
+
+interface Retailer {
+make_active: boolean;
+}
+
 const Retailers = () => {
   const [retailers, setRetailers] = useState<any[]>([]);
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/retailers')
       .then(response => response.json())
-      .then(data => setRetailers(data));
+      .then(data => setRetailers(data.filter((item: Retailer) => item.make_active)));
   }, []);
 
 const handleRedirect = (url: string) => {
