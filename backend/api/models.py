@@ -35,7 +35,7 @@ class Product(models.Model):
     thc = models.DecimalField(max_digits=5, decimal_places=2)
     cbd = models.DecimalField(max_digits=5, decimal_places=2)
     image = models.ImageField(upload_to='products/')
-    description = models.TextField()
+    description = models.TextField(blank=True)  # Made optional
     effects = models.ManyToManyField(Effect, related_name='products', blank=True) # Added blank=True
     terpenes = models.ManyToManyField(Terpene, related_name='products', blank=True) # Added blank=True
     make_active = models.BooleanField(default=False)  # New field
@@ -54,9 +54,7 @@ class LabResult(models.Model):
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        related_name='lab_results',
-        null=True,      # Allow null values in the database
-        blank=True,     # Allow blank values in forms (important for Django admin)
+        related_name='lab_results'
     )
     thc = models.DecimalField(max_digits=5, decimal_places=2)
     cbd = models.DecimalField(max_digits=5, decimal_places=2)
@@ -134,10 +132,10 @@ class HomeCarouselItem(models.Model):
         return None
 
 class HomeFeature(models.Model):
-    image = models.ImageField(upload_to='home-features', null=True, blank=True)
-    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='home-features', null=True)
+    title = models.CharField(max_length=255, blank=True)
     description = models.TextField()
-    order = models.PositiveIntegerField(default=0)
+    order = models.PositiveIntegerField(default=0, blank=True)
     
     make_active = models.BooleanField(default=False)  # New field
 
