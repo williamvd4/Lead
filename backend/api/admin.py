@@ -16,12 +16,15 @@ class ProductAdmin(admin.ModelAdmin):
     
 @admin.register(LabResult)
 class LabResultAdmin(admin.ModelAdmin):
-    list_display = ('batch_number', 'product', 'date', 'make_active')
-    search_fields = ('batch_number', 'product__name', 'lab')
-    list_filter = ('date', 'lab')
+    list_display = ('batch_number', 'product', 'get_category', 'date', 'make_active')
+    search_fields = ('batch_number', 'product__name', 'lab', 'product__category')
+    list_filter = ('date', 'lab', 'product__category')
     list_editable = ('make_active',)
 
-    
+    def get_category(self, obj):
+        return obj.get_category()
+    get_category.short_description = 'Category'
+        
 @admin.register(HomeCarouselItem)
 class HomeCarouselItemAdmin(admin.ModelAdmin):
     list_display = ('admin_title', 'make_active', )

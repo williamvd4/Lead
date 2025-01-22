@@ -16,20 +16,18 @@ class TerpeneSerializer(serializers.ModelSerializer):
         model = Terpene
         fields = '__all__'
 
-class LabResultSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = LabResult
-        fields = '__all__'
-
 class ProductSerializer(serializers.ModelSerializer):
-    effects = EffectSerializer(many=True, read_only=True)
-    terpenes = TerpeneSerializer(many=True, read_only=True)
-    lab_results = LabResultSerializer(many=True, read_only=True)
-
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['name', 'category', 'type', 'thc', 'cbd']
 
+class LabResultSerializer(serializers.ModelSerializer):
+    product = ProductSerializer()
+
+    class Meta:
+        model = LabResult
+        fields = ['batch_number', 'product', 'thc', 'cbd', 'date', 'lab', 'pdf', 'make_active']
+        
 class RetailerSerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True, read_only=True)
 
