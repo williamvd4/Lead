@@ -32,6 +32,7 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(`${API_URL}/api/products/`)
@@ -40,6 +41,10 @@ const Products = () => {
         console.log('Fetched products:', data); // Log fetched data
         const activeProducts = data.filter((item: Product) => item.make_active);
         console.log('Active products:', activeProducts); // Log active products
+        activeProducts.forEach((product: Product) => {
+          console.log(`Product ${product.name} effects:`, product.effects);
+          console.log(`Product ${product.name} terpenes:`, product.terpenes);
+        });
         setProducts(activeProducts);
       });
   }, []);
@@ -119,7 +124,8 @@ const Products = () => {
                     <img
                       src={product.image} // Updated to use product.image directly
                       alt={product.name}
-                      className="w-full h-60 object-contain bg-black" // Adjusted height for better display
+                      className="w-full h-60 object-contain bg-black cursor-pointer" // Adjusted height for better display
+                      onClick={() => setSelectedImage(product.image)}
                     />
                     <div className="p-6">
                       <div className="flex justify-between items-start mb-2">
@@ -141,32 +147,36 @@ const Products = () => {
                             </div>
                           </div>
                         </div>
-                        <div>
-                          <h4 className="font-semibold mb-2">Effects</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {product.effects.map(effect => (
-                              <span
-                                key={effect.id}
-                                className="bg-gray-100 text-sm px-3 py-1 rounded"
-                              >
-                                {effect.name}
-                              </span>
-                            ))}
+                        {product.effects.length > 0 && (
+                          <div>
+                            <h4 className="font-semibold mb-2">Effects</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {product.effects.map(effect => (
+                                <span
+                                  key={effect.id}
+                                  className="bg-gray-100 text-sm px-3 py-1 rounded"
+                                >
+                                  {effect.name}
+                                </span>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold mb-2">Terpenes</h4>
-                          <div className="space-y-2">
-                            {product.terpenes.map(terpene => (
-                              <div
-                                key={terpene.id}
-                                className="flex justify-between items-center"
-                              >
-                                <span>{terpene.name}</span>
-                              </div>
-                            ))}
+                        )}
+                        {product.terpenes.length > 0 && (
+                          <div>
+                            <h4 className="font-semibold mb-2">Terpenes</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {product.terpenes.map(terpene => (
+                                <div
+                                  key={terpene.id}
+                                  className="bg-gray-100 text-sm px-3 py-1 rounded"
+                                >
+                                  <span>{terpene.name}</span>
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -176,6 +186,21 @@ const Products = () => {
           );
         })}
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative">
+            <img src={selectedImage} alt="Enlarged product" className="max-w-full max-h-full" />
+            <button
+              className="absolute top-2 right-2 text-white text-2xl"
+              onClick={() => setSelectedImage(null)}
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
