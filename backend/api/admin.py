@@ -122,6 +122,17 @@ def import_images_admin(request):
         return HttpResponse('Images imported successfully')
     return HttpResponse('Failed to import images', status=400)
 
+# Custom admin views for exporting and importing database information
+def export_db_admin(request):
+    # Implement the logic to export database information
+    pass
+
+def import_db_admin(request):
+    if request.method == 'POST' and request.FILES.get('file'):
+        # Implement the logic to import database information
+        pass
+    return HttpResponse('Failed to import database information', status=400)
+
 # Store the original get_urls method
 original_get_urls = admin.site.get_urls
 
@@ -131,6 +142,8 @@ def get_urls():
     custom_urls = [
         path('export-images/', export_images_admin, name='export-images'),
         path('import-images/', import_images_admin, name='import-images'),
+        path('export-db/', export_db_admin, name='export-db'),
+        path('import-db/', import_db_admin, name='import-db'),
     ]
     return custom_urls + urls
 
