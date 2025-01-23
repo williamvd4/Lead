@@ -119,7 +119,7 @@ const Products = () => {
                     <img
                       src={product.image} // Updated to use product.image directly
                       alt={product.name}
-                      className="w-full h-60 object-contain" // Adjusted height for better display
+                      className="w-full h-60 object-contain bg-blk" // Adjusted height for better display
                     />
                     <div className="p-6">
                       <div className="flex justify-between items-start mb-2">
