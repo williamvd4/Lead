@@ -23,9 +23,6 @@ SECRET_KEY = "django-insecure-gl%0g@o071egzz5%2hd0p__k)8f$o+-5n^a21$7)p332$_3ug*
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "localhost:5173",
     "leadfront.onrender.com",
     "leadback.onrender.com",
     ".onrender.com",
@@ -71,7 +68,6 @@ FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
     "https://leadfront.onrender.com",
     "https://leadback.onrender.com",    
 ]
