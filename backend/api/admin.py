@@ -1,6 +1,10 @@
 # app/admin.py
-from import_export import resources
+from import_export import fields, resources
 from import_export.admin import ImportExportModelAdmin
+from import_export.widgets import ForeignKeyWidget
+from django.core.files.base import ContentFile
+import base64
+import os
 from django import forms
 from django.contrib import admin
 from .models import (
@@ -8,17 +12,57 @@ from .models import (
     Retailer, CoreValue, HomeCarouselItem, HomeFeature
 )
 
-class ProductResource(resources.ModelResource):
+class BaseImageResource(resources.ModelResource):
+    def export_field(self, field, obj):
+        if field.attribute and field.attribute.endswith('image') and getattr(obj, field.attribute):
+            image_file = getattr(obj, field.attribute)
+            try:
+                with open(image_file.path, 'rb') as f:
+                    return base64.b64encode(f.read()).decode('utf-8')
+            except:
+                return ''
+        return super().export_field(field, obj)
+
+    def import_field(self, field, obj, data, is_m2m=False):
+        if field.attribute and field.attribute.endswith('image') and data.get(field.column_name):
+            image_data = base64.b64decode(data[field.column_name])
+            image_name = f"{obj.__class__.__name__.lower()}_{field.attribute}_{os.urandom(8).hex()}"
+            content_file = ContentFile(image_data, name=image_name)
+            setattr(obj, field.attribute, content_file)
+        else:
+            super().import_field(field, obj, data, is_m2m)
+
+class ProductResource(BaseImageResource):
+    image = fields.Field(column_name='image', attribute='image')
+    
     class Meta:
         model = Product
+        fields = ('id', 'name', 'category', 'type', 'thc', 'cbd', 'description', 'effects', 'terpenes', 'make_active', 'image')
 
 class LabResultResource(resources.ModelResource):
     class Meta:
         model = LabResult
 
-class RetailerResource(resources.ModelResource):
+class RetailerResource(BaseImageResource):
+    logo = fields.Field(column_name='logo', attribute='logo')
+    
     class Meta:
         model = Retailer
+        fields = ('id', 'name', 'logo', 'address', 'url', 'make_active', 'products')
+
+class HomeCarouselItemResource(BaseImageResource):
+    image = fields.Field(column_name='image', attribute='image')
+    
+    class Meta:
+        model = HomeCarouselItem
+        fields = ('id', 'admin_title', 'image', 'title', 'description', 'order', 'link_page', 'make_active')
+
+class HomeFeatureResource(BaseImageResource):
+    image = fields.Field(column_name='image', attribute='image')
+    
+    class Meta:
+        model = HomeFeature
+        fields = ('id', 'image', 'title', 'description', 'order', 'make_active')
 
 class RetailerAdminForm(forms.ModelForm):
     class Meta:
@@ -63,6 +107,7 @@ class LabResultAdmin(ImportExportModelAdmin):
             
 @admin.register(HomeCarouselItem)
 class HomeCarouselItemAdmin(ImportExportModelAdmin):
+    resource_class = HomeCarouselItemResource
     list_display = ('admin_title', 'make_active', )
     list_editable = ('make_active',)
     
@@ -95,4 +140,5 @@ class CoreValueAdmin(ImportExportModelAdmin):
 
 @admin.register(HomeFeature)
 class HomeFeatureAdmin(ImportExportModelAdmin):
+    resource_class = HomeFeatureResource
     pass
