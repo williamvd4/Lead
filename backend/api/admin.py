@@ -13,7 +13,7 @@ from .models import (
 )
 
 class BaseImageResource(resources.ModelResource):
-    def export_field(self, field, obj):
+    def export_field(self, field, obj, **kwargs):
         if field.attribute and field.attribute.endswith('image') and getattr(obj, field.attribute):
             image_file = getattr(obj, field.attribute)
             try:
@@ -21,7 +21,7 @@ class BaseImageResource(resources.ModelResource):
                     return base64.b64encode(f.read()).decode('utf-8')
             except:
                 return ''
-        return super().export_field(field, obj)
+        return super().export_field(field, obj, **kwargs)
 
     def import_field(self, field, obj, data, is_m2m=False):
         if field.attribute and field.attribute.endswith('image') and data.get(field.column_name):
