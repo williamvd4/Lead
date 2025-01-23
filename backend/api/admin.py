@@ -5,6 +5,7 @@ from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature
 )
+from import_export.admin import ImportExportModelAdmin
 
 class RetailerAdminForm(forms.ModelForm):
     class Meta:
@@ -18,14 +19,14 @@ class RetailerAdminForm(forms.ModelForm):
         
         
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     list_display = ('name', 'category', 'type', 'thc', 'cbd', 'make_active')
     search_fields = ('name', 'category', 'type')
     list_filter = ('category', 'type')
     list_editable = ('make_active',)
     
 @admin.register(LabResult)
-class LabResultAdmin(admin.ModelAdmin):
+class LabResultAdmin(ImportExportModelAdmin):
     list_display = ('batch_number', 'product', 'get_category', 'get_thc', 'get_cbd', 'date', 'make_active')
     search_fields = ('batch_number', 'product__name', 'lab', 'product__category')
     list_filter = ('date', 'lab', 'product__category')
@@ -46,12 +47,12 @@ class LabResultAdmin(admin.ModelAdmin):
     
             
 @admin.register(HomeCarouselItem)
-class HomeCarouselItemAdmin(admin.ModelAdmin):
+class HomeCarouselItemAdmin(ImportExportModelAdmin):
     list_display = ('admin_title', 'make_active', )
     list_editable = ('make_active',)
     
 @admin.register(Retailer)
-class RetailerAdmin(admin.ModelAdmin):
+class RetailerAdmin(ImportExportModelAdmin):
     form = RetailerAdminForm
     list_display = ('name', 'address', 'url', 'make_active', 'get_products_with_category')
     search_fields = ('name', 'address')

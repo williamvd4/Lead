@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "api",
     "corsheaders",
     "storages",
+    "import_export",
 ]
 
 MIDDLEWARE = [
