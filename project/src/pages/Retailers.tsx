@@ -19,7 +19,7 @@ const Retailers = () => {
   const [retailers, setRetailers] = useState<Retailer[]>([]);
 
   useEffect(() => {
-    fetch('https://leadback.onrender.com/api/retailers')
+    fetch('http://127.0.0.1:8000/api/retailers')
       .then(response => response.json())
       .then(data => {
         console.log('Fetched data:', data); // Log the fetched data
