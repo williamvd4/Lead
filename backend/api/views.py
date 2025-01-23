@@ -99,6 +99,7 @@ def export_database_and_images(request):
             for root, _, files in os.walk(folder_path):
                 for file in files:
                     file_path = os.path.join(root, file)
+                    print(f"Adding file: {file_path}")  # Debug statement
                     zip_file.write(file_path, os.path.relpath(file_path, settings.MEDIA_ROOT))
 
     buffer.seek(0)

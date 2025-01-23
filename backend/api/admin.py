@@ -3,16 +3,22 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from django import forms
 from django.contrib import admin
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.urls import path
+from django.urls import reverse
+from django.shortcuts import redirect
 import zipfile
 import io
+import json
+import io
+from django.core import serializers
 import os
 from django.conf import settings
 from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature
 )
+from .views import export_database_and_images
 
 class ProductResource(resources.ModelResource):
     class Meta:
@@ -124,8 +130,7 @@ def import_images_admin(request):
 
 # Custom admin views for exporting and importing database information
 def export_db_admin(request):
-    # Implement the logic to export database information
-    pass
+    return redirect(reverse('export-database-and-images'))
 
 def import_db_admin(request):
     if request.method == 'POST' and request.FILES.get('file'):
@@ -144,7 +149,43 @@ def get_urls():
         path('import-images/', import_images_admin, name='import-images'),
         path('export-db/', export_db_admin, name='export-db'),
         path('import-db/', import_db_admin, name='import-db'),
+        path('export-database-and-images/', export_database_and_images, name='export-database-and-images'),
     ]
     return custom_urls + urls
+
+
+
+def export_database_and_images(request):
+    # Export database data
+    data = {
+        'effects': serializers.serialize('json', Effect.objects.all()),
+        'terpenes': serializers.serialize('json', Terpene.objects.all()),
+        'products': serializers.serialize('json', Product.objects.all()),
+        'lab_results': serializers.serialize('json', LabResult.objects.all()),
+        'retailers': serializers.serialize('json', Retailer.objects.all()),
+        'core_values': serializers.serialize('json', CoreValue.objects.all()),
+        'home_carousel_items': serializers.serialize('json', HomeCarouselItem.objects.all()),
+        'home_features': serializers.serialize('json', HomeFeature.objects.all()),
+    }
+    json_data = json.dumps(data)
+
+    # Create a zip file
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, 'w') as zip_file:
+        # Add JSON data to the zip file
+        zip_file.writestr('data.json', json_data)
+
+        # Add images to the zip file
+        for folder in ['products', 'home_carousel', 'home-features', 'retailers']:
+            folder_path = os.path.join(settings.MEDIA_ROOT, folder)
+            for root, _, files in os.walk(folder_path):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    zip_file.write(file_path, os.path.relpath(file_path, settings.MEDIA_ROOT))
+
+    buffer.seek(0)
+    response = HttpResponse(buffer, content_type='application/zip')
+    response['Content-Disposition'] = 'attachment; filename=database_and_images.zip'
+    return response
 
 admin.site.get_urls = get_urls
