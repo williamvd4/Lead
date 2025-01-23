@@ -1,98 +1,68 @@
-# app/admin.py
-from import_export import resources
-from import_export.admin import ImportExportModelAdmin
-from django import forms
-from django.contrib import admin
+# app/views.py
+
+from rest_framework import viewsets
+from django.shortcuts import render
 from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature
 )
+from .serializers import (
+    EffectSerializer, TerpeneSerializer, ProductSerializer, LabResultSerializer,
+    RetailerSerializer, CoreValueSerializer, HomeCarouselItemSerializer, HomeFeatureSerializer
+)
 
-class ProductResource(resources.ModelResource):
-    class Meta:
-        model = Product
+class EffectViewSet(viewsets.ModelViewSet):
+    queryset = Effect.objects.all()
+    serializer_class = EffectSerializer
 
-class LabResultResource(resources.ModelResource):
-    class Meta:
-        model = LabResult
+class TerpeneViewSet(viewsets.ModelViewSet):
+    queryset = Terpene.objects.all()
+    serializer_class = TerpeneSerializer
 
-class RetailerResource(resources.ModelResource):
-    class Meta:
-        model = Retailer
-
-class RetailerAdminForm(forms.ModelForm):
-    class Meta:
-        model = Retailer
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['products'].queryset = Product.objects.all()
-        self.fields['products'].label_from_instance = lambda obj: f"{obj.name} ({obj.category})"
-        
-        
-@admin.register(Product)
-class ProductAdmin(ImportExportModelAdmin):
-    resource_class = ProductResource
-    list_display = ('name', 'category', 'type', 'thc', 'cbd', 'make_active')
-    search_fields = ('name', 'category', 'type')
-    list_filter = ('category', 'type')
-    list_editable = ('make_active',)
+class LabResultViewSet(viewsets.ModelViewSet):
+    queryset = LabResult.objects.all()
+    serializer_class = LabResultSerializer
     
-@admin.register(LabResult)
-class LabResultAdmin(ImportExportModelAdmin):
-    resource_class = LabResultResource
-    list_display = ('batch_number', 'product', 'get_category', 'get_thc', 'get_cbd', 'date', 'make_active')
-    search_fields = ('batch_number', 'product__name', 'lab', 'product__category')
-    list_filter = ('date', 'lab', 'product__category')
-    list_editable = ('make_active',)
-    exclude = ('thc', 'cbd')
+    def labresults_view(request):
+        active_items = LabResult.objects.all()
+        return render(request, 'lab_results.html', {'lab_results': active_items})
 
-    def get_category(self, obj):
-        return obj.get_category()
-    get_category.short_description = 'Category'
-
-    def get_thc(self, obj):
-        return obj.get_thc()
-    get_thc.short_description = 'THC'
-
-    def get_cbd(self, obj):
-        return obj.get_cbd()
-    get_cbd.short_description = 'CBD'
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
     
-            
-@admin.register(HomeCarouselItem)
-class HomeCarouselItemAdmin(ImportExportModelAdmin):
-    list_display = ('admin_title', 'make_active', )
-    list_editable = ('make_active',)
+    def products_view(request):
+        active_items = Product.objects.all()
+        return render(request, 'products.html', {'products': active_items})
+
+
+class RetailerViewSet(viewsets.ModelViewSet):
+    queryset = Retailer.objects.all()
+    serializer_class = RetailerSerializer
     
-@admin.register(Retailer)
-class RetailerAdmin(ImportExportModelAdmin):
-    resource_class = RetailerResource
-    form = RetailerAdminForm
-    list_display = ('name', 'address', 'url', 'make_active', 'get_products_with_category')
-    search_fields = ('name', 'address')
-    list_filter = ('products',)
-    list_editable = ('make_active',)
-
-    def get_products_with_category(self, obj):
-        return obj.get_products_with_category()
-    get_products_with_category.short_description = 'Products (Category)'
-    
+    def retailers_view(request):
+        active_items = Retailer.objects.all()
+        return render(request, 'retailers.html', {'retailers': active_items})
 
 
-@admin.register(Effect)
-class EffectAdmin(ImportExportModelAdmin):
-    pass
+class CoreValueViewSet(viewsets.ModelViewSet):
+    queryset = CoreValue.objects.all()
+    serializer_class = CoreValueSerializer
 
-@admin.register(Terpene)
-class TerpeneAdmin(ImportExportModelAdmin):
-    pass
+class HomeCarouselItemViewSet(viewsets.ModelViewSet):
+    queryset = HomeCarouselItem.objects.filter(make_active=True)
+    serializer_class = HomeCarouselItemSerializer
 
-@admin.register(CoreValue)
-class CoreValueAdmin(ImportExportModelAdmin):
-    pass
+    def create(self, request, *args, **kwargs):
+        print(request.data)  # Debug statement
+        response = super().create(request, *args, **kwargs)
+        print(response.data)  # Debug statement
+        return response
 
-@admin.register(HomeFeature)
-class HomeFeatureAdmin(ImportExportModelAdmin):
-    pass
+def home_view(request):
+    active_items = HomeCarouselItem.objects.filter(make_active=True)
+    return render(request, 'home.html', {'carousel_items': active_items})
+
+class HomeFeatureViewSet(viewsets.ModelViewSet):
+    queryset = HomeFeature.objects.all()
+    serializer_class = HomeFeatureSerializer
