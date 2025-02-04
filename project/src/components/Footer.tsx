@@ -23,34 +23,6 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-gray-300 hover:text-white transition-colors" aria-label="About Us">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/products" className="text-gray-300 hover:text-white transition-colors" aria-label="Products">
-                  Products
-
-                </Link>
-
-              </li>
-              <li>
-                <Link to="/retailers" className="text-gray-300 hover:text-white transition-colors" aria-label="Find a Retailer">
-                  Find a Retailer
-                </Link>
-              </li>
-              <li>
-                <Link to="/lab-results" className="text-gray-300 hover:text-white transition-colors" aria-label="Lab Results">
-                  Lab Results
-                </Link>
-              </li>
-            </ul>
-          </div>
-
 
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-300">
