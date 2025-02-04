@@ -51,50 +51,19 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li>123 Cannabis Way</li>
-              <li>New York, NY 10001</li>
-              <li>info@leadfarmer.com</li>
-              <li>(555) 123-4567</li>
-            </ul>
-          </div>
 
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  Cookie Policy
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-300">
           <p>
             © {new Date().getFullYear()} LEADFARMER. All rights reserved. For use by persons 21 or
             older only.
           </p>
-          <p className="mt-2">
-            This product has not been evaluated by the Food and Drug Administration.
-          </p>
+
         </div>
       </div>
-    </footer>
-  );
-};
+      </div>
+      </footer>
+    );
+  };
 
 export default Footer;
