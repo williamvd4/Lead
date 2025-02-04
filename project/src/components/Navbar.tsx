@@ -36,7 +36,7 @@ const Navbar = () => {
                   className={`${
                     location.pathname === item.href
                       ? 'font-bold text-emerald-800'
-                      : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none focus:ring focus:ring-emerald-800'
+                      : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none'
                   } transition-colors duration-200`}
                 >
                   {item.name}
