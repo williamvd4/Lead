@@ -26,7 +26,7 @@ interface Product {
   make_active: boolean;
 }
 
-const API_URL = 'https://leadback.onrender.com';
+const API_URL = 'http://127.0.0.1:8000'; // Updated to local backend
 
 const Products = () => {
   const [loading, setLoading] = useState(true); // Loading state

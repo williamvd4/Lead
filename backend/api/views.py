@@ -10,11 +10,13 @@ import io
 import json
 from .models import (
     Effect, Terpene, Product, LabResult,
-    Retailer, CoreValue, HomeCarouselItem, HomeFeature
+    Retailer, CoreValue, HomeCarouselItem, HomeFeature,
+    ShopItems, ShopDetails  # Updated model name
 )
 from .serializers import (
     EffectSerializer, TerpeneSerializer, ProductSerializer, LabResultSerializer,
-    RetailerSerializer, CoreValueSerializer, HomeCarouselItemSerializer, HomeFeatureSerializer
+    RetailerSerializer, CoreValueSerializer, HomeCarouselItemSerializer, HomeFeatureSerializer,
+    ShopItemsSerializer, ShopDetailsSerializer  # Updated serializer name
 )
 
 class EffectViewSet(viewsets.ModelViewSet):
@@ -73,6 +75,14 @@ class HomeFeatureViewSet(viewsets.ModelViewSet):
     queryset = HomeFeature.objects.all()
     serializer_class = HomeFeatureSerializer
 
+class ShopItemsViewSet(viewsets.ModelViewSet):  # Updated class name
+    queryset = ShopItems.objects.all()  # Updated model reference
+    serializer_class = ShopItemsSerializer  # Updated serializer reference
+
+class ShopDetailsViewSet(viewsets.ModelViewSet):
+    queryset = ShopDetails.objects.all()
+    serializer_class = ShopDetailsSerializer
+
 def export_database_and_images(request):
     # Export database data
     data = {
@@ -82,7 +92,7 @@ def export_database_and_images(request):
         'lab_results': serializers.serialize('json', LabResult.objects.all()),
         'retailers': serializers.serialize('json', Retailer.objects.all()),
         'core_values': serializers.serialize('json', CoreValue.objects.all()),
-        'home_carousel_items': serializers.serialize('json', HomeCarouselItem.objects.all()),
+        'home_carousel': serializers.serialize('json', HomeCarouselItem.objects.all()),
         'home_features': serializers.serialize('json', HomeFeature.objects.all()),
     }
     json_data = json.dumps(data)

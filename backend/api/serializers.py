@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from .models import (
     Effect, Terpene, Product, LabResult,
-    Retailer, CoreValue, HomeCarouselItem, HomeFeature
+    Retailer, CoreValue, HomeCarouselItem, HomeFeature,
+    ShopItems, ShopDetails  # Updated model name
 )
 
 class EffectSerializer(serializers.ModelSerializer):
@@ -75,4 +76,21 @@ class HomeCarouselItemSerializer(serializers.ModelSerializer):
 class HomeFeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = HomeFeature
+        fields = '__all__'
+
+class ShopItemsSerializer(serializers.ModelSerializer):  # Updated class name
+    image_url = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = ShopItems  # Updated model reference
+        fields = '__all__'
+    
+    def get_image_url(self, obj):
+        if obj.image:
+            return obj.image.url
+        return None
+
+class ShopDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShopDetails
         fields = '__all__'

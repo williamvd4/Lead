@@ -1,6 +1,7 @@
-
 import os
 from pathlib import Path
+
+from oscar.defaults import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,9 +9,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Use the Render disk mount path for storing media files
 
 STATIC_URL = '/static/'
-STATIC_ROOT =  'staticfiles'
-MEDIA_URL = 'https://leadback.onrender.com/media/'
-MEDIA_ROOT = os.path.join('/mnt/data', 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Use absolute path for STATIC_ROOT
+MEDIA_URL = '/media/'  # Ensure this is set for serving media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Ensure this is set for storing media files
 
 
 # Quick-start development settings - unsuitable for production
@@ -20,14 +21,16 @@ MEDIA_ROOT = os.path.join('/mnt/data', 'media')
 SECRET_KEY = "django-insecure-gl%0g@o071egzz5%2hd0p__k)8f$o+-5n^a21$7)p332$_3ug*"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "localhost:5173",
     "leadfront.onrender.com",
     "leadback.onrender.com",
     ".onrender.com",
 ]
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,32 +57,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
-]
-
-
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_ROOT = MEDIA_ROOT
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-FILE_UPLOAD_PERMISSIONS = 0o644
-FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
-
-
-CORS_ALLOWED_ORIGINS = [
-    "https://leadfront.onrender.com",
-    "https://leadback.onrender.com",    
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://leadfront.onrender.com",
-    'https://leadback.onrender.com'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny' # Or appropriate permissions
+        'rest_framework.permissions.AllowAny'  # Or appropriate permissions
     ]
 }
 
@@ -105,16 +87,10 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "jang",
-        "USER": "jang_user",
-        "PASSWORD": "ckpbTS6dgp9hD4M8iSGVykd4V4svbslE",
-        "HOST": "dpg-cu7pc7bqf0us73e76oa0-a", 
-        "URL": "postgresql://jang_user:ckpbTS6dgp9hD4M8iSGVykd4V4svbslE@dpg-cu7pc7bqf0us73e76oa0-a/jang",
-        "PORT": "5432",
+        "ENGINE": "django.db.backends.sqlite3",  # Use SQLite for local development
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -155,3 +131,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# CORS Configuration
+CORS_ALLOW_ALL_ORIGINS = True  # For development only
+# For production, use specific origins:
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    # Add your production domain when deployed
+]

@@ -14,6 +14,7 @@ const Navbar = () => {
     { name: 'Retailers', href: '/retailers' },
     { name: 'Lab Results', href: '/LabResults' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Shop', href: '/ShopItems' }, // Updated href to ShopItems
   ];
 
   return (

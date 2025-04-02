@@ -3,8 +3,10 @@ from django import forms
 from django.contrib import admin
 from .models import (
     Effect, Terpene, Product, LabResult,
-    Retailer, CoreValue, HomeCarouselItem, HomeFeature
+    Retailer, CoreValue, HomeCarouselItem, HomeFeature,
+    ShopItems, ShopDetails  # Updated model name
 )
+from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 class RetailerAdminForm(forms.ModelForm):
@@ -68,3 +70,14 @@ admin.site.register(Effect)
 admin.site.register(Terpene)
 admin.site.register(CoreValue)
 admin.site.register(HomeFeature)
+
+@admin.register(ShopItems)  # Updated registration
+class ShopItemsAdmin(ImportExportModelAdmin):  # Updated class name
+    list_display = ('name', 'price', 'category', 'size', 'in_stock')
+    search_fields = ('name', 'description', 'category')
+    list_filter = ('category', 'size', 'in_stock')
+
+@admin.register(ShopDetails)
+class ShopDetailsAdmin(ImportExportModelAdmin):
+    list_display = ('shop', 'detail')
+    search_fields = ('shop__name', 'detail')
