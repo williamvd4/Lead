@@ -5,7 +5,7 @@ import ProductModal from '../components/ProductModal';
 interface Product {
   id: number;
   name: string;
-  price?: number | string | null; // Allow price to be a number, string, or null
+  price?: number; // Ensure price is consistent with ProductModal's definition
   image?: string;
   description: string;
   category?: string;
@@ -19,7 +19,8 @@ const ShopItems: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [cart, setCart] = useState<Product[]>([]); // New state for cart
+  const [cart, setCart] = useState<Product[]>([]);
+  const [popupVisible, setPopupVisible] = useState<number | null>(null); // State for popup visibility
 
   // Fetch products from API
   useEffect(() => {
@@ -47,9 +48,24 @@ const ShopItems: React.FC = () => {
 
   const handleAddToCart = (product: Product, selectedSize: string = 'N/A') => {
     console.log(`Added ${product.name} (Size: ${selectedSize}) to cart.`);
-    // Add actual cart logic here (e.g., update cart state)
-    setCart([...cart, { ...product, size: selectedSize }]);
-    alert(`${product.name} (Size: ${selectedSize}) added to cart!`);
+    const updatedCart = [...cart, { ...product, size: selectedSize }];
+    setCart(updatedCart);
+    localStorage.setItem('basket', JSON.stringify({
+      id: 1,
+      lines: updatedCart.map(item => ({
+        id: item.id,
+        product: item.id,
+        product_title: item.name,
+        quantity: 1,
+        line_price_incl_tax: item.price ? item.price.toString() : '0.00',
+      })),
+      total_incl_tax: updatedCart.reduce((sum, item) => sum + (item.price ? parseFloat(item.price.toString()) : 0), 0).toFixed(2),
+      num_items: updatedCart.length,
+    }));
+
+    // Show popup near the button
+    setPopupVisible(product.id);
+    setTimeout(() => setPopupVisible(null), 2000); // Hide after 2 seconds
   };
 
   const openModal = (product: Product) => {
@@ -114,15 +130,34 @@ const ShopItems: React.FC = () => {
                     {product.category === 'clothing' && product.size && product.size !== 'N/A' && (
                       <p className="text-gray-600 mb-4">Size: {product.size}</p>
                     )}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation(); // Prevent modal from opening
-                        handleAddToCart(product, product.size || 'N/A');
-                      }}
-                      className="w-full bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-emerald-600"
-                    >
-                      Add to Cart
-                    </button>
+                    <div style={{ position: 'relative' }}>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent modal from opening
+                          handleAddToCart(product, product.size || 'N/A');
+                        }}
+                        className="w-full bg-emerald-500 text-white py-2 px-4 rounded-lg hover:bg-emerald-600"
+                      >
+                        Add to Cart
+                      </button>
+                      {popupVisible === product.id && (
+                        <span
+                          style={{
+                            position: 'absolute',
+                            top: '-10px',
+                            right: '10px',
+                            backgroundColor: '#28a745',
+                            color: '#fff',
+                            padding: '5px 10px',
+                            borderRadius: '5px',
+                            fontSize: '14px',
+                            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+                          }}
+                        >
+                          Added to Cart!
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))
@@ -134,10 +169,10 @@ const ShopItems: React.FC = () => {
 
         {isModalOpen && selectedProduct && (
           <ProductModal
-            product={selectedProduct}
-            onClose={closeModal}
-            onAddToCart={handleAddToCart}
-          />
+              product={selectedProduct as Product}
+              onClose={closeModal}
+              onAddToCart={handleAddToCart}
+            />
         )}
       </div>
     </div>

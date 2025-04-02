@@ -15,6 +15,9 @@ import Cart from './pages/Cart'; // Assuming you have a Cart component
 import Checkout from './pages/Checkout'; // Import Checkout component
 import ProductReviews from './pages/ProductReviews'; // Import ProductReviews component
 
+
+
+
 function App() {
   const [isVerified, setIsVerified] = useState(() => {
     return localStorage.getItem('ageVerified') === 'true';
