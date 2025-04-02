@@ -19,6 +19,7 @@ const ShopItems: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [cart, setCart] = useState<Product[]>([]); // New state for cart
 
   // Fetch products from API
   useEffect(() => {
@@ -47,6 +48,7 @@ const ShopItems: React.FC = () => {
   const handleAddToCart = (product: Product, selectedSize: string = 'N/A') => {
     console.log(`Added ${product.name} (Size: ${selectedSize}) to cart.`);
     // Add actual cart logic here (e.g., update cart state)
+    setCart([...cart, { ...product, size: selectedSize }]);
     alert(`${product.name} (Size: ${selectedSize}) added to cart!`);
   };
 

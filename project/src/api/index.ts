@@ -1,7 +1,5 @@
-// src/api/index.ts
-
 import axiosInstance from './axios';
-import { Effect, Terpene, LabResult, Product, Retailer, CoreValue, HomeCarouselItem, HomeFeature } from '../types';
+import { Effect, Terpene, LabResult, Product, Retailer, CoreValue, HomeCarouselItem, HomeFeature, Order, OrderItem, Cart, CartItem, Review } from '../types';
 
 // Example TypeScript interfaces
 export interface Effect {
@@ -72,6 +70,47 @@ export interface HomeFeature {
     order: number;
 }
 
+export interface Order {
+    id: number;
+    user: string;
+    created_at: string;
+    updated_at: string;
+    status: string;
+    total_price: number;
+}
+
+export interface OrderItem {
+    id: number;
+    order: number;
+    product: number;
+    quantity: number;
+    price: number;
+}
+
+export interface Cart {
+    id: number;
+    user: string;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface CartItem {
+    id: number;
+    cart: number;
+    product: number;
+    quantity: number;
+}
+
+export interface Review {
+    id: number;
+    product: number;
+    user: string;
+    rating: number;
+    comment: string;
+    created_at: string;
+    updated_at: string;
+}
+
 // API Calls
 
 // Effects
@@ -119,5 +158,60 @@ export const fetchHomeCarouselItems = async (): Promise<HomeCarouselItem[]> => {
 // Home Features
 export const fetchHomeFeatures = async (): Promise<HomeFeature[]> => {
     const response = await axiosInstance.get<HomeFeature[]>('/home-features/');
+    return response.data;
+};
+
+// Orders
+export const fetchOrders = async (): Promise<Order[]> => {
+    const response = await axiosInstance.get<Order[]>('/orders/');
+    return response.data;
+};
+
+export const createOrder = async (orderData: Partial<Order>): Promise<Order> => {
+    const response = await axiosInstance.post<Order>('/orders/', orderData);
+    return response.data;
+};
+
+// Order Items
+export const fetchOrderItems = async (): Promise<OrderItem[]> => {
+    const response = await axiosInstance.get<OrderItem[]>('/order-items/');
+    return response.data;
+};
+
+export const createOrderItem = async (orderItemData: Partial<OrderItem>): Promise<OrderItem> => {
+    const response = await axiosInstance.post<OrderItem>('/order-items/', orderItemData);
+    return response.data;
+};
+
+// Cart
+export const fetchCart = async (): Promise<Cart> => {
+    const response = await axiosInstance.get<Cart>('/carts/');
+    return response.data;
+};
+
+export const createCart = async (cartData: Partial<Cart>): Promise<Cart> => {
+    const response = await axiosInstance.post<Cart>('/carts/', cartData);
+    return response.data;
+};
+
+// Cart Items
+export const fetchCartItems = async (): Promise<CartItem[]> => {
+    const response = await axiosInstance.get<CartItem[]>('/cart-items/');
+    return response.data;
+};
+
+export const createCartItem = async (cartItemData: Partial<CartItem>): Promise<CartItem> => {
+    const response = await axiosInstance.post<CartItem>('/cart-items/', cartItemData);
+    return response.data;
+};
+
+// Reviews
+export const fetchReviews = async (): Promise<Review[]> => {
+    const response = await axiosInstance.get<Review[]>('/reviews/');
+    return response.data;
+};
+
+export const createReview = async (reviewData: Partial<Review>): Promise<Review> => {
+    const response = await axiosInstance.post<Review>('/reviews/', reviewData);
     return response.data;
 };

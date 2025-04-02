@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature,
-    ShopItems, ShopDetails  # Updated model name
+    ShopItems, ShopDetails, Order, OrderItem, Cart, CartItem, Review  # Updated model name
 )
 
 class EffectSerializer(serializers.ModelSerializer):
@@ -93,4 +93,29 @@ class ShopItemsSerializer(serializers.ModelSerializer):  # Updated class name
 class ShopDetailsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShopDetails
+        fields = '__all__'
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = '__all__'
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = '__all__'
+
+class CartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
+        fields = '__all__'
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
         fields = '__all__'

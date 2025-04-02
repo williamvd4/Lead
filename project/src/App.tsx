@@ -12,6 +12,8 @@ import LabResults from './pages/LabResults';
 import Contact from './pages/Contact';
 import ShopItems from './pages/ShopItems'; // Updated import name
 import Cart from './pages/Cart'; // Assuming you have a Cart component
+import Checkout from './pages/Checkout'; // Import Checkout component
+import ProductReviews from './pages/ProductReviews'; // Import ProductReviews component
 
 function App() {
   const [isVerified, setIsVerified] = useState(() => {
@@ -43,6 +45,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/ShopItems" element={<ShopItems />} /> 
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} /> {/* Add route for Checkout */}
+            <Route path="/product-reviews" element={<ProductReviews />} /> {/* Add route for ProductReviews */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

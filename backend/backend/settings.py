@@ -140,3 +140,15 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     # Add your production domain when deployed
 ]
+
+# Email backend configuration for sending email notifications
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+
+# Payment gateway configuration for processing payments
+PAYMENT_GATEWAY_API_KEY = 'your-payment-gateway-api-key'
+PAYMENT_GATEWAY_SECRET_KEY = 'your-payment-gateway-secret-key'

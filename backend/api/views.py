@@ -11,12 +11,12 @@ import json
 from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature,
-    ShopItems, ShopDetails  # Updated model name
+    ShopItems, ShopDetails, Order, OrderItem, Cart, CartItem, Review  # Updated model name
 )
 from .serializers import (
     EffectSerializer, TerpeneSerializer, ProductSerializer, LabResultSerializer,
     RetailerSerializer, CoreValueSerializer, HomeCarouselItemSerializer, HomeFeatureSerializer,
-    ShopItemsSerializer, ShopDetailsSerializer  # Updated serializer name
+    ShopItemsSerializer, ShopDetailsSerializer, OrderSerializer, OrderItemSerializer, CartSerializer, CartItemSerializer, ReviewSerializer  # Updated serializer name
 )
 
 class EffectViewSet(viewsets.ModelViewSet):
@@ -82,6 +82,26 @@ class ShopItemsViewSet(viewsets.ModelViewSet):  # Updated class name
 class ShopDetailsViewSet(viewsets.ModelViewSet):
     queryset = ShopDetails.objects.all()
     serializer_class = ShopDetailsSerializer
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class OrderItemViewSet(viewsets.ModelViewSet):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
+
+class CartViewSet(viewsets.ModelViewSet):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+
+class CartItemViewSet(viewsets.ModelViewSet):
+    queryset = CartItem.objects.all()
+    serializer_class = CartItemSerializer
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
 
 def export_database_and_images(request):
     # Export database data

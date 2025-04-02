@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature,
-    ShopItems, ShopDetails  # Updated model name
+    ShopItems, ShopDetails, Order, OrderItem, Cart, CartItem, Review  # Updated model name
 )
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
@@ -81,3 +81,33 @@ class ShopItemsAdmin(ImportExportModelAdmin):  # Updated class name
 class ShopDetailsAdmin(ImportExportModelAdmin):
     list_display = ('shop', 'detail')
     search_fields = ('shop__name', 'detail')
+
+@admin.register(Order)
+class OrderAdmin(ImportExportModelAdmin):
+    list_display = ('user', 'created_at', 'updated_at', 'status', 'total_price')
+    search_fields = ('user__username', 'status')
+    list_filter = ('status', 'created_at', 'updated_at')
+
+@admin.register(OrderItem)
+class OrderItemAdmin(ImportExportModelAdmin):
+    list_display = ('order', 'product', 'quantity', 'price')
+    search_fields = ('order__user__username', 'product__name')
+    list_filter = ('order', 'product')
+
+@admin.register(Cart)
+class CartAdmin(ImportExportModelAdmin):
+    list_display = ('user', 'created_at', 'updated_at')
+    search_fields = ('user__username',)
+    list_filter = ('created_at', 'updated_at')
+
+@admin.register(CartItem)
+class CartItemAdmin(ImportExportModelAdmin):
+    list_display = ('cart', 'product', 'quantity')
+    search_fields = ('cart__user__username', 'product__name')
+    list_filter = ('cart', 'product')
+
+@admin.register(Review)
+class ReviewAdmin(ImportExportModelAdmin):
+    list_display = ('product', 'user', 'rating', 'created_at', 'updated_at')
+    search_fields = ('product__name', 'user__username', 'rating')
+    list_filter = ('rating', 'created_at', 'updated_at')

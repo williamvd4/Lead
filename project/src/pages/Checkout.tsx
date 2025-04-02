@@ -1,12 +1,31 @@
 import React, { useState } from 'react';
 
 const Checkout: React.FC = () => {
-  // Placeholder for form state and submission logic
-  const [shippingAddress, setShippingAddress] = useState({}); // TODO: Define address structure
-  const [paymentDetails, setPaymentDetails] = useState({}); // TODO: Define payment structure
+  const [shippingAddress, setShippingAddress] = useState({
+    name: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+  });
+  const [paymentDetails, setPaymentDetails] = useState({
+    cardNumber: '',
+    expiryDate: '',
+    cvv: '',
+  });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (name in shippingAddress) {
+      setShippingAddress({ ...shippingAddress, [name]: value });
+    } else if (name in paymentDetails) {
+      setPaymentDetails({ ...paymentDetails, [name]: value });
+    }
+  };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -47,12 +66,80 @@ const Checkout: React.FC = () => {
       {/* TODO: Fetch cart summary to display here */}
       <form onSubmit={handleSubmit}>
         <h2>Shipping Address</h2>
-        {/* TODO: Add form fields for shipping address */}
-        <p>Shipping form fields go here...</p>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={shippingAddress.name}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="address"
+          placeholder="Address"
+          value={shippingAddress.address}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="city"
+          placeholder="City"
+          value={shippingAddress.city}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="state"
+          placeholder="State"
+          value={shippingAddress.state}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="zip"
+          placeholder="ZIP Code"
+          value={shippingAddress.zip}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="country"
+          placeholder="Country"
+          value={shippingAddress.country}
+          onChange={handleInputChange}
+          required
+        />
 
         <h2>Payment Details</h2>
-        {/* TODO: Add form fields for payment details */}
-        <p>Payment form fields go here...</p>
+        <input
+          type="text"
+          name="cardNumber"
+          placeholder="Card Number"
+          value={paymentDetails.cardNumber}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="expiryDate"
+          placeholder="Expiry Date (MM/YY)"
+          value={paymentDetails.expiryDate}
+          onChange={handleInputChange}
+          required
+        />
+        <input
+          type="text"
+          name="cvv"
+          placeholder="CVV"
+          value={paymentDetails.cvv}
+          onChange={handleInputChange}
+          required
+        />
 
         {error && <div style={{ color: 'red' }}>Error: {error}</div>}
 

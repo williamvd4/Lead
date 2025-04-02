@@ -48,6 +48,16 @@ const Cart: React.FC = () => {
       });
   }, []);
 
+  const handleUpdateQuantity = (lineId: number, newQuantity: number) => {
+    // TODO: Implement API call to update quantity
+    console.log(`Updating line ${lineId} to quantity ${newQuantity}`);
+  };
+
+  const handleRemoveItem = (lineId: number) => {
+    // TODO: Implement API call to remove item
+    console.log(`Removing line ${lineId}`);
+  };
+
   if (loading) return <div>Loading cart...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -62,12 +72,13 @@ const Cart: React.FC = () => {
             {basket.lines.map(line => (
               <li key={line.id}>
                 {line.product_title} - Qty: {line.quantity} - Price: {line.line_price_incl_tax}
-                {/* TODO: Add buttons to update quantity or remove item */}
+                <button onClick={() => handleUpdateQuantity(line.id, line.quantity + 1)}>+</button>
+                <button onClick={() => handleUpdateQuantity(line.id, line.quantity - 1)}>-</button>
+                <button onClick={() => handleRemoveItem(line.id)}>Remove</button>
               </li>
             ))}
           </ul>
           <h2>Total: {basket.total_incl_tax} ({basket.num_items} items)</h2>
-          {/* TODO: Add "Proceed to Checkout" button/link */}
           <button>Proceed to Checkout</button>
         </>
       )}
