@@ -1,0 +1,221 @@
+.cart-page {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.cart-page h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.cart-page-loading,
+.cart-page-error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.cart-page-error {
+  color: #d9534f;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.empty-cart h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.empty-cart p {
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.cart-summary {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align summary items to the left */
+}
+
+.cart-summary p {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cart-summary p strong {
+  color: #007bff;
+}
+
+.cart-actions-top {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  width: 100%; /* Make actions take full width of summary box */
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  gap: 20px;
+  align-items: flex-start; /* Align items at the start of the cross axis */
+}
+
+.cart-item-image {
+  flex-shrink: 0;
+}
+
+.cart-item-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-details h2 {
+  font-size: 1.3em;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.item-size {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.item-price {
+  font-size: 1em;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-quantity label {
+  margin-right: 10px;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.item-quantity input {
+  width: 60px;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.item-total {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  margin-top: auto; /* Push to bottom if details column is taller */
+}
+
+.cart-item-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center; /* Vertically center button if needed */
+  padding-top: 20px; /* Align with text content */
+}
+
+/* General Button Styles (can be moved to a global CSS file) */
+.button-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.button-primary:hover {
+  background-color: #0056b3;
+}
+
+.button-danger {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.button-danger:hover {
+  background-color: #c82333;
+}
+
+.button-outline-danger {
+  background-color: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.button-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Disabled state for buttons */
+.button-primary:disabled,
+.button-danger:disabled,
+.button-outline-danger:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  border-color: #ced4da;
+  cursor: not-allowed;
+}
+
+.clear-cart-button,
+.proceed-checkout-button,
+.remove-item-button {
+  /* These classes are for semantic purposes and potential future specific styling.
+     For now, they inherit from the base button styles (e.g., button-danger, button-primary).
+     No specific rules needed here unless you want to override something. */
+}

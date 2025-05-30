@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingCart } from 'lucide-react'; // Added ShoppingCart icon
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Menu, X, ShoppingCart } from 'lucide-react';
+import { useCart } from '../api/CartContext';
+import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { itemCount } = useCart();
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -23,29 +26,29 @@ const Navbar = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              {/* Replace with a valid icon or remove it */}
               <span className="ml-2 text-xl font-bold text-emerald-800">LEADFARMER</span>
             </Link>
           </div>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
+              <NavLink
                 key={item.name}
                 to={item.href}
-                className={`${
-                  location.pathname === item.href
-                    ? 'font-bold text-emerald-800'
-                    : 'font-semibold text-emerald-800 hover:text-emerald-800 focus:outline-none'
-                } transition-colors duration-200`}
+                className={({ isActive }) =>
+                  isActive ? 'font-bold text-emerald-800' : 'font-semibold text-emerald-800 hover:text-emerald-800'
+                }
               >
                 {item.name}
-              </Link>
+              </NavLink>
             ))}
             {/* Cart Icon */}
-            <Link to="/cart" className="text-gray-700 hover:text-emerald-800">
+            <NavLink
+              to="/cart"
+              className={({ isActive }) => `text-gray-700 hover:text-emerald-800 ${isActive ? 'font-bold' : ''}`}
+            >
               <ShoppingCart className="h-6 w-6" aria-label="Cart" />
-            </Link>
+            </NavLink>
           </div>
           {/* Mobile Navigation Button */}
           <div className="flex">
@@ -63,28 +66,31 @@ const Navbar = () => {
       {isOpen && (
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {navigation.map((item) => (
-            <Link
+            <NavLink
               key={item.name}
               to={item.href}
-              className={`${
-                location.pathname === item.href
+              className={({ isActive }) =>
+                isActive
                   ? 'bg-emerald-50 text-emerald-600'
                   : 'text-gray-600 hover:bg-emerald-50 hover:text-emerald-600'
-              } block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
+              }
               onClick={() => setIsOpen(false)}
             >
               {item.name}
-            </Link>
+            </NavLink>
           ))}
           {/* Cart Icon for Mobile */}
-          <Link
+          <NavLink
             to="/cart"
             className="text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
             onClick={() => setIsOpen(false)}
           >
             <ShoppingCart className="h-6 w-6 inline-block mr-2" />
             Cart
-          </Link>
+            {itemCount > 0 && (
+              <span className="cart-item-count">{itemCount}</span>
+            )}
+          </NavLink>
         </div>
       )}
     </nav>

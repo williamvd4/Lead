@@ -1,0 +1,128 @@
+.shop-page {
+  padding: 20px;
+  font-family: sans-serif;
+  max-width: 1200px; /* Limit overall width */
+  margin: 0 auto; /* Center the page content */
+}
+
+.shop-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.shop-page-loading,
+.shop-page-error,
+.shop-page-empty {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.shop-page-error {
+  color: #d9534f; /* Bootstrap danger color */
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+  gap: 25px;
+}
+
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; /* Let content align naturally for better text flow */
+  text-align: left; /* Align text to the left for readability */
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 220px; /* Fixed height for uniform look */
+  object-fit: cover; /* Cover ensures the image fills the space, might crop */
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background-color: #f0f0f0; /* Placeholder color if image is missing */
+}
+
+.product-card h2 {
+  font-size: 1.25em; /* Slightly reduced for better fit */
+  margin-top: 0; /* Remove default margin */
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+.product-price {
+  font-size: 1.15em;
+  font-weight: bold;
+  color: #007bff; /* Primary color for price */
+  margin-bottom: 10px;
+}
+
+.product-description {
+  font-size: 0.9em;
+  color: #555; /* Darker gray for better readability */
+  margin-bottom: 15px;
+  line-height: 1.5;
+  flex-grow: 1; /* Allows description to take available space */
+  min-height: 60px; /* Ensure some space even for short descriptions */
+}
+
+.product-sizes {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; Removed to align with left text */
+}
+
+.product-sizes label {
+  margin-right: 8px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.product-sizes select {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+  background-color: #fff;
+}
+
+.add-to-cart-button {
+  background-color: #28a745; /* Bootstrap success color */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  margin-top: auto; /* Pushes button to the bottom of the card */
+  width: 100%; /* Make button full width of card padding */
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838; /* Darker shade for hover */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-to-cart-button:disabled {
+  background-color: #ced4da; /* Lighter gray for disabled */
+  color: #6c757d;
+  cursor: not-allowed;
+  box-shadow: none;
+}

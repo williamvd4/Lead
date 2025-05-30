@@ -1,0 +1,134 @@
+/* Navbar.css */
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #ffffff; /* White background */
+  color: #333; /* Dark text color */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure navbar stays on top */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-logo a {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007bff; /* Primary color for logo */
+  text-decoration: none;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 25px; /* Spacing between links */
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: #333; /* Standard link color */
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-links li a:hover,
+.navbar-links li a.active { /* Style for active link if you implement NavLink */
+  background-color: #f0f0f0; /* Light grey background on hover/active */
+  color: #0056b3; /* Darker blue on hover/active */
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-link:hover {
+  background-color: #e9ecef; /* Light background on hover */
+  color: #0056b3;
+}
+
+.cart-link svg {
+  margin-right: 8px;
+  color: #007bff; /* Icon color */
+}
+
+.cart-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.cart-item-count {
+  background-color: #dc3545; /* Red background for count */
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 8px;
+  min-width: 20px; /* Ensure circle shape for single digit */
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-navbar {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .navbar-links {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    gap: 15px;
+  }
+
+  .navbar-logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: center; /* Center cart link on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-links li a {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  .cart-text {
+    display: none; /* Hide text "Cart" on very small screens, icon and count remain */
+  }
+  .cart-link svg {
+    margin-right: 0; /* Remove margin if text is hidden */
+  }
+  .cart-item-count {
+    margin-left: 5px;
+  }
+  .navbar-logo a {
+    font-size: 1.5rem;
+  }
+}

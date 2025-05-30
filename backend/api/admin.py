@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import (
     Effect, Terpene, Product, LabResult,
     Retailer, CoreValue, HomeCarouselItem, HomeFeature,
-    ShopItems, ShopDetails, Order, OrderItem, Cart, CartItem, Review  # Updated model name
+    ShopItems, ShopDetails, Order, OrderItem, Cart, CartItem, Review, ShopCategory, Size # Added ShopCategory and Size
 )
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
@@ -70,12 +70,24 @@ admin.site.register(Effect)
 admin.site.register(Terpene)
 admin.site.register(CoreValue)
 admin.site.register(HomeFeature)
+admin.site.register(Size) # Register Size model
+
+@admin.register(ShopCategory)
+class ShopCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 @admin.register(ShopItems)  # Updated registration
 class ShopItemsAdmin(ImportExportModelAdmin):  # Updated class name
-    list_display = ('name', 'price', 'category', 'size', 'in_stock')
-    search_fields = ('name', 'description', 'category')
-    list_filter = ('category', 'size', 'in_stock')
+    list_display = ('name', 'price', 'category', 'display_sizes', 'in_stock')
+    search_fields = ('name', 'description', 'category__name') # Updated to search by category name
+    list_filter = ('category', 'in_stock', 'sizes')
+    autocomplete_fields = ['category'] # For easier category selection
+
+    def display_sizes(self, obj):
+        return ", ".join([size.name for size in obj.sizes.all()])
+    display_sizes.short_description = 'Sizes'
 
 @admin.register(ShopDetails)
 class ShopDetailsAdmin(ImportExportModelAdmin):
